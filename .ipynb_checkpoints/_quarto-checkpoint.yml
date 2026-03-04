@@ -22,6 +22,6 @@ format:
     code-copy : True
 
 theme :
-  light : flatly
+  light : materia
   
 editor : visual
