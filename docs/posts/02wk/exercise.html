@@ -245,6 +245,47 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sol-3" id="toc-sol-3" class="nav-link" data-scroll-target="#sol-3">sol</a></li>
   </ul></li>
+  <li><a href="#find-the-mean-and-variance-of-possion-by-using-mgf" id="toc-find-the-mean-and-variance-of-possion-by-using-mgf" class="nav-link" data-scroll-target="#find-the-mean-and-variance-of-possion-by-using-mgf">Find the mean and variance of possion by using mgf</a>
+  <ul class="collapse">
+  <li><a href="#sol-4" id="toc-sol-4" class="nav-link" data-scroll-target="#sol-4">sol</a></li>
+  <li><a href="#poi-approximation-to-bin" id="toc-poi-approximation-to-bin" class="nav-link" data-scroll-target="#poi-approximation-to-bin">PoI approximation to bin</a></li>
+  <li><a href="#sol-5" id="toc-sol-5" class="nav-link" data-scroll-target="#sol-5">sol</a></li>
+  </ul></li>
+  <li><a href="#suppose1" id="toc-suppose1" class="nav-link" data-scroll-target="#suppose1">Suppose1…</a>
+  <ul class="collapse">
+  <li><a href="#sol-6" id="toc-sol-6" class="nav-link" data-scroll-target="#sol-6">sol</a></li>
+  </ul></li>
+  <li><a href="#suppose2" id="toc-suppose2" class="nav-link" data-scroll-target="#suppose2">Suppose2…</a>
+  <ul class="collapse">
+  <li><a href="#sol-7" id="toc-sol-7" class="nav-link" data-scroll-target="#sol-7">sol</a></li>
+  </ul></li>
+  <li><a href="#suppose3." id="toc-suppose3." class="nav-link" data-scroll-target="#suppose3.">Suppose3….</a>
+  <ul class="collapse">
+  <li><a href="#the-distribution-of-y1-2y2-3y3" id="toc-the-distribution-of-y1-2y2-3y3" class="nav-link" data-scroll-target="#the-distribution-of-y1-2y2-3y3">(1) The distribution of Y1 + 2Y2 + 3Y3</a>
+  <ul class="collapse">
+  <li><a href="#sol-8" id="toc-sol-8" class="nav-link" data-scroll-target="#sol-8">sol</a></li>
+  </ul></li>
+  <li><a href="#the-variance-of-s2" id="toc-the-variance-of-s2" class="nav-link" data-scroll-target="#the-variance-of-s2">(2) The variance of S2</a>
+  <ul class="collapse">
+  <li><a href="#sol-9" id="toc-sol-9" class="nav-link" data-scroll-target="#sol-9">sol</a></li>
+  </ul></li>
+  <li><a href="#the-distribution-of" id="toc-the-distribution-of" class="nav-link" data-scroll-target="#the-distribution-of">(3) The distribution of</a>
+  <ul class="collapse">
+  <li><a href="#sol." id="toc-sol." class="nav-link" data-scroll-target="#sol.">sol.</a></li>
+  </ul></li>
+  <li><a href="#cov" id="toc-cov" class="nav-link" data-scroll-target="#cov">(4) Cov…</a>
+  <ul class="collapse">
+  <li><a href="#sol.-1" id="toc-sol.-1" class="nav-link" data-scroll-target="#sol.-1">sol.</a></li>
+  </ul></li>
+  <li><a href="#independent" id="toc-independent" class="nav-link" data-scroll-target="#independent">(5) independent?</a>
+  <ul class="collapse">
+  <li><a href="#sol.-2" id="toc-sol.-2" class="nav-link" data-scroll-target="#sol.-2">sol.</a></li>
+  </ul></li>
+  <li><a href="#the-distribution-of-1" id="toc-the-distribution-of-1" class="nav-link" data-scroll-target="#the-distribution-of-1">(6) The distribution of</a>
+  <ul class="collapse">
+  <li><a href="#sol-10" id="toc-sol-10" class="nav-link" data-scroll-target="#sol-10">sol</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -369,8 +410,181 @@ window.Quarto = {
 </center>
 <section id="sol-3" class="level2">
 <h2 class="anchored" data-anchor-id="sol-3">sol</h2>
+<p><code>1</code> <span class="math inline">\(f_{y}(y)\)</span> 구하기</p>
+<p><span class="math display">\[\begin {align*} f_{y}(y) &amp;= \int_{0}^{1} \frac {12}{5}x(2-x-y)  \,dx  \\ \\
+                          &amp;= \frac{12}{5} \left [ \int_{0}^{1} 2x - x^{2} -xy \,dx \right ]  \\ \\
+                          &amp;= \frac{12}{5} \left (\frac{2}{3} - \frac{y}{2} \right) \\ \\
+                          &amp;= \frac {2}{5} (4-3y)\end{align*}\]</span></p>
+<p><code>2</code> <span class="math inline">\(f_{X|Y}(x|y)\)</span></p>
+<p><span class="math display">\[\begin {align*}f_{X|Y}(x|y)  &amp;=  \frac {f(x,y)}{f(y)} \\ \\
+                               &amp;= \frac{6x(2-x-y)}{4-3y}\end {align*}\]</span></p>
+<p><span class="math display">\[\therefore \,\, f_{X|Y}(x|y) = \begin{cases} \frac{6x(2-x-y)}{4-3y}, \,\,  0&lt;x&lt;1,0&lt;y&lt;1 \\ \\
+                                        0, \quad, \text{otherwise}\end{cases}\]</span></p>
+<hr>
+</section>
+</section>
+<section id="find-the-mean-and-variance-of-possion-by-using-mgf" class="level1">
+<h1>Find the mean and variance of possion by using mgf</h1>
+<section id="sol-4" class="level2">
+<h2 class="anchored" data-anchor-id="sol-4">sol</h2>
+<p><code>1</code> $ X ()$</p>
+<p><span class="math display">\[f_{X}(x) = \frac{e^{-\lambda}\lambda^{x}}{ x!}\]</span></p>
+<p><code>2</code> mgf</p>
+<p><span class="math display">\[M_{X}(t) = E(e^{tX}) = \sum_{x=0}^{\infty}e^{tx} f_{X}(x)\]</span></p>
+<p><span class="math display">\[\therefore \,\, M_{X}(t) = \text{exp}(\lambda(e^{t}-1))\]</span></p>
+<p><code>3</code> mean</p>
+<p><span class="math display">\[M^{\prime}_{X}(0) = \lambda\]</span></p>
+<p><code>4</code> variance</p>
+<p><span class="math display">\[E(X^{2}) = M_{X}^{\prime\prime}(0) = M_{X}(0)(\lambda + \lambda^2) =(\lambda + \lambda^2)\]</span></p>
+<p><span class="math display">\[\begin{align*}Var(X) &amp;= E(X^{2}) - [E(X)]^{2} \\ \\
+                       &amp;= (\lambda + \lambda^2) - \lambda^2 \\ \\
+                       &amp;= \lambda \end{align*}\]</span></p>
+<hr>
+</section>
+<section id="poi-approximation-to-bin" class="level2">
+<h2 class="anchored" data-anchor-id="poi-approximation-to-bin">PoI approximation to bin</h2>
+<p><span class="math inline">\(X \sim \text{Bin}(100,000, 0.00002), \text{find} \quad P(10&lt;X&lt;10)\)</span> using poisson approximation to binomial distribution.</p>
+</section>
+<section id="sol-5" class="level2">
+<h2 class="anchored" data-anchor-id="sol-5">sol</h2>
+<p><code>step1</code></p>
+<p>n이 매우 크고, p가 매우 작으며, <span class="math inline">\(\lambda = np\)</span>가 적잗한 크기일 떄, 포아송 근사를 만족</p>
+<p><span class="math display">\[n = 100,000, \,\, p = 0.00002\]</span></p>
+<p><span class="math display">\[\lambda = np = 2\]</span></p>
+<p><code>step2</code></p>
+<p><span class="math display">\[10 &lt; X &lt; 20 \to X \in \{11,12\dots 19\}\]</span></p>
+<p><code>step3</code></p>
+<p><span class="math inline">\(Y \sim \text{POI}(2)\)</span></p>
+<p><span class="math display">\[P(Y = k) = e^{-2} \frac{2^{k}}{k!}\]</span></p>
+<p><code>step4</code></p>
+<p><span class="math display">\[P(10&lt;X&lt;20)  \approx \sum_{k=11}^{19}\frac{2^{k}}{k!} \approx 8.31 \times 10^{-6}\]</span></p>
+<hr>
+</section>
+</section>
+<section id="suppose1" class="level1">
+<h1>Suppose1…</h1>
+<p>Suppose that <span class="math inline">\(X \sim \text{bin}(n,p), \,\, Y \sim \text{bin}(m,p),\, X\text {and} Y\)</span> are indep, Find</p>
+<p><span class="math display">\[P\{X = i| X+Y=k\}, \quad 0&lt;i&lt;k&lt;n.\]</span></p>
+<section id="sol-6" class="level2">
+<h2 class="anchored" data-anchor-id="sol-6">sol</h2>
+<p><code>step1</code> <span class="math inline">\(X,Y\)</span>는 독립이므로 두 확률변수의 결합확률밀도함수를 다음과 같이 쓸 수 있음.</p>
+<p><span class="math display">\[P\{X = i, X+Y=k\} = P\{X = i, Y=k-i\} = P(X = i)P(Y = k-i).\]</span></p>
+<p><code>step2</code></p>
+<p><span class="math display">\[P(X=i) = \binom{n}{i}p^{i}(1-p)^{n-i}, \quad P(Y=k-i)=\binom{m}{k-i}p^{k-i}(1-p)^{m-(k-i)}\]</span></p>
+<p><code>step3</code></p>
+<p><span class="math display">\[P(X = i, Y=k-i)=\binom{n}{i}\binom{m}{k-i}p^{k}(1-p)^{n+m-k}\]</span></p>
+<p><code>step4</code> 두 확률변수는 같은 <span class="math inline">\(p\)</span>를 갖는 독립 이항분포를 따르므로</p>
+<p><span class="math display">\[X + Y \sim \text{bin}(n+m,p)\]</span></p>
+<p><span class="math display">\[\therefore\,\,  P(X=i|X+Y=k) = \frac{\binom{n}{i}\binom{m}{k-i}}{\binom{n+m}{k}} \]</span></p>
+<hr>
+</section>
+</section>
+<section id="suppose2" class="level1">
+<h1>Suppose2…</h1>
+<p>Suppose <span class="math inline">\(Y_{1}\dots Y_{n}\)</span> is random variable sample from the population with distribution <span class="math inline">\(\text{Gamma}(1,2)\)</span>. Find the distribution of min<span class="math inline">\((Y_{1}\dots Y_n)\)</span></p>
+<section id="sol-7" class="level2">
+<h2 class="anchored" data-anchor-id="sol-7">sol</h2>
+<p><code>step1</code></p>
+<p><span class="math display">\[Y_{i} \sim \text{Gamma}(\alpha = 1, \theta = 2) \]</span></p>
+<p><span class="math display">\[f_{Y}(y) = \frac{1}{2} e^{-y/2}\]</span></p>
+<p><code>step2</code></p>
+<p><span class="math display">\[F_{M}(y) = P(\text{min}(Y_1 \dots Y_n) \leq y)\]</span></p>
+<p><code>step3</code></p>
+<p><span class="math display">\[F_{M}(y) = 1- P(Y_{1}&gt;y, \dots Y_{n}&gt;y)\]</span></p>
+<p><code>step3</code> 독립성 사용</p>
+<p><span class="math display">\[P(Y_{1}&gt;y, \dots Y_{n}&gt;y) = \prod_{i=1}^{n} P(Y_{i}&gt;y) = \left ( P(Y_1 &gt; y) \right )^{n}\]</span></p>
+<p><code>step4</code></p>
+<p><span class="math display">\[ P(Y_1 &gt; y) = 1- P(Y_{1}&lt;y)= 1- F_{Y}(y)\]</span></p>
+<p><span class="math display">\[F_{Y}(y) = \int_{0}^{y} \frac{1}{2}e^{-t/2}\,dt = 1-e^{-y/2}\]</span></p>
+<p><span class="math display">\[ P(Y_1 &gt; y) = e^{-y/2}\]</span></p>
+<p><code>step5</code> 최종 CDF</p>
+<p><span class="math display">\[F_{M}(y) = 1- (e^{-y/2})^{n} = 1- e^{-ny/2}\]</span></p>
+<p><code>step6</code> 최종 pdf: <span class="math inline">\(y\)</span>에 대해서 미분</p>
+<p><span class="math display">\[f_{M}(y) = \frac{n}{2} e^{-ny/2}\]</span></p>
+<hr>
+</section>
+</section>
+<section id="suppose3." class="level1">
+<h1>Suppose3….</h1>
+<p><span class="math inline">\(Y_1\dots Y_n\)</span> is a random sample from the population with distribution <span class="math inline">\(N(\mu,\sigma^{2})\)</span>. Find followings.</p>
+<section id="the-distribution-of-y1-2y2-3y3" class="level2">
+<h2 class="anchored" data-anchor-id="the-distribution-of-y1-2y2-3y3">(1) The distribution of Y1 + 2Y2 + 3Y3</h2>
+<section id="sol-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-8">sol</h3>
+<p>세 확률변수는 독립이고, 독립인 확률변수의 분포는 선형결합을 따르므로</p>
+<ul>
+<li>독립이므로 공분산은 <code>0</code></li>
+</ul>
+<p><span class="math display">\[Y_{1} + 2Y_{2} + 3Y_{3} \sim N(6\mu, 14\sigma^2) \]</span></p>
+</section>
+</section>
+<section id="the-variance-of-s2" class="level2">
+<h2 class="anchored" data-anchor-id="the-variance-of-s2">(2) The variance of S2</h2>
+<p><span class="math display">\[S^{2} = \sum_{i=1}^{n-1} \frac{(Y_{i}-\bar{Y})^2}{n-1}\]</span></p>
+<section id="sol-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-9">sol</h3>
+<p><code>step1</code></p>
+<p><span class="math display">\[W=\frac{(n-1)S^{2}}{ \sigma^2} \sim \chi^{2}_{n-1}\]</span></p>
+<p><span class="math display">\[\therefore\,\, S^{2}  = \frac{\sigma^2}{n-1}W\]</span></p>
+<p>결론</p>
+<p><span class="math display">\[Var(S^{2}) = \left ( \frac{\sigma^2}{n-1}\right)^2 Var(W) = \frac {2\sigma^4}{n-1}\]</span></p>
+</section>
+</section>
+<section id="the-distribution-of" class="level2">
+<h2 class="anchored" data-anchor-id="the-distribution-of">(3) The distribution of</h2>
+<p><span class="math inline">\(Y_2 - \bar Y\)</span> and its mean and variance</p>
+<section id="sol." class="level3">
+<h3 class="anchored" data-anchor-id="sol.">sol.</h3>
+<p>각 확률변수는 독립이므로 선형결합인 <span class="math inline">\(\bar Y\)</span>와 <span class="math inline">\(Y_2\)</span>도 독립</p>
+<p><span class="math inline">\(E(Y_2) = \mu, E(\bar Y) = \mu\)</span></p>
+<p><span class="math inline">\(Var(Y_2) = \sigma ^2, Var(\bar Y) = \frac{\sigma^2}{n}\)</span></p>
+<p><span class="math display">\[Cov(Y_2, \bar Y) = \frac{1}{n} \sum_{i=1}^{n}Cov(Y_2, Y_i) = \frac 1n Cov(Y_2,Y_2) = \frac 1n\sigma^2\]</span></p>
+<p><span class="math display">\[Var(Y2-\bar Y) = Var(y_2) - Var(\bar Y) -2Cov(Y_2, \bar Y) = \frac{n-1}{n}\sigma^2\]</span></p>
+<p><span class="math display">\[\therefore\,\, Y_2 - \bar y \sim N(0, \frac{n-1}{n}\sigma^2)\]</span></p>
+</section>
+</section>
+<section id="cov" class="level2">
+<h2 class="anchored" data-anchor-id="cov">(4) Cov…</h2>
+<p><span class="math display">\[Cov(\bar Y, Y_2-\bar Y)\]</span></p>
+<section id="sol.-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol.-1">sol.</h3>
+<p><code>step1</code> 공분산의 선형성</p>
+<p><span class="math display">\[Cov(\bar Y, Y_2-\bar Y) = Cov(\bar Y, Y_2) - Cov(\bar Y, \bar Y) = Cov(\bar Y, Y_2) - Var(\bar Y)\]</span></p>
+<p><code>step2</code></p>
+<p><span class="math display">\[Cov(\bar Y, Y_2) = \frac{\sigma^2}{n}, \quad Var(\bar Y) = \frac{\sigma^2}{n}\]</span></p>
+<p><span class="math display">\[\therefore\,\, Cov(\bar Y, Y_2-\bar Y) =  \frac{\sigma^2}{n} -  \frac{\sigma^2}{n} = 0\]</span></p>
+</section>
+</section>
+<section id="independent" class="level2">
+<h2 class="anchored" data-anchor-id="independent">(5) independent?</h2>
+<p>Are <span class="math inline">\(Y_1 - Y_2\)</span> and <span class="math inline">\(Y_1 + Y_2\)</span> independent?</p>
+<section id="sol.-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol.-2">sol.</h3>
+<p><span class="math display">\[U = Y_1+ Y_2,\,\,V = Y_1-Y_2\]</span></p>
+<p><code>1</code> 정규분포를 따르는 두 확률변수의 선형변환은 다시 정규분포를 따르므로 위 <span class="math inline">\((U,V)\)</span>는 이변량 정규분포를 따른다.</p>
+<p><code>2</code> 공분산 계산</p>
+<p><span class="math display">\[Cov(U,V) = Cov(Y_1, Y_1) - Cov(Y_1,Y_2) + Cov(Y_2,Y_1) - Cov (Y_2,Y_2) = 0\]</span></p>
+<p><code>3</code> 결론</p>
+<p><span class="math inline">\((U,V)\)</span>가 이변량(jointly)정규분포를 따르고, <span class="math inline">\(Cov(U,V)\)</span>가 0 이므로</p>
+<p><span class="math display">\[U,V \text{는 서로 독립이다.}\]</span></p>
+</section>
+</section>
+<section id="the-distribution-of-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-distribution-of-1">(6) The distribution of</h2>
+<p><span class="math display">\[\sum_{k=1}^{5} \frac{(Y_{2k-1}-Y_{2k})^2}{2\sigma^2}\]</span></p>
+<section id="sol-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-10">sol</h3>
+<p><code>step1</code></p>
+<p><span class="math display">\[D_{k} = Y_{2k-1} - Y_{2k} \sim N(0, 2\sigma^2)\]</span></p>
+<p><code>step2</code></p>
+<p><span class="math display">\[Z_{k} = \frac{D_{k}}{\sqrt {2}\sigma} \sim N(0,1)\]</span></p>
+<p><span class="math display">\[Z_{k}^2 \sim \chi_{1}^{2}\]</span></p>
+<p><code>step3</code></p>
+<p>서로 독립인 카이제곱분포를 따르는 확률변수들의 가법성 성질을 이용하면!</p>
+<p><span class="math display">\[\therefore \,\,T = \sum_{k=1}^{5} Z_{k}^2 = \sum_{k=1}^{5} \frac{(Y_{2k-1}-Y_{2k})^2}{2\sigma^2} \sim \chi^{2}_{5}\]</span></p>
 
 
+</section>
 </section>
 </section>
 
