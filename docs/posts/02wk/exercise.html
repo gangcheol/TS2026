@@ -241,6 +241,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sol-2" id="toc-sol-2" class="nav-link" data-scroll-target="#sol-2">sol</a></li>
   </ul></li>
+  <li><a href="#example-on-page-26" id="toc-example-on-page-26" class="nav-link" data-scroll-target="#example-on-page-26">example on page 26</a>
+  <ul class="collapse">
+  <li><a href="#sol-3" id="toc-sol-3" class="nav-link" data-scroll-target="#sol-3">sol</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -336,6 +340,35 @@ window.Quarto = {
 </center>
 <section id="sol-2" class="level2">
 <h2 class="anchored" data-anchor-id="sol-2">sol</h2>
+<p><span class="math inline">\(X_{1} = \omega_{1} + \omega_{2} = s\)</span></p>
+<p><span class="math inline">\(X_{2} = |\omega_{1} - \omega_{2}| = d\)</span></p>
+<p><span class="math inline">\(\therefore P_{X_{1},X_{2}}(s,d) = P(X_{1} = s, X_{2} = d)\)</span>를 구하자.</p>
+<p><code>1</code> 조건 정의</p>
+<ul>
+<li><span class="math inline">\(\omega_1 \geq \omega_2\)</span>라고 조건 가정.</li>
+</ul>
+<p><span class="math display">\[\omega_1 = \frac{s+d}{2},\quad \omega_2 = \frac{s-d}{2}\]</span></p>
+<p><code>2</code> 따라서 해가 존재하려면, 다음 조건을 만족해야함</p>
+<ul>
+<li><p><span class="math inline">\(s \pm d\)</span>가 짝수여야함.</p></li>
+<li><p><span class="math inline">\(1 \leq \omega_1 \leq \omega_2 \leq 6\)</span></p></li>
+<li><p>$d = 0 $: 기능한 개수 <span class="math inline">\(N(s,0) = 1\)</span></p></li>
+<li><p>$d &gt; 0 $: 기능한 개수 <span class="math inline">\(N(s,d) = 2\)</span></p></li>
+</ul>
+<p><code>3</code> 따라서… 최종 joint probablity mass function of <span class="math inline">\((X_1, X_2)\)</span></p>
+<p><span class="math display">\[P_{X_1, X_2}(s,d) = \begin{cases} \frac{1}{36}, \quad d = 0, s \in \{2,4,6,8,10,12\}  \\
+                               \frac{2}{36}= \frac{1}{18}, \quad d \in \{1,2,3,4,5\}\,\,\text{even},\,\,1 \leq \omega_1 \leq \omega_2 \leq 6\ \\
+                               0, \quad \text{otherwise} \end{cases}\]</span></p>
+<hr>
+</section>
+</section>
+<section id="example-on-page-26" class="level1">
+<h1>example on page 26</h1>
+<center>
+<img src="4.jpg" width="500">
+</center>
+<section id="sol-3" class="level2">
+<h2 class="anchored" data-anchor-id="sol-3">sol</h2>
 
 
 </section>
