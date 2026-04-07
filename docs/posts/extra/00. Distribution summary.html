@@ -268,6 +268,16 @@ window.Quarto = {
   <li><a href="#hypergeometric" id="toc-hypergeometric" class="nav-link" data-scroll-target="#hypergeometric">Hypergeometric</a></li>
   <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson">Poisson</a></li>
   </ul></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables">Continuous Random Variables</a>
+  <ul class="collapse">
+  <li><a href="#uniform" id="toc-uniform" class="nav-link" data-scroll-target="#uniform">Uniform</a></li>
+  <li><a href="#exponential" id="toc-exponential" class="nav-link" data-scroll-target="#exponential">Exponential</a></li>
+  <li><a href="#gamma" id="toc-gamma" class="nav-link" data-scroll-target="#gamma">Gamma</a></li>
+  <li><a href="#chi-square" id="toc-chi-square" class="nav-link" data-scroll-target="#chi-square">Chi-square</a></li>
+  <li><a href="#beta" id="toc-beta" class="nav-link" data-scroll-target="#beta">Beta</a></li>
+  <li><a href="#normal" id="toc-normal" class="nav-link" data-scroll-target="#normal">Normal</a></li>
+  </ul></li>
+  <li><a href="#do-next" id="toc-do-next" class="nav-link" data-scroll-target="#do-next">do next…</a></li>
   </ul>
 </nav>
     </div>
@@ -384,15 +394,122 @@ window.Quarto = {
 <summary>
 ‘ref1’
 </summary>
-<pre><code>        &lt;center&gt;&lt;img src =  '포아송1.jpg' width = 600&gt;&lt;/center&gt;</code></pre>
-<p></p>
-<p><code>-</code> 참고 2. 서로 독립인 포아송분포의 결합 분포</p>
 <center>
 <img src="포아송1.jpg" width="600">
 </center>
+<p></p>
+<p><code>-</code> 참고 2. 서로 독립인 포아송분포의 결합 분포</p>
+<detail>
+<summary>
+‘ref2’
+</summary>
+<center>
+<img src="포아송2.jpg" width="600">
+</center>
+<p></p>
+<detail>
+<summary>
+‘ref3’
+</summary>
+<center>
+<img src="포아송3.jpg" width="600">
+</center>
+<p></p>
+<hr>
+</detail></detail></detail></section>
+</section>
+<section id="continuous-random-variables" class="level1">
+<h1>Continuous Random Variables</h1>
+<section id="uniform" class="level2">
+<h2 class="anchored" data-anchor-id="uniform">Uniform</h2>
+<p>일정한 구간에서 임의로 선택된 수에 대한 확률분포로 이용</p>
+<p><span class="math display">\[X \sim U(\alpha,\beta),\quad f(x) = \frac{1}{\beta-\alpha}I(\alpha &lt; x &lt; \beta)\]</span></p>
+<p><span class="math display">\[F(x) = \begin{cases} 0 \quad (x\leq \alpha) \\ \\ \
+                       (x-\alpha)/(\beta-\alpha) \quad (\alpha  &lt; x &lt; \beta) \\ \\
+                       1 \quad (x\geq \beta)\end{cases}, \quad M(t) = \frac{e^{\beta t}-e^{\alpha t}}{t(\beta - \alpha)}\]</span></p>
+<p><span class="math display">\[E(X) = (\alpha + \beta)/2, \quad Var(X) = (b-a)^{2}/12\]</span></p>
+<hr>
+</section>
+<section id="exponential" class="level2">
+<h2 class="anchored" data-anchor-id="exponential">Exponential</h2>
+<p>포아송분포를 따르며 발생하는 사건에 대하여 첫번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포</p>
+<ul>
+<li>the amount of time unitil some specific event occurs</li>
+</ul>
+<p><span class="math display">\[X \sim \text{Exp}(1/\lambda)\]</span></p>
+<p><span class="math display">\[f(x) = \lambda e^{-\lambda x}, \quad F(x) = 1-e^{-\lambda x}, \quad M(t) = \frac {\lambda}{\lambda - t} \,(t &lt; \lambda)\]</span></p>
+<p><span class="math display">\[E(X) = 1/\lambda, \quad Var(X) = 1/\lambda^2,\quad \hat{\lambda}_{mle} = 1/\bar X, \quad \hat{\lambda}_{mvue} = \frac{n-1}{\sum X}\]</span></p>
+<detail>
+<summary>
+‘ref1’
+</summary>
+<center>
+<img src="지수1.jpg" width="600">
+</center>
+<p></p>
+<detail>
+<summary>
+‘ref2’
+</summary>
+<center>
+<img src="지수2.jpg" width="600">
+</center>
+<p></p>
+<detail>
+<summary>
+‘ref3’
+</summary>
+<center>
+<img src="지수3.jpg" width="600">
+</center>
+<p></p>
+<hr>
+</detail></detail></detail></section>
+<section id="gamma" class="level2">
+<h2 class="anchored" data-anchor-id="gamma">Gamma</h2>
+<p>평균이 <span class="math inline">\(\lambda\)</span>인 포아송분포를 따르며 발생하는 사건에 대하여 <span class="math inline">\(\alpha\)</span>번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포</p>
+<p><span class="math display">\[X \sim \text{Gamma}(\alpha, \beta = \frac {1}{\lambda})\]</span></p>
+<p><span class="math display">\[f(x) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}}x^{\alpha-1}e^{-x/\beta}I(x&gt;0), \quad M(t) = \left(\frac {\lambda}{\lambda - t}\right )^{\alpha} =  (1-\beta t)^{-\alpha} \,(t &lt; \lambda)\]</span></p>
+<p><span class="math display">\[E(X) = \alpha\beta, \quad Var(X) = \alpha\beta^{2}\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, \text{Gamma}(1,\beta) = \text{Exp}(\beta = 1/\lambda)\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, X_i \sim_{iid}\text{Exp}(\lambda) \to \sum X_i \sim \text{Gamma}(n, \beta = 1 /\lambda)\]</span></p>
+<hr>
+</section>
+<section id="chi-square" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square">Chi-square</h2>
+<p>Let <span class="math inline">\(Z_1,\dots Z_n\)</span> be independent standard normal r.v’s</p>
+<p><code>-</code> 자유도가 <span class="math inline">\(n\)</span>인 카이제곱분포</p>
+<p><span class="math display">\[X \sim \chi^2_{n} \sim \text{Gamma}(\alpha = n/2, \beta = 2)\]</span></p>
+<p><span class="math display">\[X_1, X_2=\sum Z_{i}^2 \sim \chi^2_{n}\quad \to \quad X_{1} + X_{2} \sim \chi^{2}_{n_1+n_2}\]</span></p>
+<p><span class="math display">\[f(x) = \frac{1}{\Gamma(n/2)\,\,{2^{n/2}}} x^{n/2-1}\,\,e^{-x/2},\quad M(t) =  (1-2t)^{-n/2}\]</span></p>
+<p><span class="math display">\[E(X) = n, \quad Var(X) = 2n\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, \chi_{\alpha,n}^{2}:100(1-\alpha)\text{  percentile of }\chi^2_{n} \text{ i.e. } \to P(\chi_{n}^2&gt;\chi_{\alpha,n}^2) = \alpha\]</span></p>
+<hr>
+</section>
+<section id="beta" class="level2">
+<h2 class="anchored" data-anchor-id="beta">Beta</h2>
+<p>유한 구간에서 값을 가지는 변수의 분포로 이용</p>
+<p><span class="math display">\[X \sim \text{Beta}(\alpha, \beta)\]</span></p>
+<p><span class="math display">\[f(x) = \frac{1}{B(\alpha,\beta)} x^{\alpha-1}\,\,(1-x)^{\beta-1}, \quad B(\alpha, \beta) - \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\]</span></p>
+<p><span class="math display">\[\text{Beta}(1,1) = U(0,1)\]</span></p>
+<p><span class="math display">\[E(X) = \frac{\alpha}{\alpha + \beta}, \quad Var(X) = \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha + \beta + 1)}\]</span></p>
+<hr>
+</section>
+<section id="normal" class="level2">
+<h2 class="anchored" data-anchor-id="normal">Normal</h2>
+<p><code>-</code> 평균을 중심으로 좌우 대칭인 분포</p>
+<p><span class="math display">\[X \sim N(\mu, \sigma), \quad f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp{\left ( -\frac{(x-\mu)^2}{2\sigma^2}\right)}\]</span></p>
+<p><span class="math display">\[F(x) = \Phi\left(\frac{x-\mu}{\sigma}\right), \quad M(t) = \exp(\mu t + \sigma^2 t^2/2)\]</span></p>
+<p><span class="math display">\[\hat{\mu}_{mle} = \bar X, \quad \hat{\sigma}^2_{mle} = \frac{1}{n} \sum (X-\bar X_i)^2\]</span></p>
+<p><span class="math display">\[\hat{\mu}_{mvue} = \bar X, \quad \hat{\sigma}^2_{mvue} = \frac{1}{n-1} \sum (X-\bar X_i)^2\]</span></p>
+<p><span class="math display">\[E(X) = M^{\prime}(0) = \mu, \quad E(X^2) = M^{\prime\prime}(0) = \mu^2 + \sigma^2\]</span></p>
+<hr>
+</section>
+</section>
+<section id="do-next" class="level1">
+<h1>do next…</h1>
 
 
-</detail></section>
 </section>
 
 </main> <!-- /main -->
