@@ -4,7 +4,79 @@
     "href": "posts/extra/00. Distribution summary.html",
     "title": "00. Distribution Summary",
     "section": "",
-    "text": "Preliminaries and Notation\n- 알아두면 유용한 것들\n\nDiscrete r.v \\(\\to\\) pmf, Continuous r.v \\(\\to\\) pdf\nGamma function quick facts (\\(\\Gamma\\))\n\n\\[\\Gamma(\\alpha) = \\int_{0}^{\\infty} x^{\\alpha-1}e^{-x}\\,dx \\]\n\\[\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha),\\quad \\Gamma(n) = (n-1)!, \\quad \\Gamma(1/2) = \\pi \\]\n\n\nDiscrete Random Variables\nFor a discrete random variable, its distribution is specified by a probability mass function(pmf)",
+    "text": "- 알아두면 유용한 것들\n\nDiscrete r.v \\(\\to\\) pmf, Continuous r.v \\(\\to\\) pdf\nGamma function quick facts (\\(\\Gamma\\))\n\n\\[\\Gamma(\\alpha) = \\int_{0}^{\\infty} x^{\\alpha-1}e^{-x}\\,dx \\]\n\\[\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha),\\quad \\Gamma(n) = (n-1)!, \\quad \\Gamma(1/2) = \\pi \\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#bernoulli",
+    "href": "posts/extra/00. Distribution summary.html#bernoulli",
+    "title": "00. Distribution Summary",
+    "section": "Bernoulli",
+    "text": "Bernoulli\n- \\(X=\\) 성공확률이 \\(p\\)인 베르누이 시행에서 결과가 성공이면 1, 실패면 0\n\nBernoulli experexperiment(trial) - the experiment whose outcome can be classified as either success or failure\n\n\\[X \\sim Ber(p), \\quad X = \\begin{cases} 1 \\quad \\text{'Success'} \\\\ \\\\ 0 \\quad \\text{'Failiure'} \\end{cases} \\]\n\\[f(x) = p^{x}(1-p)^{1-x},\\quad F(x) = \\begin{cases} 0 \\quad (x&lt;0) \\\\ \\\\\n                       1-p \\quad  (0\\leq x&lt;1) \\\\ \\\\\n                       1 \\quad (x\\geq 1)\\end{cases}, \\quad M(t) = 1-p+pe^{t}\\]\n\\[E(X) = p, \\quad Var(x) = p(1-p), \\quad \\hat{p}_{mle} = \\bar X, \\quad \\hat{p}_{mvue} = \\bar X\\]\n\\[\\divideontimes  \\,\\, \\sum X_i \\sim Bin(n,p)\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#binomial",
+    "href": "posts/extra/00. Distribution summary.html#binomial",
+    "title": "00. Distribution Summary",
+    "section": "Binomial",
+    "text": "Binomial\n- \\(X =\\) 베르누이 시행을 독립적으로 \\(n\\)번 반복할 때 나오는 성공의 수\n\nBinomial experiment(trail) - \\(n\\) independent Bernoulli experiments with the success probability \\(p\\)\n\n\\[X \\sim Bin(n,p), \\quad X = 0,1,2, \\dots n\\]\n\\[f(x) = \\binom{n}{x} p^{x}(1-p)^{n-x}, \\quad F(x) = \\sum_{k=0}^{x} \\binom{n}{k}p^{k}(1-p)^{n-k},\\quad M(t) = (1-p + pe^{t})^{n} \\]\n\\[E(X) = np, \\quad Var(X) = np(1-p), \\quad \\hat{p}_{mle} = X/n, \\quad \\hat{p}_{mvue} = \\bar X/n \\]\n\\[\\divideontimes\\,\\, Bin(1,p) = Ber(p)\\]\n- 이항분포 mle 증명 필요….",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#gemmetric",
+    "href": "posts/extra/00. Distribution summary.html#gemmetric",
+    "title": "00. Distribution Summary",
+    "section": "Gemmetric",
+    "text": "Gemmetric\n- \\(X=\\) 서로 독립인 베르누이 시행을 반복할 때 첫번째 성공이 나올 때까지 시행 횟수\n\nthe number of trials until the first success\n\n\\[X \\sim Geo(p),\\quad X = 1,2,\\dots\\]\n\\[f(x) = p(1-p)^{x-1}, \\quad F(x) = \\begin {cases}0 \\quad (x&lt;1)\\\\ \\\\ 1-(1-p)^{x} \\quad (x \\geq 1) \\end{cases}, \\quad M(t) = \\frac{pe^{t}}{1-qe^{t}}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = 1/p, \\quad Var(X) = q/p^{2}, \\quad \\hat{p}_{mle} = 1/\\bar X, \\quad \\hat{p}_{mvue} = \\frac{n-1}{\\sum X_i -1} \\]\n\\[\\divideontimes \\,\\, NB(1,p) = Geo(p)\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#negative-binomial",
+    "href": "posts/extra/00. Distribution summary.html#negative-binomial",
+    "title": "00. Distribution Summary",
+    "section": "Negative Binomial",
+    "text": "Negative Binomial\n- \\(X=\\) 서로 독립인 베르누이 시행을 \\(r\\)번째 성공이 나올 때까지의 시행 횟수\n\\[X \\sim NB(r,p), \\quad X = r, r+1,r+2 \\dots\\]\n\\[f(x) = \\binom{x-1}{r-1}p^{r} (1-p)^{x-r}, \\quad F(x) = \\sum_{k=r}^{x}\\binom{x-1}{k-1}p^{r} (1-p)^{k-r}, \\quad M(t) = \\left(\\frac{pe^{t}}{1-qe^{t}}\\right)^{r}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = r/p, \\quad Var(X) = rq/p^{2}, \\quad \\hat{p}_{mle} = r/\\bar X, \\quad \\hat{p}_{mvue} = \\dots \\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#hypergeometric",
+    "href": "posts/extra/00. Distribution summary.html#hypergeometric",
+    "title": "00. Distribution Summary",
+    "section": "Hypergeometric",
+    "text": "Hypergeometric\n- 전체 원소 개수가 \\(n\\)개이고, \\(A\\)그룹의 원소 개수가 \\(r\\)개 \\(B\\)그룹의 원소 개수가 \\(n-r\\)개일 때, 이 중에서 \\(m\\)개를 임의로 선택할 경우, \\(A\\)그룹에서 선택된 원소의 수\n\\[X \\sim \\text{Hyper}(n,m,r),\\quad X = 0,1,2\\dots \\text{min}(r,m)\\]\n\\[f(x) = \\frac{\\binom{r}{x}\\binom{n-r}{m-x}}{\\binom{n}{m}}, \\quad \\sum_{k=0}^{\\text{min}(r,m)} \\binom{r}{k}\\binom{n-r}{m-k} = \\binom{n}{m}\\]\n\\[E(X) = m\\frac{r}{n}, \\quad Var(X) = m\\frac{r}{n}\\left(1- \\frac rn\\right) \\frac{n-m}{n-1}\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#poisson",
+    "href": "posts/extra/00. Distribution summary.html#poisson",
+    "title": "00. Distribution Summary",
+    "section": "Poisson",
+    "text": "Poisson\n- 시간 또는 공간에 따른 특정 사건의 발생 건수에 대한 확률분포로 이용됨.\n\\[X \\sim \\text{POI}(\\lambda), \\quad X =0,1\\dots\\]\n\\[f(x) = \\frac{\\lambda^{x}e^{-\\lambda}}{x!}, \\quad F(x) = \\sum_{k=0}^{x} \\frac{\\lambda^{k}e^{-\\lambda}}{k!},\\quad M(t) = \\exp \\{\\lambda(e^{t}-1)\\}\\]\n\\[E(x) = \\lambda, \\quad Var(X) = \\lambda\\]\n- 참고 1. 포아송 이항분포 근사\n\n\n‘ref1’\n\n        &lt;center&gt;&lt;img src =  '포아송1.jpg' width = 600&gt;&lt;/center&gt;\n\n- 참고 2. 서로 독립인 포아송분포의 결합 분포",
     "crumbs": [
       "Posts",
       "Extra",

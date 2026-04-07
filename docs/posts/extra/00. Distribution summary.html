@@ -259,7 +259,15 @@ window.Quarto = {
    
   <ul>
   <li><a href="#preliminaries-and-notation" id="toc-preliminaries-and-notation" class="nav-link active" data-scroll-target="#preliminaries-and-notation">Preliminaries and Notation</a></li>
-  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables">Discrete Random Variables</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables">Discrete Random Variables</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli">Bernoulli</a></li>
+  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial">Binomial</a></li>
+  <li><a href="#gemmetric" id="toc-gemmetric" class="nav-link" data-scroll-target="#gemmetric">Gemmetric</a></li>
+  <li><a href="#negative-binomial" id="toc-negative-binomial" class="nav-link" data-scroll-target="#negative-binomial">Negative Binomial</a></li>
+  <li><a href="#hypergeometric" id="toc-hypergeometric" class="nav-link" data-scroll-target="#hypergeometric">Hypergeometric</a></li>
+  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson">Poisson</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -310,8 +318,81 @@ window.Quarto = {
 <section id="discrete-random-variables" class="level1">
 <h1>Discrete Random Variables</h1>
 <p>For a discrete random variable, its distribution is specified by a probability mass function(pmf)</p>
+<section id="bernoulli" class="level2">
+<h2 class="anchored" data-anchor-id="bernoulli">Bernoulli</h2>
+<p><code>-</code> <span class="math inline">\(X=\)</span> 성공확률이 <span class="math inline">\(p\)</span>인 베르누이 시행에서 결과가 성공이면 1, 실패면 0</p>
+<ul>
+<li>Bernoulli experexperiment(trial) - the experiment whose outcome can be classified as either <code>success</code> or <code>failure</code></li>
+</ul>
+<p><span class="math display">\[X \sim Ber(p), \quad X = \begin{cases} 1 \quad \text{'Success'} \\ \\ 0 \quad \text{'Failiure'} \end{cases} \]</span></p>
+<p><span class="math display">\[f(x) = p^{x}(1-p)^{1-x},\quad F(x) = \begin{cases} 0 \quad (x&lt;0) \\ \\
+                       1-p \quad  (0\leq x&lt;1) \\ \\
+                       1 \quad (x\geq 1)\end{cases}, \quad M(t) = 1-p+pe^{t}\]</span></p>
+<p><span class="math display">\[E(X) = p, \quad Var(x) = p(1-p), \quad \hat{p}_{mle} = \bar X, \quad \hat{p}_{mvue} = \bar X\]</span></p>
+<p><span class="math display">\[\divideontimes  \,\, \sum X_i \sim Bin(n,p)\]</span></p>
+<hr>
+</section>
+<section id="binomial" class="level2">
+<h2 class="anchored" data-anchor-id="binomial">Binomial</h2>
+<p><code>-</code> <span class="math inline">\(X =\)</span> 베르누이 시행을 독립적으로 <span class="math inline">\(n\)</span>번 반복할 때 나오는 성공의 수</p>
+<ul>
+<li>Binomial experiment(trail) - <span class="math inline">\(n\)</span> independent Bernoulli experiments with the <code>success</code> probability <span class="math inline">\(p\)</span></li>
+</ul>
+<p><span class="math display">\[X \sim Bin(n,p), \quad X = 0,1,2, \dots n\]</span></p>
+<p><span class="math display">\[f(x) = \binom{n}{x} p^{x}(1-p)^{n-x}, \quad F(x) = \sum_{k=0}^{x} \binom{n}{k}p^{k}(1-p)^{n-k},\quad M(t) = (1-p + pe^{t})^{n} \]</span></p>
+<p><span class="math display">\[E(X) = np, \quad Var(X) = np(1-p), \quad \hat{p}_{mle} = X/n, \quad \hat{p}_{mvue} = \bar X/n \]</span></p>
+<p><span class="math display">\[\divideontimes\,\, Bin(1,p) = Ber(p)\]</span></p>
+<p><code>-</code> 이항분포 mle 증명 필요….</p>
+<hr>
+</section>
+<section id="gemmetric" class="level2">
+<h2 class="anchored" data-anchor-id="gemmetric">Gemmetric</h2>
+<p><code>-</code> <span class="math inline">\(X=\)</span> 서로 독립인 베르누이 시행을 반복할 때 첫번째 성공이 나올 때까지 시행 횟수</p>
+<ul>
+<li>the number of trials until the first success</li>
+</ul>
+<p><span class="math display">\[X \sim Geo(p),\quad X = 1,2,\dots\]</span></p>
+<p><span class="math display">\[f(x) = p(1-p)^{x-1}, \quad F(x) = \begin {cases}0 \quad (x&lt;1)\\ \\ 1-(1-p)^{x} \quad (x \geq 1) \end{cases}, \quad M(t) = \frac{pe^{t}}{1-qe^{t}}\,\,(t&lt;-\ln q)\]</span></p>
+<p><span class="math display">\[E(X) = 1/p, \quad Var(X) = q/p^{2}, \quad \hat{p}_{mle} = 1/\bar X, \quad \hat{p}_{mvue} = \frac{n-1}{\sum X_i -1} \]</span></p>
+<p><span class="math display">\[\divideontimes \,\, NB(1,p) = Geo(p)\]</span></p>
+<hr>
+</section>
+<section id="negative-binomial" class="level2">
+<h2 class="anchored" data-anchor-id="negative-binomial">Negative Binomial</h2>
+<p><code>-</code> <span class="math inline">\(X=\)</span> 서로 독립인 베르누이 시행을 <span class="math inline">\(r\)</span>번째 성공이 나올 때까지의 시행 횟수</p>
+<p><span class="math display">\[X \sim NB(r,p), \quad X = r, r+1,r+2 \dots\]</span></p>
+<p><span class="math display">\[f(x) = \binom{x-1}{r-1}p^{r} (1-p)^{x-r}, \quad F(x) = \sum_{k=r}^{x}\binom{x-1}{k-1}p^{r} (1-p)^{k-r}, \quad M(t) = \left(\frac{pe^{t}}{1-qe^{t}}\right)^{r}\,\,(t&lt;-\ln q)\]</span></p>
+<p><span class="math display">\[E(X) = r/p, \quad Var(X) = rq/p^{2}, \quad \hat{p}_{mle} = r/\bar X, \quad \hat{p}_{mvue} = \dots \]</span></p>
+<hr>
+</section>
+<section id="hypergeometric" class="level2">
+<h2 class="anchored" data-anchor-id="hypergeometric">Hypergeometric</h2>
+<p><code>-</code> 전체 원소 개수가 <span class="math inline">\(n\)</span>개이고, <span class="math inline">\(A\)</span>그룹의 원소 개수가 <span class="math inline">\(r\)</span>개 <span class="math inline">\(B\)</span>그룹의 원소 개수가 <span class="math inline">\(n-r\)</span>개일 때, 이 중에서 <span class="math inline">\(m\)</span>개를 임의로 선택할 경우, <span class="math inline">\(A\)</span>그룹에서 선택된 원소의 수</p>
+<p><span class="math display">\[X \sim \text{Hyper}(n,m,r),\quad X = 0,1,2\dots \text{min}(r,m)\]</span></p>
+<p><span class="math display">\[f(x) = \frac{\binom{r}{x}\binom{n-r}{m-x}}{\binom{n}{m}}, \quad \sum_{k=0}^{\text{min}(r,m)} \binom{r}{k}\binom{n-r}{m-k} = \binom{n}{m}\]</span></p>
+<p><span class="math display">\[E(X) = m\frac{r}{n}, \quad Var(X) = m\frac{r}{n}\left(1- \frac rn\right) \frac{n-m}{n-1}\]</span></p>
+<hr>
+</section>
+<section id="poisson" class="level2">
+<h2 class="anchored" data-anchor-id="poisson">Poisson</h2>
+<p><code>-</code> 시간 또는 공간에 따른 특정 사건의 발생 건수에 대한 확률분포로 이용됨.</p>
+<p><span class="math display">\[X \sim \text{POI}(\lambda), \quad X =0,1\dots\]</span></p>
+<p><span class="math display">\[f(x) = \frac{\lambda^{x}e^{-\lambda}}{x!}, \quad F(x) = \sum_{k=0}^{x} \frac{\lambda^{k}e^{-\lambda}}{k!},\quad M(t) = \exp \{\lambda(e^{t}-1)\}\]</span></p>
+<p><span class="math display">\[E(x) = \lambda, \quad Var(X) = \lambda\]</span></p>
+<p><code>-</code> 참고 1. 포아송 이항분포 근사</p>
+<detail>
+<summary>
+‘ref1’
+</summary>
+<pre><code>        &lt;center&gt;&lt;img src =  '포아송1.jpg' width = 600&gt;&lt;/center&gt;</code></pre>
+<p></p>
+<p><code>-</code> 참고 2. 서로 독립인 포아송분포의 결합 분포</p>
+<center>
+<img src="포아송1.jpg" width="600">
+</center>
 
 
+</detail></section>
 </section>
 
 </main> <!-- /main -->
