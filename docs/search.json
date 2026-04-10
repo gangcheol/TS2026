@@ -88,7 +88,7 @@
     "href": "posts/extra/00. Distribution summary.html#uniform",
     "title": "00. Distribution Summary",
     "section": "Uniform",
-    "text": "Uniform\n일정한 구간에서 임의로 선택된 수에 대한 확률분포로 이용\n\\[X \\sim U(\\alpha,\\beta),\\quad f(x) = \\frac{1}{\\beta-\\alpha}I(\\alpha &lt; x &lt; \\beta)\\]\n\\[F(x) = \\begin{cases} 0 \\quad (x\\leq \\alpha) \\\\ \\\\ \\\n                       (x-\\alpha)/(\\beta-\\alpha) \\quad (\\alpha  &lt; x &lt; \\beta) \\\\ \\\\\n                       1 \\quad (x\\geq \\beta)\\end{cases}, \\quad M(t) = \\frac{e^{\\beta t}-e^{\\alpha t}}{t(\\beta - \\alpha)}\\]\n\\[E(X) = (\\alpha + \\beta)/2, \\quad Var(X) = (b-a)^{2}/12\\]",
+    "text": "Uniform\n일정한 구간에서 임의로 선택된 수에 대한 확률분포로 이용\n\\[X \\sim U(\\alpha,\\beta),\\quad f(x) = \\frac{1}{\\beta-\\alpha}I(\\alpha &lt; x &lt; \\beta)\\]\n\\[F(x) = \\begin{cases} 0 \\quad (x\\leq \\alpha) \\\\ \\\\ \\\n                       (x-\\alpha)/(\\beta-\\alpha) \\quad (\\alpha  &lt; x &lt; \\beta) \\\\ \\\\\n                       1 \\quad (x\\geq \\beta)\\end{cases}, \\quad M(t) = \\frac{e^{\\beta t}-e^{\\alpha t}}{t(\\beta - \\alpha)}\\]\n\\[E(X) = (\\alpha + \\beta)/2, \\quad Var(X) = (\\beta-\\alpha)^{2}/12\\]",
     "crumbs": [
       "Posts",
       "Extra",
