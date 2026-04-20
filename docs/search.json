@@ -405,7 +405,7 @@
     "href": "posts/02wk/exercise.html#mid-4",
     "title": "HW 2",
     "section": "2021 mid 4",
-    "text": "2021 mid 4\n\n(a)\n\\(E(Y_1,Y_2,Y_3)\\)\n- sol\n\\(p^3\\)\n\n\n(b)\n\\(E(Y_1,Y_2,Y_3|\\sum_{i=1}^{n} Y_i = k)\\)\nsol\n결국, \\(P(Y_1 =1, Y_2= 1, Y_3=1 | P(\\sum Y_i=3))\\) 를 물어보는 것과 같음.\n\\[\\frac{k(k-1)(k-2)}{n(n-1)(n-2)}\\]",
+    "text": "2021 mid 4\n\\[Y_i \\sim \\text{ber}(p)\\]\n\n(a)\n\\(E(Y_1,Y_2,Y_3)\\)\n- sol\n\\(p^3\\)\n\n\n(b)\n\\(E(Y_1,Y_2,Y_3|\\sum_{i=1}^{n} Y_i = k)\\)\nsol\n결국, \\(P(Y_1 =1, Y_2= 1, Y_3=1 | P(\\sum Y_i=3))\\) 를 물어보는 것과 같음.\n\\[\\frac{k(k-1)(k-2)}{n(n-1)(n-2)}\\]",
     "crumbs": [
       "Posts",
       "02wk",
