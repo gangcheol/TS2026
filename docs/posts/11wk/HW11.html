@@ -341,6 +341,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">final term</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/final term/FT 2021.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FT 2021</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -477,7 +494,7 @@ window.Quarto = {
                            &amp;= -n\log \pi -\sum \log (1+(x_i-\theta)^2)\end{align*}\]</span></p>
 <p><code>3</code> score function에 대입, 즉 위 식을 <span class="math inline">\(\theta\)</span>에 대하여 미분</p>
 <p><span class="math display">\[\begin{align*} S(\theta|\boldsymbol{x}) &amp;= \frac{\partial}{\partial\,\theta} \log{f_{\boldsymbol{X}}(\boldsymbol{x}|\theta)} \\ \\
-                                          &amp;= \sum_{i=1}^{n}\frac{2(x_i-\theta^2)}{1+(x_i-\theta)^2}\end{align*}\]</span></p>
+                                          &amp;= \sum_{i=1}^{n}\frac{2(x_i-\theta)}{1+(x_i-\theta)^2}\end{align*}\]</span></p>
 </section>
 </section>
 <section id="c" class="level2">
@@ -524,7 +541,7 @@ window.Quarto = {
 <section id="sol2.-sufficiency-and-completeness." class="level3">
 <h3 class="anchored" data-anchor-id="sol2.-sufficiency-and-completeness.">sol2. sufficiency and completeness.</h3>
 <p><code>tip</code></p>
-<p>만약 어떠한 추정량 <span class="math inline">\(W(X)\)</span>가 비편향추정량이고, <span class="math inline">\(T\)</span>가 완비충분통계량이면,</p>
+<p>만약 어떠한 추정량 <span class="math inline">\(W(X)\)</span>가 비편향추정량이고, <span class="math inline">\(T\)</span>가 완비충분통계량이면,(레만쉐페정리)</p>
 <p><span class="math display">\[E[W(X)|T] = \hat{\theta}_{UMVUE}\]</span></p>
 <p><code>1</code> pdf 재확인</p>
 <p><span class="math display">\[\begin{align*} \\ f(x) &amp;= (2\pi)^{-1/2}\exp(-(x-\theta)^2/2) \\ \\
@@ -533,7 +550,7 @@ window.Quarto = {
 <ul>
 <li><span class="math inline">\(T(X)=\sum {X_i} = \text{C.S.S}\)</span> 이다.</li>
 </ul>
-<p><code>3</code> 그렇담 <span class="math inline">\(\frac{1}{n} \sum_{X_i}\)</span>도 <code>C.S.S</code>이고, 비편향추정량이므로</p>
+<p><code>3</code> 그렇담 <span class="math inline">\(\frac{1}{n} \sum {X_i}\)</span>도 <code>C.S.S</code>이고, 비편향추정량이므로</p>
 <p><span class="math display">\[\divideontimes \,\, W(\boldsymbol{X}) = \bar X = \hat{\theta}_{UMVUE}\]</span></p>
 <hr>
 </section>
@@ -551,7 +568,7 @@ window.Quarto = {
 <p><code>3</code> 불편성 확인</p>
 <p><span class="math display">\[E\left[ \frac{e^{\overline{X}}}{e^{\frac{1}{2n}}} \right] = e^\theta \implies E\left[ e^{\overline{X} - \frac{1}{2n}} \right] = e^\theta\]</span></p>
 <p><code>4</code> 결론</p>
-<p><span class="math inline">\(e^{\overline{X} - \frac{1}{2n}}\)</span> 는 <span class="math inline">\(\tau(\theta)\)</span>의 <code>MVUE</code>이다.</p>
+<p><span class="math inline">\(e^{\overline{X} - \frac{1}{2n}}\)</span> 는, 비편향성과 지수족에 속하는 완비충분통계량이므로! <span class="math inline">\(\tau(\theta)\)</span>의 <code>MVUE</code>이다.</p>
 <hr>
 </section>
 </section>
@@ -571,7 +588,7 @@ window.Quarto = {
 <ul>
 <li>들어가기전…</li>
 </ul>
-<p><span class="math display">\[Cov(X, Y|Z) = E[(X-E[X|Z]) \,\times\,(Y-E[Y|Z])]\]</span></p>
+<p><span class="math display">\[Cov(X, Y|Z) = E[(X-E[X|Z]) \,\times\,(Y-E[Y|Z])\,|\,Z]\]</span></p>
 <ul>
 <li>위를 대입</li>
 </ul>
@@ -627,7 +644,7 @@ window.Quarto = {
 </ul>
 <p><span class="math display">\[R = \frac{\sum Y^2/\sigma^2n}{\sum X^2/\sigma^2m} = F(n,m) \leq C_1\]</span></p>
 <p><code>4</code> 결론: 아래를 만족하는 영역이 유의수준 <span class="math inline">\(\alpha\)</span>에서의 기각영역이다.</p>
-<p><span class="math display">\[P\left[\frac{\sum Y^2/n}{\sum X^2/m} \leq F_{1-\frac{\alpha}{2}}(n,m) \text{ or } \frac{\sum Y^2/n}{\sum X^2/m} \geq F_{1-\frac{\alpha}{2}}(n,m)\right] = \alpha\]</span></p>
+<p><span class="math display">\[P\left[\frac{\sum Y^2/n}{\sum X^2/m} \geq F_{1-\frac{\alpha}{2}}(n,m) \text{ or } \frac{\sum Y^2/n}{\sum X^2/m} \leq F_{\frac{\alpha}{2}}(n,m)\right] = \alpha\]</span></p>
 <hr>
 </section>
 </section>
@@ -637,7 +654,7 @@ window.Quarto = {
 <p>Suppose <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are iid from</p>
 <p><span class="math display">\[f_{X}(x|\theta) = \theta x^{\theta - 1} I(0&lt;x&lt;1)\]</span></p>
 <p>where <span class="math inline">\(\theta &gt;0\)</span>, and consider testing <span class="math inline">\(H_0 : \theta \leq 1\)</span> versus <span class="math inline">\(H_1: \theta &gt; 1\)</span>. We have two tests:</p>
-<p><span class="math display">\[\phi_1 = \phi_2(x_1, x_2) = I(x_1 &gt; 0.9), \quad \text{기각역 } R_1 \]</span></p>
+<p><span class="math display">\[\phi_1 = \phi_1(x_1, x_2) = I(x_1 &gt; 0.9), \quad \text{기각역 } R_1 \]</span></p>
 <p><span class="math display">\[\phi_2 = \phi_2(x_1, x_2) = I(x_1x_2 &gt; c), \quad \text{기각역 } R_2\]</span></p>
 <p>where <span class="math inline">\(0&lt;c&lt;1\)</span>.</p>
 <section id="a-3" class="level2">

@@ -1,218 +1,559 @@
 [
   {
-    "objectID": "posts/14wk/HW 14.html",
-    "href": "posts/14wk/HW 14.html",
-    "title": "HW 14",
+    "objectID": "posts/final term/FT 2021.html",
+    "href": "posts/final term/FT 2021.html",
+    "title": "FT 2021",
     "section": "",
-    "text": "Suppose \\(X_{1},X_{2},...,X_{n}\\) are iid with continuous cdf F. Define\n\\[\\phi_{p}=F^{-1}(p)=\\inf\\{x\\in\\mathbb{R}:F(x)\\ge p\\}\\]\nWe call \\(\\phi_{p}\\) the pth quantile of the distribution of X. Note that if F is strictly increasing, then \\(F^{-1}(p)\\) is well defined by\n\\[F(F^{-1}(p)) = p\\]\nThe simplest definition of the sample pth quantile is \\(\\hat{F}_{n}^{-1}(p)\\) , where\nis the empirical distribution function (edf). \\[\\hat{F}_{n}(x)=\\frac{1}{n}\\sum_{i=1}^{n}I(X_{i}\\le x)\\]\nis the empirical distribution function (edf). The edf is a non-decreasing step function that takes steps of size \\(1/n\\) at each observed \\(X_i\\). Therefore,\n\\[\\hat{\\phi}_p \\equiv \\hat{F}_n^{-1}(p) = \\begin{cases} X_{(np)}, & np \\in \\mathbb{Z}^+ \\\\ X_{([np]+1)}, & \\text{otherwise} \\end{cases}\\]\n\nProve that as \\(n\\rightarrow\\infty\\),\n\n\\[\\sqrt{n}(\\hat{\\phi}_{p}-\\phi_{p})\\xrightarrow{d}\\mathcal{N}\\left(0,\\frac{p(1-p)}{f^{2}(\\phi_{p})}\\right)\\]\nwhere f is the population pdf of X.\n(b If \\(p=0.5\\), then \\(\\phi_{p}=\\phi_{0.5}\\) is the median of X. Suppose \\(X_{1},X_{2},...,X_{n}\\) are iid \\(\\mathcal{N}(\\mu,\\sigma^{2})\\), where both parameters are unknown. Consider the following two estimators \\(W_{n}=\\overline{X}_{n}\\) and \\(V_{n}=\\hat{\\phi}_{0.5}\\). Find the distribution of \\(W_{n}\\), the limiting distribution of \\(V_{n}\\) and the \\(ARE(V_{n}\\text{ to }W_{n})\\).\n\n\n\n\n1 임의의 실수 \\(x\\)에 대하여 \\(x_n = \\phi_p + \\frac{x}{\\sqrt{n}}\\)이라고 정의\n2 edf 변환\n\\[P\\left(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\le x\\right) = P(\\hat{\\phi}_p \\le x_n)\\]\n3 표본 분위수의 정의에 의해 \\(\\hat{\\phi}_p \\le x_n\\)은 \\(\\hat{F}_n(x_n) \\ge p\\)와 동치이며, 이는 다시 표본 내에서 \\(x_n\\)보다 작거나 같은 관측치의 개수가 \\(np\\) 이상임과 같음\n\\[P(\\hat{\\phi}_p \\le x_n) = P\\left(\\sum_{i=1}^n I(X_i \\le x_n) \\ge np\\right)\\]\n4 \\(Y_i = I(X_i \\le x_n)\\)라고 하면, \\(Y_i\\)는 성공 확률이 \\(p_n = F(x_n)\\)인 베르누이 분포를 따르고, 테일러 전개를 이용해, \\(p_n\\)을 근사하면\n\\[p_n = F\\left(\\phi_p + \\frac{x}{\\sqrt{n}}\\right) \\approx F(\\phi_p) + \\frac{x}{\\sqrt{n}}f(\\phi_p) = p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\]\n5 \\(\\sum_{i=1}^n Y_i\\)의 기댓값은 \\(np_n\\)이고, 분산은 \\(np_n(1-p_n) \\approx np(1-p)\\)입니다. 중심극한정리(CLT)에 의해 표준화된 합은 표준정규분포로 수렴\n\\[P\\left(\\sum_{i=1}^n Y_i \\ge np\\right) = P\\left(\\frac{\\sum Y_i - np_n}{\\sqrt{np_n(1-p_n)}} \\ge \\frac{np - np_n}{\\sqrt{np_n(1-p_n)}}\\right)\\]\n6 임계값에 극한을 취해 계산하면.\n\\[\\frac{np - n\\left(p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\right)}{\\sqrt{np(1-p)}} = \\frac{-x\\sqrt{n}f(\\phi_p)}{\\sqrt{np(1-p)}} = \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\]\n7 구하고자 하는 점근적 확률은\n\\[P\\left(Z \\ge \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = P\\left(Z \\le \\frac{xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = \\Phi\\left(x\\frac{f(\\phi_p)}{\\sqrt{p(1-p)}}\\right)\\]\n결론: \\(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{p(1-p)}{f^2(\\phi_p)}\\right)\\)\n\n\n\n\n1 \\(W_n\\)의 분포: \\(X_i \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)이고 \\(W_n = \\overline{X}_n\\)이므로, 표본평균의 정확한 분포는 \\(W_n \\sim \\mathcal{N}\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\)\n2 \\(V_n\\)의 점근분포: (a)의 결과에서 \\(p=0.5\\)를 대입합니다. 정규분포의 중앙값은 \\(\\phi_{0.5} = \\mu\\)이고, 해당 지점에서의 확률밀도함수 값은 \\(f(\\mu) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\)\n\n점근 분산: \\(\\frac{0.5(1-0.5)}{[f(\\mu)]^2} = \\frac{0.25}{1/(2\\pi\\sigma^2)} = \\frac{\\pi\\sigma^2}{2}\\)\n따라서 점근분포는 \\(\\sqrt{n}(V_n - \\mu) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{\\pi\\sigma^2}{2}\\right)\\)\n\nARE(\\(V_n\\) to \\(W_n\\)): 점근상대효율은 두 추정량의 점근분산의 비율로 계산됩니다 (\\(W_n\\)을 기준으로 할 때 \\(V_n\\)의 효율).\n\\[ARE(V_n, W_n) = \\frac{\\text{AsyVar}(W_n)}{\\text{AsyVar}(V_n)} = \\frac{\\sigma^2}{\\pi\\sigma^2 / 2} = \\frac{2}{\\pi} \\approx 0.6366\\]",
+    "text": "\\(X_1, X_2, ..., X_n\\) 은 독립동일분포(i.i.d)로 Bernoulli(\\(\\theta\\))를 따르며, 확률질량함수는 \\(f(x|\\theta)=\\theta^{x}(1-\\theta)^{1-x}\\) (단, \\(x=0,1\\))입니다.\n\n\n\\(\\theta\\)의 피셔 정보수 \\(I(\\theta)\\)\n\n\n1 1차 미분\n\\[\\frac{\\partial}{\\partial \\theta} \\log f(x|\\theta) = \\frac{x}{\\theta} - \\frac{1-x}{1-\\theta}\\]\n2 2차 미분\n\\[\\frac{\\partial^2}{\\partial \\theta^2} \\log f(x|\\theta) = -\\frac{x}{\\theta^2} - \\frac{1-x}{(1-\\theta)^2}\\]\n3 피셔의 정보수\n\\[\\begin{align*}I(\\theta) &= -E\\left[ \\frac{\\partial^2}{\\partial \\theta^2} \\log f(X|\\theta) \\right]\\\\ \\\\\n&= -\\left( -\\frac{\\theta}{\\theta^2} - \\frac{1-\\theta}{(1-\\theta)^2} \\right)  \\\\ \\\\ &= \\frac{1}{\\theta} + \\frac{1}{1-\\theta} = \\frac{1}{\\theta(1-\\theta)} \\end{align*}\\]\n\n\n\n\n\\(\\theta(1-\\theta)\\)의 최대 가능도 추정량(MLE)과 평균제곱오차(MSE)\n\n\n1 \\(\\theta\\)의 MLE는 표본평균 \\(\\hat{\\theta} = \\bar{X}\\)\n2 MLE의 불변성(Invariance property)에 의해 \\(\\theta(1-\\theta)\\)의 MLE는 \\(\\bar{X}(1-\\bar{X})\\)\n3 MSE 구하기\n\nbias 구하기: \\(\\text{bias} = E[\\theta]-\\theta\\)\n\n\\[E[\\bar{X}^2] = Var(\\bar{X}) + (E[\\bar{X}])^2 = \\frac{\\theta(1-\\theta)}{n} + \\theta^2\\]\n\\[\\begin{align*}E[\\bar{X}(1-\\bar{X})] &= \\theta - \\left( \\frac{\\theta(1-\\theta)}{n} + \\theta^2 \\right) \\\\ \\\\\n&= \\theta(1-\\theta) - \\frac{\\theta(1-\\theta)}{n} \\\\ \\\\ &= \\frac{n-1}{n}\\theta(1-\\theta)\\end{align*}\\]\n\n분산 구하기: delta metthod 활용\n\n\\[g(\\theta) = \\theta(1-\\theta), \\quad g'(\\theta) = 1-2\\theta\\]\n\\[Var(g(\\hat{\\theta})) \\approx (g'(\\theta))^2 Var(\\hat{\\theta}) = (1-2\\theta)^2 \\frac{\\theta(1-\\theta)}{n}\\]\n4 최종 MSE: Var + \\(\\text{bias}^2\\)\n\\[MSE \\approx (1-2\\theta)^2 \\frac{\\theta(1-\\theta)}{n} + \\left( -\\frac{\\theta(1-\\theta)}{n} \\right)^2\\]\n\n\n\n\n\\(\\theta(1-\\theta)\\)의 최대 가능도 추정량의 극한분포\n\n\n1 중심극한정리\n\\[\\sqrt{n}(\\bar{X} - \\theta) \\xrightarrow{d} N(0, \\theta(1-\\theta))\\]\n2 델타방법 적용\n\\[\\sqrt{n}(g(\\bar{X}) - g(\\theta)) \\xrightarrow{d} N(0, [g'(\\theta)]^2 \\theta(1-\\theta))\\]\n3 대입\n\\[\\sqrt{n}(\\bar{X}(1-\\bar{X}) - \\theta(1-\\theta)) \\xrightarrow{d} N\\left(0, (1-2\\theta)^2 \\theta(1-\\theta)\\right)\\]\n\n\n\n\n\\(\\theta(1-\\theta)\\)에 대한 근사적인 95% 신뢰구간\n\n\n1 (c)의 극한분포 결과를 바탕으로 표준오차는 다음과 같이 계산됨\n\\[SE = \\sqrt{\\frac{(1-2\\hat{\\theta})^2 \\hat{\\theta}(1-\\hat{\\theta})}{n}}\\]\n2 따라서, 95% 신뢰구간은\n\\[\\bar{X}(1-\\bar{X}) \\pm 1.96 \\times SE\\]\n\n\n\n\n\n\n\\(\\theta(1-\\theta)\\)의 최소분산불편추정량(UMVUE)\n1 레만-셰페(Lehmann-Scheffe) 정리 적용\n\n지수족 C.S.S 및 비편향 추정량 확인\n\n2 \\(T = \\sum X_i\\) 는 지수족에 속하므로 \\(\\theta\\)에 대한 완비충분통계량임\n3 (b)에서 \\(E[\\bar{X}(1-\\bar{X})] = \\frac{n-1}{n}\\theta(1-\\theta)\\) 임을 확인\n4 따라서\n\\[\\text{UMVUE} = \\frac{n}{n-1}\\bar{X}(1-\\bar{X})\\]",
     "crumbs": [
       "Posts",
-      "14wk",
-      "HW 14"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/14wk/HW 14.html#sol",
-    "href": "posts/14wk/HW 14.html#sol",
-    "title": "HW 14",
+    "objectID": "posts/final term/FT 2021.html#a",
+    "href": "posts/final term/FT 2021.html#a",
+    "title": "FT 2021",
     "section": "",
-    "text": "1 임의의 실수 \\(x\\)에 대하여 \\(x_n = \\phi_p + \\frac{x}{\\sqrt{n}}\\)이라고 정의\n2 edf 변환\n\\[P\\left(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\le x\\right) = P(\\hat{\\phi}_p \\le x_n)\\]\n3 표본 분위수의 정의에 의해 \\(\\hat{\\phi}_p \\le x_n\\)은 \\(\\hat{F}_n(x_n) \\ge p\\)와 동치이며, 이는 다시 표본 내에서 \\(x_n\\)보다 작거나 같은 관측치의 개수가 \\(np\\) 이상임과 같음\n\\[P(\\hat{\\phi}_p \\le x_n) = P\\left(\\sum_{i=1}^n I(X_i \\le x_n) \\ge np\\right)\\]\n4 \\(Y_i = I(X_i \\le x_n)\\)라고 하면, \\(Y_i\\)는 성공 확률이 \\(p_n = F(x_n)\\)인 베르누이 분포를 따르고, 테일러 전개를 이용해, \\(p_n\\)을 근사하면\n\\[p_n = F\\left(\\phi_p + \\frac{x}{\\sqrt{n}}\\right) \\approx F(\\phi_p) + \\frac{x}{\\sqrt{n}}f(\\phi_p) = p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\]\n5 \\(\\sum_{i=1}^n Y_i\\)의 기댓값은 \\(np_n\\)이고, 분산은 \\(np_n(1-p_n) \\approx np(1-p)\\)입니다. 중심극한정리(CLT)에 의해 표준화된 합은 표준정규분포로 수렴\n\\[P\\left(\\sum_{i=1}^n Y_i \\ge np\\right) = P\\left(\\frac{\\sum Y_i - np_n}{\\sqrt{np_n(1-p_n)}} \\ge \\frac{np - np_n}{\\sqrt{np_n(1-p_n)}}\\right)\\]\n6 임계값에 극한을 취해 계산하면.\n\\[\\frac{np - n\\left(p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\right)}{\\sqrt{np(1-p)}} = \\frac{-x\\sqrt{n}f(\\phi_p)}{\\sqrt{np(1-p)}} = \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\]\n7 구하고자 하는 점근적 확률은\n\\[P\\left(Z \\ge \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = P\\left(Z \\le \\frac{xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = \\Phi\\left(x\\frac{f(\\phi_p)}{\\sqrt{p(1-p)}}\\right)\\]\n결론: \\(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{p(1-p)}{f^2(\\phi_p)}\\right)\\)\n\n\n\n\n1 \\(W_n\\)의 분포: \\(X_i \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)이고 \\(W_n = \\overline{X}_n\\)이므로, 표본평균의 정확한 분포는 \\(W_n \\sim \\mathcal{N}\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\)\n2 \\(V_n\\)의 점근분포: (a)의 결과에서 \\(p=0.5\\)를 대입합니다. 정규분포의 중앙값은 \\(\\phi_{0.5} = \\mu\\)이고, 해당 지점에서의 확률밀도함수 값은 \\(f(\\mu) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\)\n\n점근 분산: \\(\\frac{0.5(1-0.5)}{[f(\\mu)]^2} = \\frac{0.25}{1/(2\\pi\\sigma^2)} = \\frac{\\pi\\sigma^2}{2}\\)\n따라서 점근분포는 \\(\\sqrt{n}(V_n - \\mu) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{\\pi\\sigma^2}{2}\\right)\\)\n\nARE(\\(V_n\\) to \\(W_n\\)): 점근상대효율은 두 추정량의 점근분산의 비율로 계산됩니다 (\\(W_n\\)을 기준으로 할 때 \\(V_n\\)의 효율).\n\\[ARE(V_n, W_n) = \\frac{\\text{AsyVar}(W_n)}{\\text{AsyVar}(V_n)} = \\frac{\\sigma^2}{\\pi\\sigma^2 / 2} = \\frac{2}{\\pi} \\approx 0.6366\\]",
+    "text": "\\(\\theta\\)의 피셔 정보수 \\(I(\\theta)\\)\n\n\n1 1차 미분\n\\[\\frac{\\partial}{\\partial \\theta} \\log f(x|\\theta) = \\frac{x}{\\theta} - \\frac{1-x}{1-\\theta}\\]\n2 2차 미분\n\\[\\frac{\\partial^2}{\\partial \\theta^2} \\log f(x|\\theta) = -\\frac{x}{\\theta^2} - \\frac{1-x}{(1-\\theta)^2}\\]\n3 피셔의 정보수\n\\[\\begin{align*}I(\\theta) &= -E\\left[ \\frac{\\partial^2}{\\partial \\theta^2} \\log f(X|\\theta) \\right]\\\\ \\\\\n&= -\\left( -\\frac{\\theta}{\\theta^2} - \\frac{1-\\theta}{(1-\\theta)^2} \\right)  \\\\ \\\\ &= \\frac{1}{\\theta} + \\frac{1}{1-\\theta} = \\frac{1}{\\theta(1-\\theta)} \\end{align*}\\]",
     "crumbs": [
       "Posts",
-      "14wk",
-      "HW 14"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/14wk/HW 14.html#sol-1",
-    "href": "posts/14wk/HW 14.html#sol-1",
-    "title": "HW 14",
-    "section": "sol",
-    "text": "sol\n\n(a)\n1 베르누이 분포에서 \\(p\\)의 최대우도추정량(MLE)은 \\(\\hat{p} = \\overline{X}_n\\)\n2 중심극한정리에 의해 \\(\\sqrt{n}(\\hat{p} - p) \\xrightarrow{d} \\mathcal{N}(0, p(1-p))\\)를 따른다.\n3 Wald 방법론에서는 미지의 모수 \\(p\\)의 분산을 MLE로 대체한 표준오차 \\(SE(\\hat{p}) = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\)를 사용\n결론: \\((1-\\alpha)\\) Wald 신뢰구간은 \\(\\hat{p} \\pm z_{\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\)\n\n\n(b)\n1 \\(g(p) = \\log\\left(\\frac{p}{1-p}\\right)\\)의 도함수를 구하면 \\(g'(p) = \\frac{1}{p} + \\frac{1}{1-p} = \\frac{1}{p(1-p)}\\)\n2 델타 방법(Delta Method)에 의해 \\(g(\\hat{p})\\)의 점근분포를 도출\n\\[\\sqrt{n}(g(\\hat{p}) - g(p)) \\xrightarrow{d} \\mathcal{N}\\left(0, [g'(p)]^2 \\cdot p(1-p)\\right) = \\mathcal{N}\\left(0, \\frac{1}{p(1-p)}\\right)\\]\n3 이에 대응하는 표준오차는 \\(SE(g(\\hat{p})) = \\frac{1}{\\sqrt{n\\hat{p}(1-\\hat{p})}}\\)\n결론 : \\((1-\\alpha)\\) Wald 신뢰구간은 \\(\\log\\left(\\frac{\\hat{p}}{1-\\hat{p}}\\right) \\pm z_{\\alpha/2} \\frac{1}{\\sqrt{n\\hat{p}(1-\\hat{p})}}\\)\n\n\n(c)\n1 Wald Test\n\n추정치 \\(\\hat{p}\\)의 분포를 기준으로 하며, 분산은 대립가설(MLE) 하의 값을 사용\n검정통계량: \\(Z_W = \\frac{\\hat{p} - p_0}{\\sqrt{\\hat{p}(1-\\hat{p})/n}}\\)\n기각역: \\(|Z_W| &gt; z_{\\alpha/2}\\) 일 때 \\(H_0\\) 기각. (또는 \\(Z_W^2 &gt; \\chi^2_{1, \\alpha}\\))\n\n2 Score Test\n\n귀무가설 \\(H_0\\) 하에서의 정보량(Information)과 스코어(Score) 함수를 이용\n로그 우도함수 \\(\\log L(p) = \\sum X_i \\log p + (n - \\sum X_i) \\log(1-p)\\)의 스코어 함수와 피셔 정보량\n\n\\[U(p) = \\frac{n(\\hat{p} - p)}{p(1-p)}, \\quad I(p) = \\frac{n}{p(1-p)}\\]\n\n검정통계량: \\(Z_S = \\frac{U(p_0)}{\\sqrt{I(p_0)}} = \\frac{\\frac{n(\\hat{p} - p_0)}{p_0(1-p_0)}}{\\sqrt{\\frac{n}{p_0(1-p_0)}}} = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1-p_0)/n}}\\)\n기각역: \\(|Z_S| &gt; z_{\\alpha/2}\\) 일 때 \\(H_0\\) 기각.\n\n3 Likelihood Ratio Test\n\n귀무가설 \\(H_0\\) 하에서의 최대 우도값과 전체 공간에서의 최대 우도값의 비를 사용\n우도비 \\(\\lambda = \\frac{L(p_0)}{L(\\hat{p})} = \\left(\\frac{p_0}{\\hat{p}}\\right)^{n\\hat{p}} \\left(\\frac{1-p_0}{1-\\hat{p}}\\right)^{n(1-\\hat{p})}\\)\n검정통계량: \\(-2\\log\\lambda = 2n \\left[ \\hat{p} \\log\\left(\\frac{\\hat{p}}{p_0}\\right) + (1-\\hat{p}) \\log\\left(\\frac{1-\\hat{p}}{1-p_0}\\right) \\right]\\)\n기각역: 점근적으로 카이제곱 분포를 따르므로, \\(-2\\log\\lambda &gt; \\chi^2_{1, \\alpha}\\) 일 때 \\(H_0\\) 기각.",
-    "crumbs": [
-      "Posts",
-      "14wk",
-      "HW 14"
-    ]
-  },
-  {
-    "objectID": "posts/11wk/HW11.html",
-    "href": "posts/11wk/HW11.html",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#b",
+    "href": "posts/final term/FT 2021.html#b",
+    "title": "FT 2021",
     "section": "",
-    "text": "Suppose \\(X_1, X_2, \\dots X_n\\) are iid sample from \\(f_{X}(x|\\theta)\\) where \\(\\theta \\in \\Theta \\subset \\mathbb{R}\\). Recall the score function is given by\n\\[S(\\theta|\\boldsymbol{x}) = \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)}\\]\nwhere \\(f_{X}(\\boldsymbol{x}|\\theta)\\) is the joint distribution of \\(X = (X_{1},X_{2}, \\dots X_{n})\\)\n\n\nShow that \\(E_{\\theta}[S(\\theta|X)] = 0\\)\n\n\nstep1 score function 전개\n\\[S(\\theta|\\boldsymbol{x}) = \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta)\\]\nstep2 기대값 공식에 대입\n\\[\\begin{align*}E_{\\theta}[ S(\\theta|X)] &= \\int \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta) \\times f_{x_i}(x_{i}|\\theta) \\,dx\\\\ \\\\\n                                         &= n \\times \\int  \\frac{f^{\\prime}(x|\\theta)}{f(x|\\theta)} \\times f(x|\\theta) \\,dx \\\\ \\\\\n                                         &= n \\times \\int f^{\\prime}(x|\\theta) \\, dx \\\\ \\\\\n                                         & = n\\times  \\frac{\\partial}{\\partial\\, \\theta}\\int f(x|\\theta) \\,dx= n \\times 0 = 0 \\end{align*}\\]\n\\[\\divideontimes \\,\\, E_{\\theta}[S(\\theta|\\boldsymbol{X}) ] =0\\text{ 이다}\\]\n\n\n\n\n\nCalculate the score function when\n\\[f(x|\\theta) = \\frac{1}{\\pi} \\frac{1}{1+(x-\\theta)^2}\\]\n\n\n1 joint pdf 구하기\n\\[L(\\theta) = f_{\\boldsymbol {X}} (\\boldsymbol{x}|\\theta) = \\prod_{i=1}^{n} \\frac{1}{\\pi} \\frac{1}{1+(x_i-\\theta)^2}\\]\n2 로그 변환\n\\[\\begin{align*} l(\\theta) &= \\log L(\\theta)  \\\\ \\\\\n                           &= -n\\log \\pi -\\sum \\log (1+(x_i-\\theta)^2)\\end{align*}\\]\n3 score function에 대입, 즉 위 식을 \\(\\theta\\)에 대하여 미분\n\\[\\begin{align*} S(\\theta|\\boldsymbol{x}) &= \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)} \\\\ \\\\\n                                          &= \\sum_{i=1}^{n}\\frac{2(x_i-\\theta^2)}{1+(x_i-\\theta)^2}\\end{align*}\\]\n\n\n\n\nHow would you find the maximum likelihood estimate \\(\\theta\\)?\n\n\nscore function이 0이 되는 \\(\\theta\\)값을 구해야하나, 손으로 계산이 안됨(analytical solution이 없는 경우임)",
+    "text": "\\(\\theta(1-\\theta)\\)의 최대 가능도 추정량(MLE)과 평균제곱오차(MSE)\n\n\n1 \\(\\theta\\)의 MLE는 표본평균 \\(\\hat{\\theta} = \\bar{X}\\)\n2 MLE의 불변성(Invariance property)에 의해 \\(\\theta(1-\\theta)\\)의 MLE는 \\(\\bar{X}(1-\\bar{X})\\)\n3 MSE 구하기\n\nbias 구하기: \\(\\text{bias} = E[\\theta]-\\theta\\)\n\n\\[E[\\bar{X}^2] = Var(\\bar{X}) + (E[\\bar{X}])^2 = \\frac{\\theta(1-\\theta)}{n} + \\theta^2\\]\n\\[\\begin{align*}E[\\bar{X}(1-\\bar{X})] &= \\theta - \\left( \\frac{\\theta(1-\\theta)}{n} + \\theta^2 \\right) \\\\ \\\\\n&= \\theta(1-\\theta) - \\frac{\\theta(1-\\theta)}{n} \\\\ \\\\ &= \\frac{n-1}{n}\\theta(1-\\theta)\\end{align*}\\]\n\n분산 구하기: delta metthod 활용\n\n\\[g(\\theta) = \\theta(1-\\theta), \\quad g'(\\theta) = 1-2\\theta\\]\n\\[Var(g(\\hat{\\theta})) \\approx (g'(\\theta))^2 Var(\\hat{\\theta}) = (1-2\\theta)^2 \\frac{\\theta(1-\\theta)}{n}\\]\n4 최종 MSE: Var + \\(\\text{bias}^2\\)\n\\[MSE \\approx (1-2\\theta)^2 \\frac{\\theta(1-\\theta)}{n} + \\left( -\\frac{\\theta(1-\\theta)}{n} \\right)^2\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#a",
-    "href": "posts/11wk/HW11.html#a",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#c",
+    "href": "posts/final term/FT 2021.html#c",
+    "title": "FT 2021",
     "section": "",
-    "text": "Show that \\(E_{\\theta}[S(\\theta|X)] = 0\\)\n\n\nstep1 score function 전개\n\\[S(\\theta|\\boldsymbol{x}) = \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta)\\]\nstep2 기대값 공식에 대입\n\\[\\begin{align*}E_{\\theta}[ S(\\theta|X)] &= \\int \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta) \\times f_{x_i}(x_{i}|\\theta) \\,dx\\\\ \\\\\n                                         &= n \\times \\int  \\frac{f^{\\prime}(x|\\theta)}{f(x|\\theta)} \\times f(x|\\theta) \\,dx \\\\ \\\\\n                                         &= n \\times \\int f^{\\prime}(x|\\theta) \\, dx \\\\ \\\\\n                                         & = n\\times  \\frac{\\partial}{\\partial\\, \\theta}\\int f(x|\\theta) \\,dx= n \\times 0 = 0 \\end{align*}\\]\n\\[\\divideontimes \\,\\, E_{\\theta}[S(\\theta|\\boldsymbol{X}) ] =0\\text{ 이다}\\]",
+    "text": "\\(\\theta(1-\\theta)\\)의 최대 가능도 추정량의 극한분포\n\n\n1 중심극한정리\n\\[\\sqrt{n}(\\bar{X} - \\theta) \\xrightarrow{d} N(0, \\theta(1-\\theta))\\]\n2 델타방법 적용\n\\[\\sqrt{n}(g(\\bar{X}) - g(\\theta)) \\xrightarrow{d} N(0, [g'(\\theta)]^2 \\theta(1-\\theta))\\]\n3 대입\n\\[\\sqrt{n}(\\bar{X}(1-\\bar{X}) - \\theta(1-\\theta)) \\xrightarrow{d} N\\left(0, (1-2\\theta)^2 \\theta(1-\\theta)\\right)\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#b",
-    "href": "posts/11wk/HW11.html#b",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#d",
+    "href": "posts/final term/FT 2021.html#d",
+    "title": "FT 2021",
     "section": "",
-    "text": "Calculate the score function when\n\\[f(x|\\theta) = \\frac{1}{\\pi} \\frac{1}{1+(x-\\theta)^2}\\]\n\n\n1 joint pdf 구하기\n\\[L(\\theta) = f_{\\boldsymbol {X}} (\\boldsymbol{x}|\\theta) = \\prod_{i=1}^{n} \\frac{1}{\\pi} \\frac{1}{1+(x_i-\\theta)^2}\\]\n2 로그 변환\n\\[\\begin{align*} l(\\theta) &= \\log L(\\theta)  \\\\ \\\\\n                           &= -n\\log \\pi -\\sum \\log (1+(x_i-\\theta)^2)\\end{align*}\\]\n3 score function에 대입, 즉 위 식을 \\(\\theta\\)에 대하여 미분\n\\[\\begin{align*} S(\\theta|\\boldsymbol{x}) &= \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)} \\\\ \\\\\n                                          &= \\sum_{i=1}^{n}\\frac{2(x_i-\\theta^2)}{1+(x_i-\\theta)^2}\\end{align*}\\]",
+    "text": "\\(\\theta(1-\\theta)\\)에 대한 근사적인 95% 신뢰구간\n\n\n1 (c)의 극한분포 결과를 바탕으로 표준오차는 다음과 같이 계산됨\n\\[SE = \\sqrt{\\frac{(1-2\\hat{\\theta})^2 \\hat{\\theta}(1-\\hat{\\theta})}{n}}\\]\n2 따라서, 95% 신뢰구간은\n\\[\\bar{X}(1-\\bar{X}) \\pm 1.96 \\times SE\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#c",
-    "href": "posts/11wk/HW11.html#c",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#e",
+    "href": "posts/final term/FT 2021.html#e",
+    "title": "FT 2021",
     "section": "",
-    "text": "How would you find the maximum likelihood estimate \\(\\theta\\)?\n\n\nscore function이 0이 되는 \\(\\theta\\)값을 구해야하나, 손으로 계산이 안됨(analytical solution이 없는 경우임)",
+    "text": "\\(\\theta(1-\\theta)\\)의 최소분산불편추정량(UMVUE)\n1 레만-셰페(Lehmann-Scheffe) 정리 적용\n\n지수족 C.S.S 및 비편향 추정량 확인\n\n2 \\(T = \\sum X_i\\) 는 지수족에 속하므로 \\(\\theta\\)에 대한 완비충분통계량임\n3 (b)에서 \\(E[\\bar{X}(1-\\bar{X})] = \\frac{n-1}{n}\\theta(1-\\theta)\\) 임을 확인\n4 따라서\n\\[\\text{UMVUE} = \\frac{n}{n-1}\\bar{X}(1-\\bar{X})\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#a-1",
-    "href": "posts/11wk/HW11.html#a-1",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#a-1",
+    "href": "posts/final term/FT 2021.html#a-1",
+    "title": "FT 2021",
     "section": "(a)",
-    "text": "(a)\nShow that \\(W(X) = \\bar X\\) is the uniformly minimum variance unbiased estimator (UMVUE) for \\(\\theta\\) in two ways: one way that uses a Cram´er-Rao Lower Bound argument and one way that uses sufficiency and completeness.\n\nsol 1. Cramer-Rao Lower Bound\ntip 어떤 추정량 \\(T\\)가 비편향 추정량이고, \\(Var(T) \\geq \\frac{1}{nI(\\theta)}\\), 이면 크레모-라온 부등식에 의해 \\(T\\)는 UMVUE임이 자명함.\nstep1 비편향 추정량 확인\n\\(E\\,[W(\\boldsymbol{X})] = E[\\bar{X}]= \\theta\\) 이므로 비편향 추정량임\nstep2 \\(Var(\\bar{X})= \\frac{1}{n}\\)\nstep3 log pdf를 두번 미분한 값 구하기\n\n\\(f(x) = (2\\pi)^{-1/2}\\exp(-(x-\\theta)^2/2)\\)\n\\(\\log f(x|\\theta) = -\\frac 12 \\log 2\\pi - \\frac 12 (x-\\theta)^2\\)\n로그 pdf 두번 미분\n\n\\[\\frac{\\partial^2}{\\partial \\theta^2} = 1\\]\nstep4 피셔의 정보량 \\(I(\\theta)\\) 구하기\n\n위에서 구한 식을 아래 공식에 대입\n\n\\[\\begin{align*} I(\\theta) &= E\\left [ \\frac{\\partial^2}{\\partial \\theta^2} \\log f_{X} (X|\\theta)\\right ] \\\\ \\\\\n                           &= 1\\end{align*}\\]\nstep5 비교\n\\(Var(\\bar{X})= \\frac{1}{n}\\), \\(nI(\\theta)= n\\)\n이므로, \\(Var(T) \\geq \\frac{1}{nI(\\theta)}\\)을 만족함.\n\\[\\divideontimes \\,\\, W(\\boldsymbol{X}) = \\bar X = \\hat{\\theta}_{UMVUE}\\]\n\n\n\nsol2. sufficiency and completeness.\ntip\n만약 어떠한 추정량 \\(W(X)\\)가 비편향추정량이고, \\(T\\)가 완비충분통계량이면,\n\\[E[W(X)|T] = \\hat{\\theta}_{UMVUE}\\]\n1 pdf 재확인\n\\[\\begin{align*} \\\\ f(x) &= (2\\pi)^{-1/2}\\exp(-(x-\\theta)^2/2) \\\\ \\\\\n                         &= (2\\pi)^{-1/2}\\exp\\left [-\\frac{1}{2} (x^{2}-2x\\theta+\\theta^2)\\right]\\end{align*}\\]\n2 따라서 지수족 정의에 의해\n\n\\(T(X)=\\sum {X_i} = \\text{C.S.S}\\) 이다.\n\n3 그렇담 \\(\\frac{1}{n} \\sum_{X_i}\\)도 C.S.S이고, 비편향추정량이므로\n\\[\\divideontimes \\,\\, W(\\boldsymbol{X}) = \\bar X = \\hat{\\theta}_{UMVUE}\\]",
+    "text": "(a)\n\\(T_{a}=aX+(1-a)Y\\) 가 \\(\\theta\\)의 비편향추정량임 증명\n\nsol\n\\[\\begin{align*} E[T_a] &= E[aX + (1-a)Y] \\\\ \\\\ &= aE[X] + (1-a)E[Y] \\\\ \\\\ &= a\\theta + (1-a)\\theta = \\theta \\end{align*}\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#b-1",
-    "href": "posts/11wk/HW11.html#b-1",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#b-1",
+    "href": "posts/final term/FT 2021.html#b-1",
+    "title": "FT 2021",
     "section": "(b)",
-    "text": "(b)\nFind the UMVUE for \\(\\tau(\\theta) = e^{\\theta}.\\)\n\nsol\n1 \\(\\bar x \\sim N(\\theta, \\frac 1n)\\)\n2 \\(e^{\\theta}\\)의 기댓값 계산(적률생성함수 이용)\n\\[\\begin{align*}E[e^{\\bar X}] &= M_{\\bar X}(1) \\\\ \\\\\n                              &= \\exp (\\mu t + \\sigma^2t^2/2) \\\\ \\\\\n                              &= \\exp (\\theta + 1/2n)\\end{align*}\\]\n3 불편성 확인\n\\[E\\left[ \\frac{e^{\\overline{X}}}{e^{\\frac{1}{2n}}} \\right] = e^\\theta \\implies E\\left[ e^{\\overline{X} - \\frac{1}{2n}} \\right] = e^\\theta\\]\n4 결론\n\\(e^{\\overline{X} - \\frac{1}{2n}}\\) 는 \\(\\tau(\\theta)\\)의 MVUE이다.",
+    "text": "(b)\n분산을 최소로 하는 상수 \\(a\\)\n\nsol\n\\[\\begin{align*}Var(T_a)  &= a^2Var(X) + (1-a)^2Var(Y) \\\\ \\\\ &= a^2(1) + (1-a)^2(4) \\\\ \\\\ &= 5a^2 - 8a + 4\\end{align*}\\]\n\\[\\frac{d}{da}(5a^2 - 8a + 4) = 10a - 8 = 0 \\Rightarrow a = \\frac{4}{5} = 0.8\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#c-1",
-    "href": "posts/11wk/HW11.html#c-1",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#c-1",
+    "href": "posts/final term/FT 2021.html#c-1",
+    "title": "FT 2021",
     "section": "(c)",
-    "text": "(c)\nCalculate \\(E(X_1|\\overline X), E(X_1 − \\overline X|\\overline X)\\), and \\(Cov(X_1, X_1 − \\overline X|\\overline X)\\).\n\nsol\n1 \\(E(X_1|\\overline X)\\) 계산\n\\[\\sum_{i=1}^{n} E(X_i|\\overline{X}) = E\\left(\\sum_{i=1}^{n} X_i \\;\\middle|\\; \\overline{X}\\right) = E(n\\overline{X}|\\overline{X}) = n\\overline{X}\\]\n\\[n \\cdot E(X_1|\\overline{X}) = n\\overline{X} \\implies {E(X_{1}|\\overline{X}) = \\overline{X}}\\]\n2 \\(E(X_{1}-\\overline{X}|\\overline{X})\\) 계산\n\\[E(X_{1}-\\overline{X}|\\overline{X}) = E(X_1|\\overline{X}) - E(\\overline{X}|\\overline{X})\\]\n\\(E(X_1|\\overline{X}) = \\overline{X}\\)이므로\n\\[= \\overline{X} - \\overline{X} = \\mathbf{0}\\]\n3 \\(\\text{Cov}(X_{1}, X_{1}-\\overline{X}|\\overline{X})\\) 계산\n\n들어가기전…\n\n\\[Cov(X, Y|Z) = E[(X-E[X|Z]) \\,\\times\\,(Y-E[Y|Z])]\\]\n\n위를 대입\n\n\\[\\begin{align*} Cov(X_1, X_1 - \\overline X|\\overline X) &= E\\left[(X_1 - E[X_1|\\overline X]) \\times ([X_1-\\overline{X}]  - E[X_1-\\overline{X}|\\overline X]) \\right] \\\\ \\\\\n                    &= E\\left [ (X_1-\\overline X)^2|\\overline X\\right]\\end{align*}\\]\n\n\\(X_1 - \\overline X \\sim N(0, 1-\\frac 1n)\\)\n\n\\[ E\\left [ (X_1-\\overline X)^2|\\overline X\\right] = Var(X_1 - \\overline {X}) = 1-\\frac{1}{n}\\]\n\\[\\divideontimes \\,\\, \\text{Cov}(X_1, X_1-\\overline {X}|\\overline{X}) = 1- \\frac 1n\\]",
+    "text": "(c)\n\\(H_{0}:\\theta=0 \\text{ vs } H_{1}:\\theta=-2\\) 에 대한 최강력 검정법\n\nsol\n1 네이만-피어슨 보조정리(Neyman-Pearson Lemma)를 이용합니다.\n2 우도비\n\\[LR = \\frac{L(-2)}{L(0)} = \\frac{\\exp(-\\frac{1}{2}(x+2)^2 - \\frac{1}{8}(y+2)^2)}{\\exp(-\\frac{1}{2}x^2 - \\frac{1}{8}y^2)}\\]\n3 로그 우도비\n\\[\\begin{align*}\\ln LR &= -\\frac{1}{2}(x^2+4x+4 - x^2) - \\frac{1}{8}(y^2+4y+4 - y^2) \\\\ \\\\ &= -2x - 2 - \\frac{1}{2}y - \\frac{1}{2} \\\\ \\\\ &= -2x - \\frac{1}{2}y - \\frac{5}{2}\\end{align*}\\]\n4 \\(H_0\\) 기각 조건은 \\(\\ln LR &gt; k'\\) 이므로\n\\[-2x - \\frac{1}{2}y &gt; C \\Rightarrow 4x + y &lt; C'\\]\n5 통계량 정의 \\(W = 4X + Y\\)\n\\[W \\sim N(0, 4^2(1) + 1^2(4)) = N(0, 20)\\]\n6 유의수준 \\(\\alpha\\)에서 아래와 같으므로\n\\[P(4X + Y &lt; c | H_0) = \\alpha\\]\n7 최강력 기각역을 아래와 같이 산출\n\\[\\frac{c}{\\sqrt{20}} = -z_\\alpha\\]\n\\[4X + Y &lt; -\\sqrt{20}z_\\alpha\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#a-2",
-    "href": "posts/11wk/HW11.html#a-2",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#sol-8",
+    "href": "posts/final term/FT 2021.html#sol-8",
+    "title": "FT 2021",
+    "section": "sol",
+    "text": "sol\n1 표준편차는 0.2\n\\(\\bar{X} \\sim N(\\theta, \\frac{1}{25})\\)\n2 유의수준 \\(\\alpha\\) 구하기\n\\[\\begin{align*} \\alpha &= P(\\bar{X} &gt; 9.5 | \\theta=9) \\\\ \\\\ &= P\\left(Z &gt; \\frac{9.5 - 9}{0.2}\\right) \\\\ \\\\ &= P(Z &gt; 2.5) = 1 - \\Phi(2.5)\\end{align*}\\]\n3 검정력\n\\[\\begin{align*}\\text{검정력} &= P(\\bar{X} &gt; 9.5 | \\theta=10) \\\\ \\\\ &= P\\left(Z &gt; \\frac{9.5 - 10}{0.2}\\right) \\\\ \\\\ &= P(Z &gt; -2.5) = 1 - \\Phi(-2.5) = \\Phi(2.5)\\end{align*}\\]",
+    "crumbs": [
+      "Posts",
+      "final term",
+      "FT 2021"
+    ]
+  },
+  {
+    "objectID": "posts/final term/FT 2021.html#a-2",
+    "href": "posts/final term/FT 2021.html#a-2",
+    "title": "FT 2021",
     "section": "(a)",
-    "text": "(a)\nDerive the likelihood ratio test (LRT) statistic \\(\\lambda (x, y)\\) for testing\n\\[H_0: \\sigma_1^2 = \\sigma_2^{2} \\quad vs \\quad H_1: \\text{not } H_0\\]\nand show that it is a function of \\(t_1 = t(x) = \\sum_{i=1}^{m} x_i^{2}\\) and \\(t_2 = t_2(y) = \\sum_{j=1}^{n} y_{j}^{2}\\)\n\nsol\n1 결합가능도 함수\n\\[L(\\sigma_1^2, \\sigma_2^2) = (2\\pi)^{-\\frac{m+n}{2}} (\\sigma_1^2)^{-\\frac{m}{2}} (\\sigma_2^2)^{-\\frac{n}{2}} \\exp\\left( -\\frac{t_1}{2\\sigma_1^2} - \\frac{t_2}{2\\sigma_2^2} \\right)\\]\n2 대립가설 하에서의 최대 가능도\n\\[\\hat{\\sigma}_1^2 = \\frac{t_1}{m}, \\quad \\hat{\\sigma}_2^2 = \\frac{t_2}{n}\\]\n\\[L(\\hat{\\Omega}) = (2\\pi)^{-\\frac{m+n}{2}} \\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}} e^{-\\frac{m+n}{2}}\\]\n3 귀무가설 하에서의 최대 가능도\n\\[L(\\hat{\\Omega}_0) = (2\\pi)^{-\\frac{m+n}{2}} \\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}} e^{-\\frac{m+n}{2}}\\]\n위를 미분해서 최대가능도를 구하면\n\\[\\hat{\\sigma^2} = \\frac{t_1+t_2}{m+n}\\]\n4 LRT 통계량\n\\[\\lambda(x,y) = \\frac{L(\\hat{\\Omega}_0)}{L(\\hat{\\Omega})} = \\frac{\\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}}}{\\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}}} = \\frac{\\left(\\frac{t_1}{m}\\right)^{\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{\\frac{n}{2}}}{\\left(\\frac{t_1+t_2}{m+n}\\right)^{\\frac{m+n}{2}}}\\]\n5 가설검정\n\\[P\\left(\\lambda(x,y) = \\frac{L(\\hat{\\Omega}_0)}{L(\\hat{\\Omega})} = \\frac{\\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}}}{\\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}}} = \\frac{\\left(\\frac{t_1}{m}\\right)^{\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{\\frac{n}{2}}}{\\left(\\frac{t_1+t_2}{m+n}\\right)^{\\frac{m+n}{2}}} \\leq C \\,|\\,\\sigma_1^2 = \\sigma_2^2\\right) = \\alpha \\]\n위를 만족하는 기각역을 구하면 된다.",
+    "text": "(a)\n전체 모수공간 \\(\\Omega\\) 와 귀무가설 하의 모수공간 \\(\\Omega_0\\)\n\nsol\n\\(\\Omega = \\{ \\theta \\mid \\theta &gt; 0 \\}\\), \\(\\Omega_0 = \\{ \\theta_0 \\}\\)",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#b-2",
-    "href": "posts/11wk/HW11.html#b-2",
-    "title": "HW 11",
+    "objectID": "posts/final term/FT 2021.html#b-2",
+    "href": "posts/final term/FT 2021.html#b-2",
+    "title": "FT 2021",
     "section": "(b)",
-    "text": "(b)\nShow how you could perform a size test in part (a) using the \\(F\\) distribution\n\nsol\n1 카이제곱 분포 변환\n\\[T_{1} = \\sum_{i=1}^{m} \\frac{X_i^2}{\\sigma_1^2} \\sim \\chi^2_{m}\\]\n\\[T_{2} = \\sum_{j=1}^{n} \\frac{Y_i^2}{\\sigma_1^2} \\sim \\chi^2_{n}\\]\n3 F분포 기각역 설정\n\nF분포 정의 복기…\n\n\\[R = \\frac{\\sum Y^2/\\sigma^2n}{\\sum X^2/\\sigma^2m} = F(n,m) \\leq C_1\\]\n4 결론: 아래를 만족하는 영역이 유의수준 \\(\\alpha\\)에서의 기각영역이다.\n\\[P\\left[\\frac{\\sum Y^2/n}{\\sum X^2/m} \\leq F_{1-\\frac{\\alpha}{2}}(n,m) \\text{ or } \\frac{\\sum Y^2/n}{\\sum X^2/m} \\geq F_{1-\\frac{\\alpha}{2}}(n,m)\\right] = \\alpha\\]",
+    "text": "(b)\n우도함수(가능도함수)\n\nsol\n\\[L(\\theta) = \\prod_{i=1}^n \\frac{1}{\\theta} e^{-x_i/\\theta} = \\theta^{-n} \\exp\\left(-\\frac{\\sum x_i}{\\theta}\\right)\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#a-3",
-    "href": "posts/11wk/HW11.html#a-3",
-    "title": "HW 11",
-    "section": "(a)",
-    "text": "(a)\nShow that the power functions of the two tests are \\(\\beta_{1}(\\theta) = 1- (0.9)^{\\theta}\\) and \\(\\beta_{2}(\\theta) = 1 + c^{\\theta}(\\theta \\log c -1)\\), respectively\n\nsol\n1 \\(\\beta_1\\): 귀무가설을 기각할 확률\n\\[\\beta_1(\\theta) = P_\\theta(X_1 &gt; 0.9) = \\int_{0.9}^{1} \\theta x^{\\theta-1} dx = \\left[ x^\\theta \\right]_{0.9}^{1} = \\mathbf{1 - (0.9)^\\theta}\\]\n1 \\(\\beta_2\\)\n\\[\\beta_2(\\theta) = P_\\theta(X_1 X_2 &gt; c) = \\int_{c}^{1} \\int_{c/x_1}^{1} \\theta^2 x_1^{\\theta-1} x_2^{\\theta-1} dx_2 dx_1\\]\n\\[= \\int_{c}^{1} \\theta x_1^{\\theta-1} \\left[ x_2^\\theta \\right]_{c/x_1}^{1} dx_1 = \\int_{c}^{1} \\theta x_1^{\\theta-1} \\left( 1 - \\frac{c^\\theta}{x_1^\\theta} \\right) dx_1\\]\\[= \\int_{c}^{1} \\left( \\theta x_1^{\\theta-1} - \\theta c^\\theta x_1^{-1} \\right) dx_1\\]\n\\[= \\left[ x_1^\\theta \\right]_c^1 - \\theta c^\\theta \\left[ \\log x_1 \\right]_c^1 = (1 - c^\\theta) - \\theta c^\\theta (0 - \\log c)\\]\\[= \\mathbf{1 + c^\\theta(\\theta\\log c - 1)}\\]",
+    "objectID": "posts/final term/FT 2021.html#c-2",
+    "href": "posts/final term/FT 2021.html#c-2",
+    "title": "FT 2021",
+    "section": "(c)",
+    "text": "(c)\n\\(\\Omega\\) 에서의 MLE와 \\(\\Omega_0\\) 에서의 MLE\n\nsol\n1 \\(\\Omega\\)에서의 MLE\n\\[\\log L(\\theta) = -n\\log\\theta - \\frac{\\sum X_i}{\\theta}, \\quad \\hat{\\theta} = \\frac{\\sum X_i}{n} = \\bar{X}\\]\n2 \\(\\Omega_0\\)에서의 MLE\n\\(\\Omega_0\\)는 단일점이므로 \\(\\hat{\\theta}_0 = \\theta_0\\)",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/11wk/HW11.html#b-3",
-    "href": "posts/11wk/HW11.html#b-3",
-    "title": "HW 11",
-    "section": "(b)",
-    "text": "(b)\nCalculate the size of the \\(\\phi_1\\) test. Then, find the value of \\(c\\) that gives the same size for the \\(\\phi_2\\) test\n\n귀무가설 하에서 검정력 함수의 최대값(size)를 구하라는 말임\n\n\nsol\n1 \\(\\beta_1(\\theta) = 1- (0.9)^{\\theta}\\) 는 \\(\\theta\\)에 대해서 단조 증가함수이므로,\n\\[\\text{max}_{H_{0}}(\\beta_1|\\theta) = \\beta_1(1) = 1 - 0.9 = \\mathbf{0.1}\\]\n2 \\(\\beta_2(\\theta)\\)도 마찬가지.\n\\[\\text{Size of } \\phi_2 = \\beta_2(1) = 1 + c(\\log c - 1) = 1 + c\\log c - c\\]\n3 방정식 세우기\n\\[1 + c\\log c - c = 0.1 \\implies c - c\\log c = 0.9\\]\n\\[\\divideontimes \\,\\, c \\approx 0.588\\]",
+    "objectID": "posts/final term/FT 2021.html#d-1",
+    "href": "posts/final term/FT 2021.html#d-1",
+    "title": "FT 2021",
+    "section": "(d)",
+    "text": "(d)\n가능도비 \\(\\Lambda\\)\n\nsol\n\\[\\Lambda = \\frac{\\sup_{\\Omega_0} L(\\theta)}{\\sup_{\\Omega} L(\\theta)} = \\frac{L(\\theta_0)}{L(\\bar{X})} = \\frac{\\theta_0^{-n} \\exp\\left(-\\frac{\\sum X_i}{\\theta_0}\\right)}{\\bar{X}^{-n} \\exp\\left(-\\frac{\\sum X_i}{\\bar{X}}\\right)} = \\left( \\frac{\\bar{X}}{\\theta_0} \\right)^n \\exp\\left( n - \\frac{n\\bar{X}}{\\theta_0} \\right)\\]",
     "crumbs": [
       "Posts",
-      "11wk",
-      "HW 11"
+      "final term",
+      "FT 2021"
     ]
   },
   {
-    "objectID": "posts/06wk/HW 6.html",
-    "href": "posts/06wk/HW 6.html",
-    "title": "HW 6",
+    "objectID": "posts/final term/FT 2021.html#e-1",
+    "href": "posts/final term/FT 2021.html#e-1",
+    "title": "FT 2021",
+    "section": "(e)",
+    "text": "(e)\n유의수준 α인 가능도비검정법의 기각역 (기각역을 \\(\\chi^2\\)분포의 분위수를 사용하여 표현)\n\nsol\n1 검정통계량\n\\[-2\\ln\\Lambda = 2n\\left[ \\frac{\\bar{X}}{\\theta_0} - 1 - \\ln\\left(\\frac{\\bar{X}}{\\theta_0}\\right) \\right]\\]\n2 기각역\n\\[-2\\ln\\Lambda &gt; \\chi^2_{1, \\alpha}\\]\n\n\\(\\chi^2_{1, \\alpha}\\) 자유도가 1인 카이제곱 분포의 우측 상위 \\(\\alpha\\) 백분위수",
+    "crumbs": [
+      "Posts",
+      "final term",
+      "FT 2021"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html",
+    "href": "posts/extra/00. Distribution summary.html",
+    "title": "00. Distribution Summary",
     "section": "",
-    "text": "Suppose \\(X_1, X_2, \\ldots, X_n\\) are iid \\(N(\\mu,\\sigma^2)\\), where \\(-\\infty &lt; \\mu &lt; \\infty\\) and \\(\\sigma^2 &gt; 0\\) and both parameters are unknown. Set \\(\\mathbf{X} = (X_1, X_2, \\ldots, X_n)\\) and \\(\\theta = (\\mu,\\sigma^2)\\).\n\nShow that \\[\nT = T(\\mathbf{X}) =\n\\begin{pmatrix}\n\\overline{X} \\\\\nS^2\n\\end{pmatrix}\n\\] is a minimal sufficient statistic for \\(\\theta\\).\nDefine \\[\nW = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n\\] Find the finite-sample distribution of \\(W\\).\nIs \\(W\\) an ancillary statistic? Explain.\n\n\n\n\n\n\n\nstep1\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp\\left\\{ -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} (x_i-\\mu)^2 \\right \\}\\]\nstep2\n\n지수부 전개\n\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp \\left ( -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} x_i^2\\right ) \\cdot\n\\exp \\left( \\frac{\\mu}{\\sigma^2} \\sum_{i=1}^{n} x_i ^2 - \\frac{n\\mu^2}{2\\sigma^2}\\right)\\]\n즉, 표본은 \\(\\sum x_i, \\sum x_i^2\\)를 통해서만 \\((\\mu, \\sigma^2)\\)에 의존한다.\n그러므로 \\(U(\\mathbf{X}) = \\left( \\sum_{i=1} X_{i}, \\sum_{i=1}^n X_i^2\\right)\\)은 factorization theorem에 의해 충분통계량이다.\n또한, 아래와 같이 일대일 대응이므로 \\((\\bar X, S^2)\\)도 충분통계량이다.\n\\[\\sum_{i=1}^{n} = n\\bar X, \\quad \\sum_{i=1}^{n} X_i^2 = \\sum_{i=1}^n (X_i - \\bar X)^2 + n\\bar X^2 = (n-1)S^{2} + n\\bar X^2\\]\nstep3 Minimal sufficiency\n\\[\\frac{f(\\mathbf{x}|\\mu, \\sigma^2)}{f(\\mathbf{y}|\\mu, \\sigma^2)} = \\exp \\left [\\frac{\\mu}{\\sigma^2} (\\sum x_i - \\sum y_i) -\n\\frac{1}{2\\sigma^2} \\sum(x_i^2 - \\sum y_i^2)\\right ]\\]\n위 비가 \\((\\mu,\\sigma^2)\\)의 함수로서 상수가 되려면(즉, \\(\\mu, \\sigma^2\\)에 의존하지 않으려면)\n\\[\\sum x_i = \\sum y_i, \\quad \\sum x_i^2 = \\sum y_i^2\\]\n가 필요충분조건이다. 따라서 \\(U(\\mathbf{\\sum X_i, \\sum X_i^2 })\\)는 최소충분성을 같는 충분통계량이고, 문제에서 질문한\n\\[ T = T(\\mathbf{X}) =\n   \\begin{pmatrix}\n   \\overline{X} \\\\\n   S^2\n   \\end{pmatrix} \\]\n역시 최소충분성을 만족하는 충분통계량이다.\n\n\n\n\n\\[\n   W = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n   \\]\n위 식을 살펴보면, 왼쪽 항은 표준정규분포(Z)의 제곱항 즉, 자유도가 1인 카이제곱분포를 따르고, 오른쪽 항은 자유도가 \\(n-1\\)인 카이제곱분포를 따름을 알 수 있다.\n또한 왼쪽과 오른쪽 항은 서로 독립인 \\(X_i\\)들의 함수꼴 형태이므로, 서로 독립이기 때문에 카이제곱분포의 가법성 성질을 적용하면, 아래와 같이 표현할 수 있다.\n\\[W \\sim \\chi_{n}^2\\]\n위는 주어진 \\(W\\)가 모수 \\(\\theta = (\\mu, \\sigma^2)\\)에 의존하지 않으므로 \\(W\\)는 Ancillary Statistic이다.(강의 질문 필요)\n\n\n\n\n\n\nRecall that if \\(X\\) has a \\(\\text{Beta}(\\alpha,\\beta)\\) distribution, then the probability density function (pdf) of \\(X\\) is \\[\nf_X(x \\mid \\alpha,\\beta)\n= \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}\nx^{\\alpha-1}(1-x)^{\\beta-1} I(0&lt;x&lt;1),\n\\] where \\(\\alpha &gt; 0\\) and \\(\\beta &gt; 0\\). In this problem, we are going to consider the beta subfamily where \\(\\alpha=\\beta=\\theta\\). Let \\(X_1, X_2, \\ldots, X_n\\) denote an iid sample from a beta\\((\\theta,\\theta)\\) distribution.\n\nShow that \\[\nT(\\mathbf{X}) = \\prod_{i=1}^n X_i(1-X_i)\n\\] is a sufficient statistic for \\(\\theta\\). Is \\(T(\\mathbf{X})\\) complete?\nThe two-dimensional statistic \\[\nT^* = T^*(\\mathbf{X}) =\n\\begin{pmatrix}\n\\prod_{i=1}^n X_i \\\\\n\\prod_{i=1}^n (1-X_i)\n\\end{pmatrix}\n\\] is also a sufficient statistic for \\(\\theta\\). What must be true about the conditional distribution \\[\nf_{\\mathbf{X}\\mid T^*}(\\mathbf{x}\\mid \\mathbf{t})?\n\\]\nShow that \\(T^*(\\mathbf{X})\\) is not a complete statistic.\n\n\n\n\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|\\theta) = \\prod_{i=1}^{n} \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} x_{i}^{\\theta-1}(1-x_i)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\prod_{i=1}^{n}  \\left (x_{i}(1-x_i)\\right)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}\\]\nstep2\n따라서\n\\[f(\\mathbf{x}| \\theta) = g(T(\\mathbf{x}), \\theta) \\cdot h(\\mathbf{x})\\quad \\to \\quad g(T(\\mathbf{x}), \\theta) = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}, \\,\\,h(x) = 1\\]\n\\(T(\\mathbf{X})\\)는 충분통계량이다.\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|t)\\text{는 모수 }\\theta\\text{에 의존하면 안됨.}\\]\n그 분포가 \\(\\theta\\)가 무엇이든 똑같아야 하기 때문!\n즉, \\(T^{*}\\)가 충분통계량이면 ‘\\(T^{*}\\)를 조건으로 하는 \\(\\mathbf{X}\\)의 분포는 \\(\\theta\\)의 영향을 받으면 안된다!’\n\n\n\n\n질문드려요….",
+    "text": "- 알아두면 유용한 것들\n\nDiscrete r.v \\(\\to\\) pmf, Continuous r.v \\(\\to\\) pdf\nGamma function quick facts (\\(\\Gamma\\))\n\n\\[\\Gamma(\\alpha) = \\int_{0}^{\\infty} x^{\\alpha-1}e^{-x}\\,dx \\]\n\\[\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha),\\quad \\Gamma(n) = (n-1)!, \\quad \\Gamma(1/2) = \\pi \\]",
     "crumbs": [
       "Posts",
-      "06wk",
-      "HW 6"
+      "Extra",
+      "00. Distribution Summary"
     ]
   },
   {
-    "objectID": "posts/06wk/HW 6.html#sol",
-    "href": "posts/06wk/HW 6.html#sol",
-    "title": "HW 6",
-    "section": "",
-    "text": "step1\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp\\left\\{ -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} (x_i-\\mu)^2 \\right \\}\\]\nstep2\n\n지수부 전개\n\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp \\left ( -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} x_i^2\\right ) \\cdot\n\\exp \\left( \\frac{\\mu}{\\sigma^2} \\sum_{i=1}^{n} x_i ^2 - \\frac{n\\mu^2}{2\\sigma^2}\\right)\\]\n즉, 표본은 \\(\\sum x_i, \\sum x_i^2\\)를 통해서만 \\((\\mu, \\sigma^2)\\)에 의존한다.\n그러므로 \\(U(\\mathbf{X}) = \\left( \\sum_{i=1} X_{i}, \\sum_{i=1}^n X_i^2\\right)\\)은 factorization theorem에 의해 충분통계량이다.\n또한, 아래와 같이 일대일 대응이므로 \\((\\bar X, S^2)\\)도 충분통계량이다.\n\\[\\sum_{i=1}^{n} = n\\bar X, \\quad \\sum_{i=1}^{n} X_i^2 = \\sum_{i=1}^n (X_i - \\bar X)^2 + n\\bar X^2 = (n-1)S^{2} + n\\bar X^2\\]\nstep3 Minimal sufficiency\n\\[\\frac{f(\\mathbf{x}|\\mu, \\sigma^2)}{f(\\mathbf{y}|\\mu, \\sigma^2)} = \\exp \\left [\\frac{\\mu}{\\sigma^2} (\\sum x_i - \\sum y_i) -\n\\frac{1}{2\\sigma^2} \\sum(x_i^2 - \\sum y_i^2)\\right ]\\]\n위 비가 \\((\\mu,\\sigma^2)\\)의 함수로서 상수가 되려면(즉, \\(\\mu, \\sigma^2\\)에 의존하지 않으려면)\n\\[\\sum x_i = \\sum y_i, \\quad \\sum x_i^2 = \\sum y_i^2\\]\n가 필요충분조건이다. 따라서 \\(U(\\mathbf{\\sum X_i, \\sum X_i^2 })\\)는 최소충분성을 같는 충분통계량이고, 문제에서 질문한\n\\[ T = T(\\mathbf{X}) =\n   \\begin{pmatrix}\n   \\overline{X} \\\\\n   S^2\n   \\end{pmatrix} \\]\n역시 최소충분성을 만족하는 충분통계량이다.\n\n\n\n\n\\[\n   W = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n   \\]\n위 식을 살펴보면, 왼쪽 항은 표준정규분포(Z)의 제곱항 즉, 자유도가 1인 카이제곱분포를 따르고, 오른쪽 항은 자유도가 \\(n-1\\)인 카이제곱분포를 따름을 알 수 있다.\n또한 왼쪽과 오른쪽 항은 서로 독립인 \\(X_i\\)들의 함수꼴 형태이므로, 서로 독립이기 때문에 카이제곱분포의 가법성 성질을 적용하면, 아래와 같이 표현할 수 있다.\n\\[W \\sim \\chi_{n}^2\\]\n위는 주어진 \\(W\\)가 모수 \\(\\theta = (\\mu, \\sigma^2)\\)에 의존하지 않으므로 \\(W\\)는 Ancillary Statistic이다.(강의 질문 필요)",
+    "objectID": "posts/extra/00. Distribution summary.html#bernoulli",
+    "href": "posts/extra/00. Distribution summary.html#bernoulli",
+    "title": "00. Distribution Summary",
+    "section": "Bernoulli",
+    "text": "Bernoulli\n- \\(X=\\) 성공확률이 \\(p\\)인 베르누이 시행에서 결과가 성공이면 1, 실패면 0\n\nBernoulli experexperiment(trial) - the experiment whose outcome can be classified as either success or failure\n\n\\[X \\sim Ber(p), \\quad X = \\begin{cases} 1 \\quad \\text{'Success'} \\\\ \\\\ 0 \\quad \\text{'Failiure'} \\end{cases} \\]\n\\[f(x) = p^{x}(1-p)^{1-x},\\quad F(x) = \\begin{cases} 0 \\quad (x&lt;0) \\\\ \\\\\n                       1-p \\quad  (0\\leq x&lt;1) \\\\ \\\\\n                       1 \\quad (x\\geq 1)\\end{cases}, \\quad M(t) = 1-p+pe^{t}\\]\n\\[E(X) = p, \\quad Var(x) = p(1-p), \\quad \\hat{p}_{mle} = \\bar X, \\quad \\hat{p}_{mvue} = \\bar X\\]\n\\[\\divideontimes  \\,\\, \\sum X_i \\sim Bin(n,p)\\]",
     "crumbs": [
       "Posts",
-      "06wk",
-      "HW 6"
+      "Extra",
+      "00. Distribution Summary"
     ]
   },
   {
-    "objectID": "posts/06wk/HW 6.html#ex2",
-    "href": "posts/06wk/HW 6.html#ex2",
-    "title": "HW 6",
-    "section": "",
-    "text": "Recall that if \\(X\\) has a \\(\\text{Beta}(\\alpha,\\beta)\\) distribution, then the probability density function (pdf) of \\(X\\) is \\[\nf_X(x \\mid \\alpha,\\beta)\n= \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}\nx^{\\alpha-1}(1-x)^{\\beta-1} I(0&lt;x&lt;1),\n\\] where \\(\\alpha &gt; 0\\) and \\(\\beta &gt; 0\\). In this problem, we are going to consider the beta subfamily where \\(\\alpha=\\beta=\\theta\\). Let \\(X_1, X_2, \\ldots, X_n\\) denote an iid sample from a beta\\((\\theta,\\theta)\\) distribution.\n\nShow that \\[\nT(\\mathbf{X}) = \\prod_{i=1}^n X_i(1-X_i)\n\\] is a sufficient statistic for \\(\\theta\\). Is \\(T(\\mathbf{X})\\) complete?\nThe two-dimensional statistic \\[\nT^* = T^*(\\mathbf{X}) =\n\\begin{pmatrix}\n\\prod_{i=1}^n X_i \\\\\n\\prod_{i=1}^n (1-X_i)\n\\end{pmatrix}\n\\] is also a sufficient statistic for \\(\\theta\\). What must be true about the conditional distribution \\[\nf_{\\mathbf{X}\\mid T^*}(\\mathbf{x}\\mid \\mathbf{t})?\n\\]\nShow that \\(T^*(\\mathbf{X})\\) is not a complete statistic.",
+    "objectID": "posts/extra/00. Distribution summary.html#binomial",
+    "href": "posts/extra/00. Distribution summary.html#binomial",
+    "title": "00. Distribution Summary",
+    "section": "Binomial",
+    "text": "Binomial\n- \\(X =\\) 베르누이 시행을 독립적으로 \\(n\\)번 반복할 때 나오는 성공의 수\n\nBinomial experiment(trail) - \\(n\\) independent Bernoulli experiments with the success probability \\(p\\)\n\n\\[X \\sim Bin(n,p), \\quad X = 0,1,2, \\dots n\\]\n\\[f(x) = \\binom{n}{x} p^{x}(1-p)^{n-x}, \\quad F(x) = \\sum_{k=0}^{x} \\binom{n}{k}p^{k}(1-p)^{n-k},\\quad M(t) = (1-p + pe^{t})^{n} \\]\n\\[E(X) = np, \\quad Var(X) = np(1-p), \\quad \\hat{p}_{mle} = X/n, \\quad \\hat{p}_{mvue} = \\bar X/n \\]\n\\[\\divideontimes\\,\\, Bin(1,p) = Ber(p)\\]\n- 이항분포 mle 증명 필요….",
     "crumbs": [
       "Posts",
-      "06wk",
-      "HW 6"
+      "Extra",
+      "00. Distribution Summary"
     ]
   },
   {
-    "objectID": "posts/06wk/HW 6.html#sol-1",
-    "href": "posts/06wk/HW 6.html#sol-1",
-    "title": "HW 6",
-    "section": "",
-    "text": "step1\n\\[f(\\mathbf{x}|\\theta) = \\prod_{i=1}^{n} \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} x_{i}^{\\theta-1}(1-x_i)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\prod_{i=1}^{n}  \\left (x_{i}(1-x_i)\\right)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}\\]\nstep2\n따라서\n\\[f(\\mathbf{x}| \\theta) = g(T(\\mathbf{x}), \\theta) \\cdot h(\\mathbf{x})\\quad \\to \\quad g(T(\\mathbf{x}), \\theta) = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}, \\,\\,h(x) = 1\\]\n\\(T(\\mathbf{X})\\)는 충분통계량이다.\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|t)\\text{는 모수 }\\theta\\text{에 의존하면 안됨.}\\]\n그 분포가 \\(\\theta\\)가 무엇이든 똑같아야 하기 때문!\n즉, \\(T^{*}\\)가 충분통계량이면 ‘\\(T^{*}\\)를 조건으로 하는 \\(\\mathbf{X}\\)의 분포는 \\(\\theta\\)의 영향을 받으면 안된다!’\n\n\n\n\n질문드려요….",
+    "objectID": "posts/extra/00. Distribution summary.html#gemmetric",
+    "href": "posts/extra/00. Distribution summary.html#gemmetric",
+    "title": "00. Distribution Summary",
+    "section": "Gemmetric",
+    "text": "Gemmetric\n- \\(X=\\) 서로 독립인 베르누이 시행을 반복할 때 첫번째 성공이 나올 때까지 시행 횟수\n\nthe number of trials until the first success\n\n\\[X \\sim Geo(p),\\quad X = 1,2,\\dots\\]\n\\[f(x) = p(1-p)^{x-1}, \\quad F(x) = \\begin {cases}0 \\quad (x&lt;1)\\\\ \\\\ 1-(1-p)^{x} \\quad (x \\geq 1) \\end{cases}, \\quad M(t) = \\frac{pe^{t}}{1-qe^{t}}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = 1/p, \\quad Var(X) = q/p^{2}, \\quad \\hat{p}_{mle} = 1/\\bar X, \\quad \\hat{p}_{mvue} = \\frac{n-1}{\\sum X_i -1} \\]\n\\[\\divideontimes \\,\\, NB(1,p) = Geo(p)\\]",
     "crumbs": [
       "Posts",
-      "06wk",
-      "HW 6"
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#negative-binomial",
+    "href": "posts/extra/00. Distribution summary.html#negative-binomial",
+    "title": "00. Distribution Summary",
+    "section": "Negative Binomial",
+    "text": "Negative Binomial\n- \\(X=\\) 서로 독립인 베르누이 시행을 \\(r\\)번째 성공이 나올 때까지의 시행 횟수\n\\[X \\sim NB(r,p), \\quad X = r, r+1,r+2 \\dots\\]\n\\[f(x) = \\binom{x-1}{r-1}p^{r} (1-p)^{x-r}, \\quad F(x) = \\sum_{k=r}^{x}\\binom{x-1}{k-1}p^{r} (1-p)^{k-r}, \\quad M(t) = \\left(\\frac{pe^{t}}{1-qe^{t}}\\right)^{r}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = r/p, \\quad Var(X) = rq/p^{2}, \\quad \\hat{p}_{mle} = r/\\bar X, \\quad \\hat{p}_{mvue} = \\dots \\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#hypergeometric",
+    "href": "posts/extra/00. Distribution summary.html#hypergeometric",
+    "title": "00. Distribution Summary",
+    "section": "Hypergeometric",
+    "text": "Hypergeometric\n- 전체 원소 개수가 \\(n\\)개이고, \\(A\\)그룹의 원소 개수가 \\(r\\)개 \\(B\\)그룹의 원소 개수가 \\(n-r\\)개일 때, 이 중에서 \\(m\\)개를 임의로 선택할 경우, \\(A\\)그룹에서 선택된 원소의 수\n\\[X \\sim \\text{Hyper}(n,m,r),\\quad X = 0,1,2\\dots \\text{min}(r,m)\\]\n\\[f(x) = \\frac{\\binom{r}{x}\\binom{n-r}{m-x}}{\\binom{n}{m}}, \\quad \\sum_{k=0}^{\\text{min}(r,m)} \\binom{r}{k}\\binom{n-r}{m-k} = \\binom{n}{m}\\]\n\\[E(X) = m\\frac{r}{n}, \\quad Var(X) = m\\frac{r}{n}\\left(1- \\frac rn\\right) \\frac{n-m}{n-1}\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#poisson",
+    "href": "posts/extra/00. Distribution summary.html#poisson",
+    "title": "00. Distribution Summary",
+    "section": "Poisson",
+    "text": "Poisson\n- 시간 또는 공간에 따른 특정 사건의 발생 건수에 대한 확률분포로 이용됨.\n\\[X \\sim \\text{POI}(\\lambda), \\quad X =0,1\\dots\\]\n\\[f(x) = \\frac{\\lambda^{x}e^{-\\lambda}}{x!}, \\quad F(x) = \\sum_{k=0}^{x} \\frac{\\lambda^{k}e^{-\\lambda}}{k!},\\quad M(t) = \\exp \\{\\lambda(e^{t}-1)\\}\\]\n\\[E(x) = \\lambda, \\quad Var(X) = \\lambda\\]\n- 참고 1. 포아송 이항분포 근사\n\n\n‘ref1’\n\n\n\n\n\n- 참고 2. 서로 독립인 포아송분포의 결합 분포\n\n\n‘ref2’\n\n\n\n\n\n\n\n‘ref3’",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#uniform",
+    "href": "posts/extra/00. Distribution summary.html#uniform",
+    "title": "00. Distribution Summary",
+    "section": "Uniform",
+    "text": "Uniform\n일정한 구간에서 임의로 선택된 수에 대한 확률분포로 이용\n\\[X \\sim U(\\alpha,\\beta),\\quad f(x) = \\frac{1}{\\beta-\\alpha}I(\\alpha &lt; x &lt; \\beta)\\]\n\\[F(x) = \\begin{cases} 0 \\quad (x\\leq \\alpha) \\\\ \\\\ \\\n                       (x-\\alpha)/(\\beta-\\alpha) \\quad (\\alpha  &lt; x &lt; \\beta) \\\\ \\\\\n                       1 \\quad (x\\geq \\beta)\\end{cases}, \\quad M(t) = \\frac{e^{\\beta t}-e^{\\alpha t}}{t(\\beta - \\alpha)}\\]\n\\[E(X) = (\\alpha + \\beta)/2, \\quad Var(X) = (\\beta-\\alpha)^{2}/12\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#exponential",
+    "href": "posts/extra/00. Distribution summary.html#exponential",
+    "title": "00. Distribution Summary",
+    "section": "Exponential",
+    "text": "Exponential\n포아송분포를 따르며 발생하는 사건에 대하여 첫번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포\n\nthe amount of time unitil some specific event occurs\n\n\\[X \\sim \\text{Exp}(1/\\lambda)\\]\n\\[f(x) = \\lambda e^{-\\lambda x}, \\quad F(x) = 1-e^{-\\lambda x}, \\quad M(t) = \\frac {\\lambda}{\\lambda - t} \\,(t &lt; \\lambda)\\]\n\\[E(X) = 1/\\lambda, \\quad Var(X) = 1/\\lambda^2,\\quad \\hat{\\lambda}_{mle} = 1/\\bar X, \\quad \\hat{\\lambda}_{mvue} = \\frac{n-1}{\\sum X}\\]\n\n\n‘ref1’\n\n\n\n\n\n\n\n‘ref2’\n\n\n\n\n\n\n\n‘ref3’",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#gamma",
+    "href": "posts/extra/00. Distribution summary.html#gamma",
+    "title": "00. Distribution Summary",
+    "section": "Gamma",
+    "text": "Gamma\n평균이 \\(\\lambda\\)인 포아송분포를 따르며 발생하는 사건에 대하여 \\(\\alpha\\)번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포\n\\[X \\sim \\text{Gamma}(\\alpha, \\beta = \\frac {1}{\\lambda})\\]\n\\[f(x) = \\frac{1}{\\Gamma(\\alpha)\\beta^{\\alpha}}x^{\\alpha-1}e^{-x/\\beta}I(x&gt;0), \\quad M(t) = \\left(\\frac {\\lambda}{\\lambda - t}\\right )^{\\alpha} =  (1-\\beta t)^{-\\alpha} \\,(t &lt; \\lambda)\\]\n\\[E(X) = \\alpha\\beta, \\quad Var(X) = \\alpha\\beta^{2}\\]\n\\[\\divideontimes \\,\\, \\text{Gamma}(1,\\beta) = \\text{Exp}(\\beta = 1/\\lambda)\\]\n\\[\\divideontimes \\,\\, X_i \\sim_{iid}\\text{Exp}(\\lambda) \\to \\sum X_i \\sim \\text{Gamma}(n, \\beta = 1 /\\lambda)\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#chi-square",
+    "href": "posts/extra/00. Distribution summary.html#chi-square",
+    "title": "00. Distribution Summary",
+    "section": "Chi-square",
+    "text": "Chi-square\nLet \\(Z_1,\\dots Z_n\\) be independent standard normal r.v’s\n- 자유도가 \\(n\\)인 카이제곱분포\n\\[X \\sim \\chi^2_{n} \\sim \\text{Gamma}(\\alpha = n/2, \\beta = 2)\\]\n\\[X_1, X_2=\\sum Z_{i}^2 \\sim \\chi^2_{n}\\quad \\to \\quad X_{1} + X_{2} \\sim \\chi^{2}_{n_1+n_2}\\]\n\\[f(x) = \\frac{1}{\\Gamma(n/2)\\,\\,{2^{n/2}}} x^{n/2-1}\\,\\,e^{-x/2},\\quad M(t) =  (1-2t)^{-n/2}\\]\n\\[E(X) = n, \\quad Var(X) = 2n\\]\n\\[\\divideontimes \\,\\, \\chi_{\\alpha,n}^{2}:100(1-\\alpha)\\text{  percentile of }\\chi^2_{n} \\text{ i.e. } \\to P(\\chi_{n}^2&gt;\\chi_{\\alpha,n}^2) = \\alpha\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#beta",
+    "href": "posts/extra/00. Distribution summary.html#beta",
+    "title": "00. Distribution Summary",
+    "section": "Beta",
+    "text": "Beta\n유한 구간에서 값을 가지는 변수의 분포로 이용\n\\[X \\sim \\text{Beta}(\\alpha, \\beta)\\]\n\\[f(x) = \\frac{1}{B(\\alpha,\\beta)} x^{\\alpha-1}\\,\\,(1-x)^{\\beta-1}, \\quad B(\\alpha, \\beta) - \\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}\\]\n\\[\\text{Beta}(1,1) = U(0,1)\\]\n\\[E(X) = \\frac{\\alpha}{\\alpha + \\beta}, \\quad Var(X) = \\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha + \\beta + 1)}\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/extra/00. Distribution summary.html#normal",
+    "href": "posts/extra/00. Distribution summary.html#normal",
+    "title": "00. Distribution Summary",
+    "section": "Normal",
+    "text": "Normal\n- 평균을 중심으로 좌우 대칭인 분포\n\\[X \\sim N(\\mu, \\sigma), \\quad f(x) = \\frac{1}{\\sqrt{2\\pi}\\sigma}\\exp{\\left ( -\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)}\\]\n\\[F(x) = \\Phi\\left(\\frac{x-\\mu}{\\sigma}\\right), \\quad M(t) = \\exp(\\mu t + \\sigma^2 t^2/2)\\]\n\\[\\hat{\\mu}_{mle} = \\bar X, \\quad \\hat{\\sigma}^2_{mle} = \\frac{1}{n} \\sum (X-\\bar X_i)^2\\]\n\\[\\hat{\\mu}_{mvue} = \\bar X, \\quad \\hat{\\sigma}^2_{mvue} = \\frac{1}{n-1} \\sum (X-\\bar X_i)^2\\]\n\\[E(X) = M^{\\prime}(0) = \\mu, \\quad E(X^2) = M^{\\prime\\prime}(0) = \\mu^2 + \\sigma^2\\]",
+    "crumbs": [
+      "Posts",
+      "Extra",
+      "00. Distribution Summary"
+    ]
+  },
+  {
+    "objectID": "posts/12wk/HW12.html",
+    "href": "posts/12wk/HW12.html",
+    "title": "HW 12",
+    "section": "",
+    "text": "Suppose that \\(X_1, X_2, . . . , X_n\\) is an iid sample from\n\\[f_{X}(x|\\theta) = 2\\theta x e^{-\\theta x^2}\\,\\, I(x&gt;0)\\]\n\nFind the uniformly minimum variance unbiased estimator (UMVUE) of \\(\\theta\\)\nFind the uniformaly most powerful(UMP) level \\(\\alpha\\) test of\n\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\nwhere \\(\\theta_0\\) is known\n\nDerive an expression for the power function of the test in part (b).\n\n\n즉, 검정법의 파워를 구하라\n\n\n\n\n\n1 지수족 인수분해를 통한 완비충분통계량 도출 \\(\\to \\,\\, T = \\sum X_{i}^{2}\\)\n2 변수변환을 통해 \\(X_{i}^{2} = \\text{Exp}(\\theta) = \\Gamma (1, 1/\\theta)\\) 이므로, \\(T \\sim \\Gamma(n, 1/\\theta)\\)\n3 불편성 조건 확인: \\(E[1/T] = \\frac{\\theta}{n-1} \\to E\\left [\\frac{n-1}{T}\\right] = \\theta\\)\n\\(\\divideontimes \\,\\,\\widehat{\\theta}_{\\text{UMVUE}} = \\frac{n-1}{\\sum_{i=1}^n X_i^2}\\)\n\n\n\n0 most powerful test 찾기\n\\[H_0: \\theta = \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta = \\theta_1\\,\\,(\\theta_1 &gt; \\theta_0)\\]\n1 기각역 정의\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\\geq K \\right \\}\\]\n2 기각역 공식 대입\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\n                = \\frac{\\prod_{i=1}^n 2\\theta_1 x_i e^{-\\theta_1 x_i^2}}{\\prod_{i=1}^n 2\\theta_0 x_i e^{-\\theta_0 x_i^2}} =\n                 \\left (\\frac{\\theta_1}{\\theta_0}\\right)^n e^{-(\\theta_1-\\theta_0)\\sum x_i^2}\\geq K \\right \\}\\]\n3 단순화\n\\[R = \\left \\{ \\sum x_i^2 \\leq K \\right \\},\\quad (\\theta_1 &gt; \\theta_0)\\]\n4 \\(\\sum x^2 \\sim \\text{Gam}\\left(n, \\frac{1}{\\theta} \\right) \\to 2\\theta \\sum x^2 \\sim \\text{Gam}\\left (n,2\\right) = \\chi^2(2n)\\)\n\\[P\\left [2\\theta_0\\sum x_i^2 \\leq K\\,|\\, \\theta = \\theta_0 \\right] = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\]\n\nsize(level-\\(\\alpha\\))에서 검정력 power는 다음과 같음\n\n\\[\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n) \\right]\\]\n5 균일최강력검정 구하기\n\\[\\begin{align*}\\max_{\\theta \\leq \\theta_0}&=\\max_{\\theta \\leq \\theta_0}P\\left[2\\theta_0 \\sum_{i=1}^{n} x_{i}^2 \\leq \\chi^2_{1-\\alpha}(2n)|\\theta\\right] \\\\ \\\\\n                                           &= \\max_{\\theta \\leq \\theta_0}P\\left[2\\theta \\sum_{i=1}^{n} x_{i}^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)|\\theta\\right]\\\\ \\\\\n                                           &=  \\max_{\\theta \\leq \\theta_0}P\\left[\\chi^2_{2n}\\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\right]\\end{align*}\\]\n\n\n\n검정법의 power를 구하라\n1 \\(\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\)\n2 귀무가설 하에서 최대값 \\(\\to\\) 즉, 제 1종 오류의 최대값\n\\[\\begin{align*} \\text{Max}_{\\theta \\leq \\theta_0}\\beta(\\theta) &= \\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\\\ \\\\\n                &=\\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta\\sum x_i^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\\\ \\\\ &= \\text{Max}_{\\theta \\leq \\theta_0} P \\left [ \\chi^2(2n) \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\,\\theta_0 \\right] \\end{align*}\\]\n3 우변의 경우 \\(\\theta\\)에 대한 증가함수이므로, \\(\\theta = \\theta_0\\)일 때 최대가 된다.!\n4 따라서 기각역 R을 기각역으로 하는 test는\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\n\n위 가설을 만족하는 모든 \\(\\theta\\)에 대해서 전부 Most Powerful test이므로, Uniformly Most Powerful test이며, size \\(\\alpha\\)가 된다.",
+    "crumbs": [
+      "Posts",
+      "12wk",
+      "HW 12"
+    ]
+  },
+  {
+    "objectID": "posts/12wk/HW12.html#sol",
+    "href": "posts/12wk/HW12.html#sol",
+    "title": "HW 12",
+    "section": "",
+    "text": "1 지수족 인수분해를 통한 완비충분통계량 도출 \\(\\to \\,\\, T = \\sum X_{i}^{2}\\)\n2 변수변환을 통해 \\(X_{i}^{2} = \\text{Exp}(\\theta) = \\Gamma (1, 1/\\theta)\\) 이므로, \\(T \\sim \\Gamma(n, 1/\\theta)\\)\n3 불편성 조건 확인: \\(E[1/T] = \\frac{\\theta}{n-1} \\to E\\left [\\frac{n-1}{T}\\right] = \\theta\\)\n\\(\\divideontimes \\,\\,\\widehat{\\theta}_{\\text{UMVUE}} = \\frac{n-1}{\\sum_{i=1}^n X_i^2}\\)\n\n\n\n0 most powerful test 찾기\n\\[H_0: \\theta = \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta = \\theta_1\\,\\,(\\theta_1 &gt; \\theta_0)\\]\n1 기각역 정의\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\\geq K \\right \\}\\]\n2 기각역 공식 대입\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\n                = \\frac{\\prod_{i=1}^n 2\\theta_1 x_i e^{-\\theta_1 x_i^2}}{\\prod_{i=1}^n 2\\theta_0 x_i e^{-\\theta_0 x_i^2}} =\n                 \\left (\\frac{\\theta_1}{\\theta_0}\\right)^n e^{-(\\theta_1-\\theta_0)\\sum x_i^2}\\geq K \\right \\}\\]\n3 단순화\n\\[R = \\left \\{ \\sum x_i^2 \\leq K \\right \\},\\quad (\\theta_1 &gt; \\theta_0)\\]\n4 \\(\\sum x^2 \\sim \\text{Gam}\\left(n, \\frac{1}{\\theta} \\right) \\to 2\\theta \\sum x^2 \\sim \\text{Gam}\\left (n,2\\right) = \\chi^2(2n)\\)\n\\[P\\left [2\\theta_0\\sum x_i^2 \\leq K\\,|\\, \\theta = \\theta_0 \\right] = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\]\n\nsize(level-\\(\\alpha\\))에서 검정력 power는 다음과 같음\n\n\\[\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n) \\right]\\]\n5 균일최강력검정 구하기\n\\[\\begin{align*}\\max_{\\theta \\leq \\theta_0}&=\\max_{\\theta \\leq \\theta_0}P\\left[2\\theta_0 \\sum_{i=1}^{n} x_{i}^2 \\leq \\chi^2_{1-\\alpha}(2n)|\\theta\\right] \\\\ \\\\\n                                           &= \\max_{\\theta \\leq \\theta_0}P\\left[2\\theta \\sum_{i=1}^{n} x_{i}^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)|\\theta\\right]\\\\ \\\\\n                                           &=  \\max_{\\theta \\leq \\theta_0}P\\left[\\chi^2_{2n}\\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\right]\\end{align*}\\]\n\n\n\n검정법의 power를 구하라\n1 \\(\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\)\n2 귀무가설 하에서 최대값 \\(\\to\\) 즉, 제 1종 오류의 최대값\n\\[\\begin{align*} \\text{Max}_{\\theta \\leq \\theta_0}\\beta(\\theta) &= \\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\\\ \\\\\n                &=\\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta\\sum x_i^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\\\ \\\\ &= \\text{Max}_{\\theta \\leq \\theta_0} P \\left [ \\chi^2(2n) \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\,\\theta_0 \\right] \\end{align*}\\]\n3 우변의 경우 \\(\\theta\\)에 대한 증가함수이므로, \\(\\theta = \\theta_0\\)일 때 최대가 된다.!\n4 따라서 기각역 R을 기각역으로 하는 test는\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\n\n위 가설을 만족하는 모든 \\(\\theta\\)에 대해서 전부 Most Powerful test이므로, Uniformly Most Powerful test이며, size \\(\\alpha\\)가 된다.",
+    "crumbs": [
+      "Posts",
+      "12wk",
+      "HW 12"
+    ]
+  },
+  {
+    "objectID": "posts/12wk/HW12.html#sol-1",
+    "href": "posts/12wk/HW12.html#sol-1",
+    "title": "HW 12",
+    "section": "sol",
+    "text": "sol\n\n(a)\n사전지식: pivotal quantity \\(\\to\\) 랜덤샘플의 함수이면서, 분포는 \\(\\theta\\)에 의존하지 않은 성질을 가짐\n1 \\(Q\\)의 cdf: \\(F_Q(q) = P\\left(\\frac{X_{(n)}}{\\theta} \\le q\\right) = q^{n a_0}\\) (\\(0&lt;q&lt;1\\)). 모수 \\(\\theta\\)가 없으므로 축량(Pivot)임.\n\\[\\begin{align*} F_{Q}(q) &= P\\left (\\frac{X_{(n)}}{\\theta} \\leq q\\right) \\\\ \\\\\n                          &= \\left [ P(X_{1} \\leq \\theta q\\right ]^n\\end{align*}\\]\n\\[\\begin{align*}P(X_{1} \\leq \\theta q) &= \\int_{0}^{\\theta q} \\frac{a_0}{\\theta^{a_0}} x_{1}^{a_0 -1}\\, dx_1\\\\ \\\\\n                                       &= q^{a_0}\\end{align*}\\]\n\\[\\divideontimes \\,\\, F_{Q}(q) =q^{a_0n}\\to f_{Q}(q) = na_0q^{na_0-1}\\]\n\n\\(\\theta\\)와 무관함\n\n2 확률식 세우기\n\\[P(c_1 \\le Q = \\frac{X_{(n)}}{\\theta} \\le c_2) = 1 - \\alpha\\]\n3 확률식 변형\n\\[P\\left(\\frac{X_{(n)}}{c_2}\\leq \\theta \\leq \\frac{X_{(n)}}{c_1}\\right) = 1-\\alpha\\]\n4 따리사, confidence interval set은?&gt;\n\\[\\left[\\frac{X_{(n)}}{c_2},\\,\\,\\frac{X_{(n)}}{c_1}\\right]\\]\n\n\n\n(b)\n(a)번과 같은 이야기\n\n\n(c)\n1 가능도함수 \\(L(\\theta|\\mathbf{x}) \\propto \\theta^{-n a_0} I(\\theta &gt; X_{(n)})\\)와 사전분포 \\(\\pi(\\theta) \\propto \\theta^{-(c+1)} e^{-d/\\theta}\\) 곱함.\n2 사후분포: \\(\\pi(\\theta|\\mathbf{x}) \\propto \\theta^{-(c + n a_0 + 1)} e^{-d/\\theta} I(\\theta &gt; X_{(n)})\\) (즉, 좌측 절단된 역감마 분포).\n3 균등 꼬리(Equal-tail) 신용구간 \\([k_1, k_2]\\)는 사후 pdf의 적분 조건식으로 정의됨.\n4 아래 조건을 만족하는 구간 \\([k_1, k_2]\\)\n\\[\\frac{\\Gamma\\left(c+n a_0, \\frac{d}{k_2}\\right) - \\Gamma\\left(c+n a_0, \\frac{d}{k_1}\\right)}{\\gamma\\left(c+n a_0, \\frac{d}{X_{(n)}}\\right)} = 1 - \\alpha \\quad (\\text{단, } X_{(n)} \\le k_1 &lt; k_2)\\]\n(여기서 \\(\\gamma\\)는 Lower, \\(\\Gamma\\)는 Upper 불완전 감마 함수)",
+    "crumbs": [
+      "Posts",
+      "12wk",
+      "HW 12"
+    ]
+  },
+  {
+    "objectID": "posts/07wk/07wk.html",
+    "href": "posts/07wk/07wk.html",
+    "title": "5 Point Esimation",
+    "section": "",
+    "text": "1 \\(E(X^{j})= m_j^{\\prime} = \\frac{1}{n} \\sum_{i=1}^{n} X_i^{j}\\): jth sample moment\n2 즉, jth차 샘플 적률을 활용해서 \\(\\theta\\)를 추정하는 것\n\n\n\\(X \\sim \\text{Uniform}(0, \\theta)\\)\n\n\n\\(E(X) = \\theta/2\\)\n-&gt; \\(\\hat\\theta_{mom} =2 \\bar X\\)\n\n\n\n\n\\(X \\sim \\text{Uniform}(-\\theta, \\theta)\\)\n\\(E(X) = 0, \\,\\,E(X^2) = \\theta^{2} / 3\\)\n\\(\\divideontimes \\quad \\hat\\theta_{mom} = \\sqrt{3\\bar {X^{2}} }\\)\n\n\n\n\\(X \\sim N( \\mu, \\sigma^2)\\)\n\\(\\hat \\mu_{mom} = \\bar X\\)\n\\(\\sigma_{mom} = d\\)",
+    "crumbs": [
+      "Posts",
+      "07wk",
+      "5 Point Esimation"
+    ]
+  },
+  {
+    "objectID": "posts/07wk/07wk.html#ex1",
+    "href": "posts/07wk/07wk.html#ex1",
+    "title": "5 Point Esimation",
+    "section": "",
+    "text": "\\(X \\sim \\text{Uniform}(0, \\theta)\\)\n\n\n\\(E(X) = \\theta/2\\)\n-&gt; \\(\\hat\\theta_{mom} =2 \\bar X\\)",
+    "crumbs": [
+      "Posts",
+      "07wk",
+      "5 Point Esimation"
+    ]
+  },
+  {
+    "objectID": "posts/07wk/07wk.html#ex2",
+    "href": "posts/07wk/07wk.html#ex2",
+    "title": "5 Point Esimation",
+    "section": "",
+    "text": "\\(X \\sim \\text{Uniform}(-\\theta, \\theta)\\)\n\\(E(X) = 0, \\,\\,E(X^2) = \\theta^{2} / 3\\)\n\\(\\divideontimes \\quad \\hat\\theta_{mom} = \\sqrt{3\\bar {X^{2}} }\\)",
+    "crumbs": [
+      "Posts",
+      "07wk",
+      "5 Point Esimation"
+    ]
+  },
+  {
+    "objectID": "posts/07wk/07wk.html#ex3",
+    "href": "posts/07wk/07wk.html#ex3",
+    "title": "5 Point Esimation",
+    "section": "",
+    "text": "\\(X \\sim N( \\mu, \\sigma^2)\\)\n\\(\\hat \\mu_{mom} = \\bar X\\)\n\\(\\sigma_{mom} = d\\)",
+    "crumbs": [
+      "Posts",
+      "07wk",
+      "5 Point Esimation"
+    ]
+  },
+  {
+    "objectID": "posts/03wk/HW 4.html",
+    "href": "posts/03wk/HW 4.html",
+    "title": "HW 4",
+    "section": "",
+    "text": "Suppose that \\(X_{1} \\dots X_n\\) is an iid sample from \\(U(0, \\theta)\\)\n\nFind the limiting distribution of \\(X_{(n)}\\)\nFind the limiting distribution of \\(Y_{n} = n(\\theta - X_{(n)})\\)",
+    "crumbs": [
+      "Posts",
+      "03wk",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "posts/03wk/HW 4.html#ex1",
+    "href": "posts/03wk/HW 4.html#ex1",
+    "title": "HW 4",
+    "section": "",
+    "text": "Suppose that \\(X_{1} \\dots X_n\\) is an iid sample from \\(U(0, \\theta)\\)\n\nFind the limiting distribution of \\(X_{(n)}\\)\nFind the limiting distribution of \\(Y_{n} = n(\\theta - X_{(n)})\\)",
+    "crumbs": [
+      "Posts",
+      "03wk",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "posts/03wk/HW 4.html#sol",
+    "href": "posts/03wk/HW 4.html#sol",
+    "title": "HW 4",
+    "section": "sol",
+    "text": "sol\n\n(a)\n\\[P(|X_{(n)}-\\theta| &gt; \\epsilon) = P(X_{(n)} \\leq \\theta - \\epsilon) = \\left ( \\frac {\\theta - \\epsilon}{\\epsilon}\\right )^{n} \\to 0\\]\n\\[\\divideontimes\\,\\, X_{(n)} \\xrightarrow{d} \\theta\\]\n\n\n(b)\n\\[P(Y_n &gt; y) =  P(n(\\theta - X_{(n)}) &gt;y) =  P(X_{(n)} &gt; \\theta - \\frac yn) = \\left (1 - \\frac{y}{n\\theta}\\right )^{n} \\to e^{-y/\\theta}\\]\n\\[P(Y_{n}  \\geq y) \\to 1 - e^{-y/\\theta} \\quad (y \\geq 0)\\]\n\\[Y_{n}  \\sim \\text{exp}(\\lambda = 1/\\theta), \\quad \\theta \\to \\infty\\]",
+    "crumbs": [
+      "Posts",
+      "03wk",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "posts/03wk/HW 4.html#sol-1",
+    "href": "posts/03wk/HW 4.html#sol-1",
+    "title": "HW 4",
+    "section": "sol",
+    "text": "sol\n\n(a)\nstep1\n\\[F(x)  = \\int_{\\mu}^{x} f(t) \\,dt =   1-e^{-(x-\\mu)}\\]\n\\[P(X&gt;x) = 1- F(x) =e^{-(x-\\mu)}\\]\nstep2\n\\[P(X_{(1)}&gt;x) =  P(X_{1}&gt;x,\\dots X_{n}&gt;x)\\]\n\\[P(X_{(1)}&gt;x) =  \\{P(X&gt;x)\\}^{n} = e^{-n(x-\\mu)}\\]\n\\[F_{X_{(1)}}(x) = 1-P(X_{(1)}&gt;x) = 1-e^{-n(x-\\mu)}\\]\nstep3\n\\[\\divideontimes \\,\\,f_{x_{(1)}}(x) = \\frac{d}{dx} F_{x_{(1)}}(x) = ne^{-n(x-\\mu)}\\]\n\n\n(b)\n\\[P(|X_{(1)} - \\mu| &gt; \\epsilon) = P(X_{(1)}&gt; \\mu + \\epsilon) = e^{-nx}\\]\n\\[n\\to \\infty,\\,\\, e^{-nx} \\to 0\\]\n\\[\\divideontimes\\,\\, P(|X_{(1)} - \\mu| &gt; \\epsilon) = P(X_{(1)}&gt; \\mu + \\epsilon) = e^{-nx} \\to 0\\]\n\\[\\divideontimes\\,\\, X_{(1)} \\xrightarrow{P} \\mu\\]",
+    "crumbs": [
+      "Posts",
+      "03wk",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "posts/03wk/HW 4.html#sol-2",
+    "href": "posts/03wk/HW 4.html#sol-2",
+    "title": "HW 4",
+    "section": "sol",
+    "text": "sol\n\n(a)\nstep1\n\\[F(x) = 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta\\]\n\\[P(X_{(1)}&gt;x) = \\{ P(X&gt;x)\\}^n = (1-F(x))^{n} = \\left( \\frac{\\alpha}{x}\\right)^{n\\beta } \\]\nstep2\n\\[F_{X_{(1)}}(x) = P(X_{(1)} \\leq x) = 1- P(X_{(1)} &gt; x) \\begin{cases} 0, \\quad x\\leq \\alpha \\\\ \\\\\n                                                                        1- \\left( \\frac{\\alpha}{x}\\right)^{n\\beta }, \\quad x&gt;\\alpha. \\end{cases}\\]\nstep3\n\\(x&gt;\\alpha\\)에서\n\\[f_{X_{(1)}}(x) = \\frac{d}{dx}\\,\\,\\left [  1- \\left( \\frac{\\alpha}{x}\\right)^{n\\beta }\\right ] = n\\beta \\alpha^{n\\beta}x^{-(n\\beta + 1)} \\]\n\\[\\divideontimes \\,\\, f_{x_{(1)}} (x) = \\frac { n\\beta \\alpha^{n\\beta}}{x^{n\\beta + 1}}, \\quad X_{(1)} \\sim \\text{Pareto}(\\alpha, n\\beta)\\]\n\n\n(b)\n\\[F(x) = 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta\\]\n이므로\n\\[F_{X_{n}}(x) = P(X_1 \\leq x\\dots X_n \\leq x) = \\{ P(X\\leq x)\\}^{n} = [F(x)]^{n}\\]\n따라서\n\\[F_{X_{(n)}} (x) = \\left [ 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n\n\n\n(c)\n\\[F_{X_{(n)}} (x) = \\left [ 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n이므로\n\\[F_{X_{(n)}} (b_{n}x) = \\left [ 1-\\left( \\frac{\\alpha}{b_{n}x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n그런데\n\\[\\left( \\frac{\\alpha}{b_{n}x}\\right)^\\beta =  \\frac{1}{n^{x\\beta}}\\]\n따라서\n\\[F_{X_{(n)}} (b_{n}x) = \\left [ 1-\\frac{1}{n^{x\\beta}} \\right ]^{n}, \\quad x &gt; \\alpha\\]\n\\[\\lim_{n\\to\\infty} F_{X_{(n)}}(b_n x)=\\begin{cases}0, & x \\le 0,\\\\[4pt] \\exp\\!\\left(-x^{-\\beta}\\right), & x&gt;0. \\end{cases}\\]\nFrechet 분포를 따른다.",
+    "crumbs": [
+      "Posts",
+      "03wk",
+      "HW 4"
+    ]
+  },
+  {
+    "objectID": "posts/01wk/HW 1.html",
+    "href": "posts/01wk/HW 1.html",
+    "title": "HW 1",
+    "section": "",
+    "text": "1 ref\n\\[P(E) =  \\sum_{i=1}^n P(E|F_{i})\\times P(F_{i})\\]\n\\[\\text{where } F_{i}\\,\\cap\\, F_{j} = \\varnothing,\\,\\, \\text{for all } i \\neq j \\text{ and} \\cup_{i=i}^{n} F_{i}=S\\]\n2 문제 적용\n\n\\(P(A)\\): Accident-probe(사고다발자) = 0.3\n\\(P(A^{c})\\): Non-accident-prone(비사고다발자) = 0.7\n\\(P(A_{1}|A)\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.4\n\\(P(A_{1}|A^{c})\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.2\n\n\\(\\divideontimes \\,\\, A \\cap A^{c} = \\varnothing, \\,\\, A \\cup A^{c} = S\\)\n3 따라서\n\\[\\begin{align*}P(A_{1}) &= P(A_1|A)P(A) + P(A_1|A^{c})P(A^{c}) \\\\ \\\\\n                         &= (0.4 \\times 0.3) + (0.2\\times0.7) = 0.26\\end{align*}\\]\n\\[\\begin {align*}P(A|A_{1}) &=  \\frac{P(A \\cap A_{1})}{P(A_{1})} \\\\ \\\\\n                            &= \\frac{P(A_{1}|A)\\times P(A)}{P(A_{1})} = \\frac {0.3 \\times 0.4}{0.26} = \\frac{6}{13} \\end{align*}\\]",
+    "crumbs": [
+      "Posts",
+      "01wk",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "posts/01wk/HW 1.html#sol",
+    "href": "posts/01wk/HW 1.html#sol",
+    "title": "HW 1",
+    "section": "",
+    "text": "1 ref\n\\[P(E) =  \\sum_{i=1}^n P(E|F_{i})\\times P(F_{i})\\]\n\\[\\text{where } F_{i}\\,\\cap\\, F_{j} = \\varnothing,\\,\\, \\text{for all } i \\neq j \\text{ and} \\cup_{i=i}^{n} F_{i}=S\\]\n2 문제 적용\n\n\\(P(A)\\): Accident-probe(사고다발자) = 0.3\n\\(P(A^{c})\\): Non-accident-prone(비사고다발자) = 0.7\n\\(P(A_{1}|A)\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.4\n\\(P(A_{1}|A^{c})\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.2\n\n\\(\\divideontimes \\,\\, A \\cap A^{c} = \\varnothing, \\,\\, A \\cup A^{c} = S\\)\n3 따라서\n\\[\\begin{align*}P(A_{1}) &= P(A_1|A)P(A) + P(A_1|A^{c})P(A^{c}) \\\\ \\\\\n                         &= (0.4 \\times 0.3) + (0.2\\times0.7) = 0.26\\end{align*}\\]\n\\[\\begin {align*}P(A|A_{1}) &=  \\frac{P(A \\cap A_{1})}{P(A_{1})} \\\\ \\\\\n                            &= \\frac{P(A_{1}|A)\\times P(A)}{P(A_{1})} = \\frac {0.3 \\times 0.4}{0.26} = \\frac{6}{13} \\end{align*}\\]",
+    "crumbs": [
+      "Posts",
+      "01wk",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "posts/01wk/HW 1.html#sol-1",
+    "href": "posts/01wk/HW 1.html#sol-1",
+    "title": "HW 1",
+    "section": "sol",
+    "text": "sol\n1 각 확률 계산\n\n\\(P(E_{7})\\)은 두 개의 주사위 합이 7인 경우 이므로 \\(\\to\\) (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\n\n\\[P(E_{7}) = \\frac{6}{36} = \\frac{1}{6}\\]\n\n\\(P(F)\\)은 첫번째 주사위가 4가 나올 확률이므로\n\n\\[P(F) = \\frac{6}{36} = \\frac{1}{6}\\]\n\n\\(P(T)\\)은 두번째 주사위가 3가 나올 확률이므로\n\n\\[P(T) = \\frac{6}{36} = \\frac{1}{6}\\]\n2 Pairwise indep check\n\n\\(E_{7}, F\\): 두 개의 주사위 합이 7이면서, 첫 번째 주사위가 4가 나올 확률\n\n이 경우는 (4,3) 밖에 없음.\n\n\n\\[\\therefore \\,\\,P(E_{7} \\cap F) = \\frac{1}{36} = P(E_{7}) \\times P(F)\\]\n\n이 이후에 pairwise도 1/36로 동일하며 pairwise indep를 보임.\n\n3 \\(P(E_{7}\\cap F \\cap T) = P(E_7)P(F)P(T)\\)?\n\n\\(P(E_{7}\\cap F \\cap T)\\): 두 주사위의 합이 7이면서, 첫번째 주사위의 눈이 4 두번째 주사위의 눈이 3일 확률.\n\n\\[\\therefore \\,\\, P(E_{7}\\cap F \\cap T) = \\frac{1}{36}\\]\n\nbut….. \\(P(E_7)P(F)P(T) = (\\frac{1}{6})^{3} = \\frac{1}{216}\\)\n\n\\[\\therefore \\,\\, P(E_{7}\\cap F \\cap T) \\neq P(E_7)P(F)P(T)\\]",
+    "crumbs": [
+      "Posts",
+      "01wk",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "posts/01wk/HW 1.html#sol-2",
+    "href": "posts/01wk/HW 1.html#sol-2",
+    "title": "HW 1",
+    "section": "sol",
+    "text": "sol\nprf)\n1 \\(P(a &lt; X \\leq b) = P(X \\leq b) - P(X \\leq a) = F(b) - F(a)\\)\n2 \\(P(X &gt; a) = 1 - P(X \\leq a) = 1 - F(a)\\)",
+    "crumbs": [
+      "Posts",
+      "01wk",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TS2026",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nJun 14, 2026\n\n\nFT 2021\n\n\nlgc \n\n\n\n\n\n\nMay 26, 2026\n\n\nHW 12\n\n\nlgc \n\n\n\n\n\n\nMay 26, 2026\n\n\nHW 14\n\n\nlgc \n\n\n\n\n\n\nMay 18, 2026\n\n\nHW 11\n\n\nlgc \n\n\n\n\n\n\nApr 13, 2026\n\n\n5 Point Esimation\n\n\nlgc \n\n\n\n\n\n\nApr 13, 2026\n\n\nHW 6\n\n\nlgc \n\n\n\n\n\n\nApr 7, 2026\n\n\n00. Distribution Summary\n\n\nLGC \n\n\n\n\n\n\nApr 7, 2026\n\n\n01. Order ST\n\n\nLGC \n\n\n\n\n\n\nMar 29, 2026\n\n\nHW 4\n\n\nlgc \n\n\n\n\n\n\nMar 17, 2026\n\n\nHW 2\n\n\nlgc \n\n\n\n\n\n\nMar 8, 2026\n\n\nHW 1\n\n\nLGC \n\n\n\n\n\n\nMar 5, 2026\n\n\n00. Intro\n\n\nLGC \n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "posts/01wk/00. Intro.html",
+    "href": "posts/01wk/00. Intro.html",
+    "title": "00. Intro",
+    "section": "",
+    "text": "TEST\n\\[\\hat y = \\beta_{1} x + \\beta_{0},\\quad  X \\sim N(\\mu, \\sigma^2)\\]",
+    "crumbs": [
+      "Posts",
+      "01wk",
+      "00. Intro"
     ]
   },
   {
@@ -468,380 +809,219 @@
     ]
   },
   {
-    "objectID": "posts/01wk/00. Intro.html",
-    "href": "posts/01wk/00. Intro.html",
-    "title": "00. Intro",
+    "objectID": "posts/06wk/HW 6.html",
+    "href": "posts/06wk/HW 6.html",
+    "title": "HW 6",
     "section": "",
-    "text": "TEST\n\\[\\hat y = \\beta_{1} x + \\beta_{0},\\quad  X \\sim N(\\mu, \\sigma^2)\\]",
+    "text": "Suppose \\(X_1, X_2, \\ldots, X_n\\) are iid \\(N(\\mu,\\sigma^2)\\), where \\(-\\infty &lt; \\mu &lt; \\infty\\) and \\(\\sigma^2 &gt; 0\\) and both parameters are unknown. Set \\(\\mathbf{X} = (X_1, X_2, \\ldots, X_n)\\) and \\(\\theta = (\\mu,\\sigma^2)\\).\n\nShow that \\[\nT = T(\\mathbf{X}) =\n\\begin{pmatrix}\n\\overline{X} \\\\\nS^2\n\\end{pmatrix}\n\\] is a minimal sufficient statistic for \\(\\theta\\).\nDefine \\[\nW = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n\\] Find the finite-sample distribution of \\(W\\).\nIs \\(W\\) an ancillary statistic? Explain.\n\n\n\n\n\n\n\nstep1\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp\\left\\{ -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} (x_i-\\mu)^2 \\right \\}\\]\nstep2\n\n지수부 전개\n\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp \\left ( -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} x_i^2\\right ) \\cdot\n\\exp \\left( \\frac{\\mu}{\\sigma^2} \\sum_{i=1}^{n} x_i ^2 - \\frac{n\\mu^2}{2\\sigma^2}\\right)\\]\n즉, 표본은 \\(\\sum x_i, \\sum x_i^2\\)를 통해서만 \\((\\mu, \\sigma^2)\\)에 의존한다.\n그러므로 \\(U(\\mathbf{X}) = \\left( \\sum_{i=1} X_{i}, \\sum_{i=1}^n X_i^2\\right)\\)은 factorization theorem에 의해 충분통계량이다.\n또한, 아래와 같이 일대일 대응이므로 \\((\\bar X, S^2)\\)도 충분통계량이다.\n\\[\\sum_{i=1}^{n} = n\\bar X, \\quad \\sum_{i=1}^{n} X_i^2 = \\sum_{i=1}^n (X_i - \\bar X)^2 + n\\bar X^2 = (n-1)S^{2} + n\\bar X^2\\]\nstep3 Minimal sufficiency\n\\[\\frac{f(\\mathbf{x}|\\mu, \\sigma^2)}{f(\\mathbf{y}|\\mu, \\sigma^2)} = \\exp \\left [\\frac{\\mu}{\\sigma^2} (\\sum x_i - \\sum y_i) -\n\\frac{1}{2\\sigma^2} \\sum(x_i^2 - \\sum y_i^2)\\right ]\\]\n위 비가 \\((\\mu,\\sigma^2)\\)의 함수로서 상수가 되려면(즉, \\(\\mu, \\sigma^2\\)에 의존하지 않으려면)\n\\[\\sum x_i = \\sum y_i, \\quad \\sum x_i^2 = \\sum y_i^2\\]\n가 필요충분조건이다. 따라서 \\(U(\\mathbf{\\sum X_i, \\sum X_i^2 })\\)는 최소충분성을 같는 충분통계량이고, 문제에서 질문한\n\\[ T = T(\\mathbf{X}) =\n   \\begin{pmatrix}\n   \\overline{X} \\\\\n   S^2\n   \\end{pmatrix} \\]\n역시 최소충분성을 만족하는 충분통계량이다.\n\n\n\n\n\\[\n   W = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n   \\]\n위 식을 살펴보면, 왼쪽 항은 표준정규분포(Z)의 제곱항 즉, 자유도가 1인 카이제곱분포를 따르고, 오른쪽 항은 자유도가 \\(n-1\\)인 카이제곱분포를 따름을 알 수 있다.\n또한 왼쪽과 오른쪽 항은 서로 독립인 \\(X_i\\)들의 함수꼴 형태이므로, 서로 독립이기 때문에 카이제곱분포의 가법성 성질을 적용하면, 아래와 같이 표현할 수 있다.\n\\[W \\sim \\chi_{n}^2\\]\n위는 주어진 \\(W\\)가 모수 \\(\\theta = (\\mu, \\sigma^2)\\)에 의존하지 않으므로 \\(W\\)는 Ancillary Statistic이다.(강의 질문 필요)\n\n\n\n\n\n\nRecall that if \\(X\\) has a \\(\\text{Beta}(\\alpha,\\beta)\\) distribution, then the probability density function (pdf) of \\(X\\) is \\[\nf_X(x \\mid \\alpha,\\beta)\n= \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}\nx^{\\alpha-1}(1-x)^{\\beta-1} I(0&lt;x&lt;1),\n\\] where \\(\\alpha &gt; 0\\) and \\(\\beta &gt; 0\\). In this problem, we are going to consider the beta subfamily where \\(\\alpha=\\beta=\\theta\\). Let \\(X_1, X_2, \\ldots, X_n\\) denote an iid sample from a beta\\((\\theta,\\theta)\\) distribution.\n\nShow that \\[\nT(\\mathbf{X}) = \\prod_{i=1}^n X_i(1-X_i)\n\\] is a sufficient statistic for \\(\\theta\\). Is \\(T(\\mathbf{X})\\) complete?\nThe two-dimensional statistic \\[\nT^* = T^*(\\mathbf{X}) =\n\\begin{pmatrix}\n\\prod_{i=1}^n X_i \\\\\n\\prod_{i=1}^n (1-X_i)\n\\end{pmatrix}\n\\] is also a sufficient statistic for \\(\\theta\\). What must be true about the conditional distribution \\[\nf_{\\mathbf{X}\\mid T^*}(\\mathbf{x}\\mid \\mathbf{t})?\n\\]\nShow that \\(T^*(\\mathbf{X})\\) is not a complete statistic.\n\n\n\n\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|\\theta) = \\prod_{i=1}^{n} \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} x_{i}^{\\theta-1}(1-x_i)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\prod_{i=1}^{n}  \\left (x_{i}(1-x_i)\\right)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}\\]\nstep2\n따라서\n\\[f(\\mathbf{x}| \\theta) = g(T(\\mathbf{x}), \\theta) \\cdot h(\\mathbf{x})\\quad \\to \\quad g(T(\\mathbf{x}), \\theta) = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}, \\,\\,h(x) = 1\\]\n\\(T(\\mathbf{X})\\)는 충분통계량이다.\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|t)\\text{는 모수 }\\theta\\text{에 의존하면 안됨.}\\]\n그 분포가 \\(\\theta\\)가 무엇이든 똑같아야 하기 때문!\n즉, \\(T^{*}\\)가 충분통계량이면 ‘\\(T^{*}\\)를 조건으로 하는 \\(\\mathbf{X}\\)의 분포는 \\(\\theta\\)의 영향을 받으면 안된다!’\n\n\n\n\n질문드려요….",
     "crumbs": [
       "Posts",
-      "01wk",
-      "00. Intro"
+      "06wk",
+      "HW 6"
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/06wk/HW 6.html#sol",
+    "href": "posts/06wk/HW 6.html#sol",
+    "title": "HW 6",
     "section": "",
-    "text": "About this site",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "TS2026",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nMay 26, 2026\n\n\nHW 12\n\n\nlgc \n\n\n\n\n\n\nMay 26, 2026\n\n\nHW 14\n\n\nlgc \n\n\n\n\n\n\nMay 18, 2026\n\n\nHW 11\n\n\nlgc \n\n\n\n\n\n\nApr 13, 2026\n\n\n5 Point Esimation\n\n\nlgc \n\n\n\n\n\n\nApr 13, 2026\n\n\nHW 6\n\n\nlgc \n\n\n\n\n\n\nApr 7, 2026\n\n\n00. Distribution Summary\n\n\nLGC \n\n\n\n\n\n\nApr 7, 2026\n\n\n01. Order ST\n\n\nLGC \n\n\n\n\n\n\nMar 29, 2026\n\n\nHW 4\n\n\nlgc \n\n\n\n\n\n\nMar 17, 2026\n\n\nHW 2\n\n\nlgc \n\n\n\n\n\n\nMar 8, 2026\n\n\nHW 1\n\n\nLGC \n\n\n\n\n\n\nMar 5, 2026\n\n\n00. Intro\n\n\nLGC \n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/01wk/HW 1.html",
-    "href": "posts/01wk/HW 1.html",
-    "title": "HW 1",
-    "section": "",
-    "text": "1 ref\n\\[P(E) =  \\sum_{i=1}^n P(E|F_{i})\\times P(F_{i})\\]\n\\[\\text{where } F_{i}\\,\\cap\\, F_{j} = \\varnothing,\\,\\, \\text{for all } i \\neq j \\text{ and} \\cup_{i=i}^{n} F_{i}=S\\]\n2 문제 적용\n\n\\(P(A)\\): Accident-probe(사고다발자) = 0.3\n\\(P(A^{c})\\): Non-accident-prone(비사고다발자) = 0.7\n\\(P(A_{1}|A)\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.4\n\\(P(A_{1}|A^{c})\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.2\n\n\\(\\divideontimes \\,\\, A \\cap A^{c} = \\varnothing, \\,\\, A \\cup A^{c} = S\\)\n3 따라서\n\\[\\begin{align*}P(A_{1}) &= P(A_1|A)P(A) + P(A_1|A^{c})P(A^{c}) \\\\ \\\\\n                         &= (0.4 \\times 0.3) + (0.2\\times0.7) = 0.26\\end{align*}\\]\n\\[\\begin {align*}P(A|A_{1}) &=  \\frac{P(A \\cap A_{1})}{P(A_{1})} \\\\ \\\\\n                            &= \\frac{P(A_{1}|A)\\times P(A)}{P(A_{1})} = \\frac {0.3 \\times 0.4}{0.26} = \\frac{6}{13} \\end{align*}\\]",
+    "text": "step1\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp\\left\\{ -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} (x_i-\\mu)^2 \\right \\}\\]\nstep2\n\n지수부 전개\n\n\\[f(\\mathbf{x}| \\mu, \\sigma^2) = (2\\pi \\sigma^2)^{-n/2} \\exp \\left ( -\\frac{1}{2\\sigma^2} \\sum_{i=1}^{n} x_i^2\\right ) \\cdot\n\\exp \\left( \\frac{\\mu}{\\sigma^2} \\sum_{i=1}^{n} x_i ^2 - \\frac{n\\mu^2}{2\\sigma^2}\\right)\\]\n즉, 표본은 \\(\\sum x_i, \\sum x_i^2\\)를 통해서만 \\((\\mu, \\sigma^2)\\)에 의존한다.\n그러므로 \\(U(\\mathbf{X}) = \\left( \\sum_{i=1} X_{i}, \\sum_{i=1}^n X_i^2\\right)\\)은 factorization theorem에 의해 충분통계량이다.\n또한, 아래와 같이 일대일 대응이므로 \\((\\bar X, S^2)\\)도 충분통계량이다.\n\\[\\sum_{i=1}^{n} = n\\bar X, \\quad \\sum_{i=1}^{n} X_i^2 = \\sum_{i=1}^n (X_i - \\bar X)^2 + n\\bar X^2 = (n-1)S^{2} + n\\bar X^2\\]\nstep3 Minimal sufficiency\n\\[\\frac{f(\\mathbf{x}|\\mu, \\sigma^2)}{f(\\mathbf{y}|\\mu, \\sigma^2)} = \\exp \\left [\\frac{\\mu}{\\sigma^2} (\\sum x_i - \\sum y_i) -\n\\frac{1}{2\\sigma^2} \\sum(x_i^2 - \\sum y_i^2)\\right ]\\]\n위 비가 \\((\\mu,\\sigma^2)\\)의 함수로서 상수가 되려면(즉, \\(\\mu, \\sigma^2\\)에 의존하지 않으려면)\n\\[\\sum x_i = \\sum y_i, \\quad \\sum x_i^2 = \\sum y_i^2\\]\n가 필요충분조건이다. 따라서 \\(U(\\mathbf{\\sum X_i, \\sum X_i^2 })\\)는 최소충분성을 같는 충분통계량이고, 문제에서 질문한\n\\[ T = T(\\mathbf{X}) =\n   \\begin{pmatrix}\n   \\overline{X} \\\\\n   S^2\n   \\end{pmatrix} \\]\n역시 최소충분성을 만족하는 충분통계량이다.\n\n\n\n\n\\[\n   W = \\left(\\frac{\\overline{X}-\\mu}{\\sigma/\\sqrt{n}}\\right)^2 + \\frac{(n-1)S^2}{\\sigma^2}.\n   \\]\n위 식을 살펴보면, 왼쪽 항은 표준정규분포(Z)의 제곱항 즉, 자유도가 1인 카이제곱분포를 따르고, 오른쪽 항은 자유도가 \\(n-1\\)인 카이제곱분포를 따름을 알 수 있다.\n또한 왼쪽과 오른쪽 항은 서로 독립인 \\(X_i\\)들의 함수꼴 형태이므로, 서로 독립이기 때문에 카이제곱분포의 가법성 성질을 적용하면, 아래와 같이 표현할 수 있다.\n\\[W \\sim \\chi_{n}^2\\]\n위는 주어진 \\(W\\)가 모수 \\(\\theta = (\\mu, \\sigma^2)\\)에 의존하지 않으므로 \\(W\\)는 Ancillary Statistic이다.(강의 질문 필요)",
     "crumbs": [
       "Posts",
-      "01wk",
-      "HW 1"
+      "06wk",
+      "HW 6"
     ]
   },
   {
-    "objectID": "posts/01wk/HW 1.html#sol",
-    "href": "posts/01wk/HW 1.html#sol",
-    "title": "HW 1",
+    "objectID": "posts/06wk/HW 6.html#ex2",
+    "href": "posts/06wk/HW 6.html#ex2",
+    "title": "HW 6",
     "section": "",
-    "text": "1 ref\n\\[P(E) =  \\sum_{i=1}^n P(E|F_{i})\\times P(F_{i})\\]\n\\[\\text{where } F_{i}\\,\\cap\\, F_{j} = \\varnothing,\\,\\, \\text{for all } i \\neq j \\text{ and} \\cup_{i=i}^{n} F_{i}=S\\]\n2 문제 적용\n\n\\(P(A)\\): Accident-probe(사고다발자) = 0.3\n\\(P(A^{c})\\): Non-accident-prone(비사고다발자) = 0.7\n\\(P(A_{1}|A)\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.4\n\\(P(A_{1}|A^{c})\\): 사고다발자가 1년 내 사고를 낼 확률 = 0.2\n\n\\(\\divideontimes \\,\\, A \\cap A^{c} = \\varnothing, \\,\\, A \\cup A^{c} = S\\)\n3 따라서\n\\[\\begin{align*}P(A_{1}) &= P(A_1|A)P(A) + P(A_1|A^{c})P(A^{c}) \\\\ \\\\\n                         &= (0.4 \\times 0.3) + (0.2\\times0.7) = 0.26\\end{align*}\\]\n\\[\\begin {align*}P(A|A_{1}) &=  \\frac{P(A \\cap A_{1})}{P(A_{1})} \\\\ \\\\\n                            &= \\frac{P(A_{1}|A)\\times P(A)}{P(A_{1})} = \\frac {0.3 \\times 0.4}{0.26} = \\frac{6}{13} \\end{align*}\\]",
+    "text": "Recall that if \\(X\\) has a \\(\\text{Beta}(\\alpha,\\beta)\\) distribution, then the probability density function (pdf) of \\(X\\) is \\[\nf_X(x \\mid \\alpha,\\beta)\n= \\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}\nx^{\\alpha-1}(1-x)^{\\beta-1} I(0&lt;x&lt;1),\n\\] where \\(\\alpha &gt; 0\\) and \\(\\beta &gt; 0\\). In this problem, we are going to consider the beta subfamily where \\(\\alpha=\\beta=\\theta\\). Let \\(X_1, X_2, \\ldots, X_n\\) denote an iid sample from a beta\\((\\theta,\\theta)\\) distribution.\n\nShow that \\[\nT(\\mathbf{X}) = \\prod_{i=1}^n X_i(1-X_i)\n\\] is a sufficient statistic for \\(\\theta\\). Is \\(T(\\mathbf{X})\\) complete?\nThe two-dimensional statistic \\[\nT^* = T^*(\\mathbf{X}) =\n\\begin{pmatrix}\n\\prod_{i=1}^n X_i \\\\\n\\prod_{i=1}^n (1-X_i)\n\\end{pmatrix}\n\\] is also a sufficient statistic for \\(\\theta\\). What must be true about the conditional distribution \\[\nf_{\\mathbf{X}\\mid T^*}(\\mathbf{x}\\mid \\mathbf{t})?\n\\]\nShow that \\(T^*(\\mathbf{X})\\) is not a complete statistic.",
     "crumbs": [
       "Posts",
-      "01wk",
-      "HW 1"
+      "06wk",
+      "HW 6"
     ]
   },
   {
-    "objectID": "posts/01wk/HW 1.html#sol-1",
-    "href": "posts/01wk/HW 1.html#sol-1",
-    "title": "HW 1",
+    "objectID": "posts/06wk/HW 6.html#sol-1",
+    "href": "posts/06wk/HW 6.html#sol-1",
+    "title": "HW 6",
+    "section": "",
+    "text": "step1\n\\[f(\\mathbf{x}|\\theta) = \\prod_{i=1}^{n} \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} x_{i}^{\\theta-1}(1-x_i)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\prod_{i=1}^{n}  \\left (x_{i}(1-x_i)\\right)^{\\theta-1} = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}\\]\nstep2\n따라서\n\\[f(\\mathbf{x}| \\theta) = g(T(\\mathbf{x}), \\theta) \\cdot h(\\mathbf{x})\\quad \\to \\quad g(T(\\mathbf{x}), \\theta) = \\left ( \\frac{\\Gamma(2\\theta)}{\\Gamma(\\theta)^2} \\right )^n\\left (T(X) \\right ) ^{\\theta-1}, \\,\\,h(x) = 1\\]\n\\(T(\\mathbf{X})\\)는 충분통계량이다.\n\n\n\n\nstep1\n\\[f(\\mathbf{x}|t)\\text{는 모수 }\\theta\\text{에 의존하면 안됨.}\\]\n그 분포가 \\(\\theta\\)가 무엇이든 똑같아야 하기 때문!\n즉, \\(T^{*}\\)가 충분통계량이면 ‘\\(T^{*}\\)를 조건으로 하는 \\(\\mathbf{X}\\)의 분포는 \\(\\theta\\)의 영향을 받으면 안된다!’\n\n\n\n\n질문드려요….",
+    "crumbs": [
+      "Posts",
+      "06wk",
+      "HW 6"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html",
+    "href": "posts/11wk/HW11.html",
+    "title": "HW 11",
+    "section": "",
+    "text": "Suppose \\(X_1, X_2, \\dots X_n\\) are iid sample from \\(f_{X}(x|\\theta)\\) where \\(\\theta \\in \\Theta \\subset \\mathbb{R}\\). Recall the score function is given by\n\\[S(\\theta|\\boldsymbol{x}) = \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)}\\]\nwhere \\(f_{X}(\\boldsymbol{x}|\\theta)\\) is the joint distribution of \\(X = (X_{1},X_{2}, \\dots X_{n})\\)\n\n\nShow that \\(E_{\\theta}[S(\\theta|X)] = 0\\)\n\n\nstep1 score function 전개\n\\[S(\\theta|\\boldsymbol{x}) = \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta)\\]\nstep2 기대값 공식에 대입\n\\[\\begin{align*}E_{\\theta}[ S(\\theta|X)] &= \\int \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta) \\times f_{x_i}(x_{i}|\\theta) \\,dx\\\\ \\\\\n                                         &= n \\times \\int  \\frac{f^{\\prime}(x|\\theta)}{f(x|\\theta)} \\times f(x|\\theta) \\,dx \\\\ \\\\\n                                         &= n \\times \\int f^{\\prime}(x|\\theta) \\, dx \\\\ \\\\\n                                         & = n\\times  \\frac{\\partial}{\\partial\\, \\theta}\\int f(x|\\theta) \\,dx= n \\times 0 = 0 \\end{align*}\\]\n\\[\\divideontimes \\,\\, E_{\\theta}[S(\\theta|\\boldsymbol{X}) ] =0\\text{ 이다}\\]\n\n\n\n\n\nCalculate the score function when\n\\[f(x|\\theta) = \\frac{1}{\\pi} \\frac{1}{1+(x-\\theta)^2}\\]\n\n\n1 joint pdf 구하기\n\\[L(\\theta) = f_{\\boldsymbol {X}} (\\boldsymbol{x}|\\theta) = \\prod_{i=1}^{n} \\frac{1}{\\pi} \\frac{1}{1+(x_i-\\theta)^2}\\]\n2 로그 변환\n\\[\\begin{align*} l(\\theta) &= \\log L(\\theta)  \\\\ \\\\\n                           &= -n\\log \\pi -\\sum \\log (1+(x_i-\\theta)^2)\\end{align*}\\]\n3 score function에 대입, 즉 위 식을 \\(\\theta\\)에 대하여 미분\n\\[\\begin{align*} S(\\theta|\\boldsymbol{x}) &= \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)} \\\\ \\\\\n                                          &= \\sum_{i=1}^{n}\\frac{2(x_i-\\theta)}{1+(x_i-\\theta)^2}\\end{align*}\\]\n\n\n\n\nHow would you find the maximum likelihood estimate \\(\\theta\\)?\n\n\nscore function이 0이 되는 \\(\\theta\\)값을 구해야하나, 손으로 계산이 안됨(analytical solution이 없는 경우임)",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#a",
+    "href": "posts/11wk/HW11.html#a",
+    "title": "HW 11",
+    "section": "",
+    "text": "Show that \\(E_{\\theta}[S(\\theta|X)] = 0\\)\n\n\nstep1 score function 전개\n\\[S(\\theta|\\boldsymbol{x}) = \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta)\\]\nstep2 기대값 공식에 대입\n\\[\\begin{align*}E_{\\theta}[ S(\\theta|X)] &= \\int \\sum_{i=1}^{n}\\frac{\\partial}{\\partial\\,\\theta} \\log f_{x_i}(x_i|\\theta) \\times f_{x_i}(x_{i}|\\theta) \\,dx\\\\ \\\\\n                                         &= n \\times \\int  \\frac{f^{\\prime}(x|\\theta)}{f(x|\\theta)} \\times f(x|\\theta) \\,dx \\\\ \\\\\n                                         &= n \\times \\int f^{\\prime}(x|\\theta) \\, dx \\\\ \\\\\n                                         & = n\\times  \\frac{\\partial}{\\partial\\, \\theta}\\int f(x|\\theta) \\,dx= n \\times 0 = 0 \\end{align*}\\]\n\\[\\divideontimes \\,\\, E_{\\theta}[S(\\theta|\\boldsymbol{X}) ] =0\\text{ 이다}\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#b",
+    "href": "posts/11wk/HW11.html#b",
+    "title": "HW 11",
+    "section": "",
+    "text": "Calculate the score function when\n\\[f(x|\\theta) = \\frac{1}{\\pi} \\frac{1}{1+(x-\\theta)^2}\\]\n\n\n1 joint pdf 구하기\n\\[L(\\theta) = f_{\\boldsymbol {X}} (\\boldsymbol{x}|\\theta) = \\prod_{i=1}^{n} \\frac{1}{\\pi} \\frac{1}{1+(x_i-\\theta)^2}\\]\n2 로그 변환\n\\[\\begin{align*} l(\\theta) &= \\log L(\\theta)  \\\\ \\\\\n                           &= -n\\log \\pi -\\sum \\log (1+(x_i-\\theta)^2)\\end{align*}\\]\n3 score function에 대입, 즉 위 식을 \\(\\theta\\)에 대하여 미분\n\\[\\begin{align*} S(\\theta|\\boldsymbol{x}) &= \\frac{\\partial}{\\partial\\,\\theta} \\log{f_{\\boldsymbol{X}}(\\boldsymbol{x}|\\theta)} \\\\ \\\\\n                                          &= \\sum_{i=1}^{n}\\frac{2(x_i-\\theta)}{1+(x_i-\\theta)^2}\\end{align*}\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#c",
+    "href": "posts/11wk/HW11.html#c",
+    "title": "HW 11",
+    "section": "",
+    "text": "How would you find the maximum likelihood estimate \\(\\theta\\)?\n\n\nscore function이 0이 되는 \\(\\theta\\)값을 구해야하나, 손으로 계산이 안됨(analytical solution이 없는 경우임)",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#a-1",
+    "href": "posts/11wk/HW11.html#a-1",
+    "title": "HW 11",
+    "section": "(a)",
+    "text": "(a)\nShow that \\(W(X) = \\bar X\\) is the uniformly minimum variance unbiased estimator (UMVUE) for \\(\\theta\\) in two ways: one way that uses a Cram´er-Rao Lower Bound argument and one way that uses sufficiency and completeness.\n\nsol 1. Cramer-Rao Lower Bound\ntip 어떤 추정량 \\(T\\)가 비편향 추정량이고, \\(Var(T) \\geq \\frac{1}{nI(\\theta)}\\), 이면 크레모-라온 부등식에 의해 \\(T\\)는 UMVUE임이 자명함.\nstep1 비편향 추정량 확인\n\\(E\\,[W(\\boldsymbol{X})] = E[\\bar{X}]= \\theta\\) 이므로 비편향 추정량임\nstep2 \\(Var(\\bar{X})= \\frac{1}{n}\\)\nstep3 log pdf를 두번 미분한 값 구하기\n\n\\(f(x) = (2\\pi)^{-1/2}\\exp(-(x-\\theta)^2/2)\\)\n\\(\\log f(x|\\theta) = -\\frac 12 \\log 2\\pi - \\frac 12 (x-\\theta)^2\\)\n로그 pdf 두번 미분\n\n\\[\\frac{\\partial^2}{\\partial \\theta^2} = 1\\]\nstep4 피셔의 정보량 \\(I(\\theta)\\) 구하기\n\n위에서 구한 식을 아래 공식에 대입\n\n\\[\\begin{align*} I(\\theta) &= E\\left [ \\frac{\\partial^2}{\\partial \\theta^2} \\log f_{X} (X|\\theta)\\right ] \\\\ \\\\\n                           &= 1\\end{align*}\\]\nstep5 비교\n\\(Var(\\bar{X})= \\frac{1}{n}\\), \\(nI(\\theta)= n\\)\n이므로, \\(Var(T) \\geq \\frac{1}{nI(\\theta)}\\)을 만족함.\n\\[\\divideontimes \\,\\, W(\\boldsymbol{X}) = \\bar X = \\hat{\\theta}_{UMVUE}\\]\n\n\n\nsol2. sufficiency and completeness.\ntip\n만약 어떠한 추정량 \\(W(X)\\)가 비편향추정량이고, \\(T\\)가 완비충분통계량이면,(레만쉐페정리)\n\\[E[W(X)|T] = \\hat{\\theta}_{UMVUE}\\]\n1 pdf 재확인\n\\[\\begin{align*} \\\\ f(x) &= (2\\pi)^{-1/2}\\exp(-(x-\\theta)^2/2) \\\\ \\\\\n                         &= (2\\pi)^{-1/2}\\exp\\left [-\\frac{1}{2} (x^{2}-2x\\theta+\\theta^2)\\right]\\end{align*}\\]\n2 따라서 지수족 정의에 의해\n\n\\(T(X)=\\sum {X_i} = \\text{C.S.S}\\) 이다.\n\n3 그렇담 \\(\\frac{1}{n} \\sum {X_i}\\)도 C.S.S이고, 비편향추정량이므로\n\\[\\divideontimes \\,\\, W(\\boldsymbol{X}) = \\bar X = \\hat{\\theta}_{UMVUE}\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#b-1",
+    "href": "posts/11wk/HW11.html#b-1",
+    "title": "HW 11",
+    "section": "(b)",
+    "text": "(b)\nFind the UMVUE for \\(\\tau(\\theta) = e^{\\theta}.\\)\n\nsol\n1 \\(\\bar x \\sim N(\\theta, \\frac 1n)\\)\n2 \\(e^{\\theta}\\)의 기댓값 계산(적률생성함수 이용)\n\\[\\begin{align*}E[e^{\\bar X}] &= M_{\\bar X}(1) \\\\ \\\\\n                              &= \\exp (\\mu t + \\sigma^2t^2/2) \\\\ \\\\\n                              &= \\exp (\\theta + 1/2n)\\end{align*}\\]\n3 불편성 확인\n\\[E\\left[ \\frac{e^{\\overline{X}}}{e^{\\frac{1}{2n}}} \\right] = e^\\theta \\implies E\\left[ e^{\\overline{X} - \\frac{1}{2n}} \\right] = e^\\theta\\]\n4 결론\n\\(e^{\\overline{X} - \\frac{1}{2n}}\\) 는, 비편향성과 지수족에 속하는 완비충분통계량이므로! \\(\\tau(\\theta)\\)의 MVUE이다.",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#c-1",
+    "href": "posts/11wk/HW11.html#c-1",
+    "title": "HW 11",
+    "section": "(c)",
+    "text": "(c)\nCalculate \\(E(X_1|\\overline X), E(X_1 − \\overline X|\\overline X)\\), and \\(Cov(X_1, X_1 − \\overline X|\\overline X)\\).\n\nsol\n1 \\(E(X_1|\\overline X)\\) 계산\n\\[\\sum_{i=1}^{n} E(X_i|\\overline{X}) = E\\left(\\sum_{i=1}^{n} X_i \\;\\middle|\\; \\overline{X}\\right) = E(n\\overline{X}|\\overline{X}) = n\\overline{X}\\]\n\\[n \\cdot E(X_1|\\overline{X}) = n\\overline{X} \\implies {E(X_{1}|\\overline{X}) = \\overline{X}}\\]\n2 \\(E(X_{1}-\\overline{X}|\\overline{X})\\) 계산\n\\[E(X_{1}-\\overline{X}|\\overline{X}) = E(X_1|\\overline{X}) - E(\\overline{X}|\\overline{X})\\]\n\\(E(X_1|\\overline{X}) = \\overline{X}\\)이므로\n\\[= \\overline{X} - \\overline{X} = \\mathbf{0}\\]\n3 \\(\\text{Cov}(X_{1}, X_{1}-\\overline{X}|\\overline{X})\\) 계산\n\n들어가기전…\n\n\\[Cov(X, Y|Z) = E[(X-E[X|Z]) \\,\\times\\,(Y-E[Y|Z])\\,|\\,Z]\\]\n\n위를 대입\n\n\\[\\begin{align*} Cov(X_1, X_1 - \\overline X|\\overline X) &= E\\left[(X_1 - E[X_1|\\overline X]) \\times ([X_1-\\overline{X}]  - E[X_1-\\overline{X}|\\overline X]) \\right] \\\\ \\\\\n                    &= E\\left [ (X_1-\\overline X)^2|\\overline X\\right]\\end{align*}\\]\n\n\\(X_1 - \\overline X \\sim N(0, 1-\\frac 1n)\\)\n\n\\[ E\\left [ (X_1-\\overline X)^2|\\overline X\\right] = Var(X_1 - \\overline {X}) = 1-\\frac{1}{n}\\]\n\\[\\divideontimes \\,\\, \\text{Cov}(X_1, X_1-\\overline {X}|\\overline{X}) = 1- \\frac 1n\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#a-2",
+    "href": "posts/11wk/HW11.html#a-2",
+    "title": "HW 11",
+    "section": "(a)",
+    "text": "(a)\nDerive the likelihood ratio test (LRT) statistic \\(\\lambda (x, y)\\) for testing\n\\[H_0: \\sigma_1^2 = \\sigma_2^{2} \\quad vs \\quad H_1: \\text{not } H_0\\]\nand show that it is a function of \\(t_1 = t(x) = \\sum_{i=1}^{m} x_i^{2}\\) and \\(t_2 = t_2(y) = \\sum_{j=1}^{n} y_{j}^{2}\\)\n\nsol\n1 결합가능도 함수\n\\[L(\\sigma_1^2, \\sigma_2^2) = (2\\pi)^{-\\frac{m+n}{2}} (\\sigma_1^2)^{-\\frac{m}{2}} (\\sigma_2^2)^{-\\frac{n}{2}} \\exp\\left( -\\frac{t_1}{2\\sigma_1^2} - \\frac{t_2}{2\\sigma_2^2} \\right)\\]\n2 대립가설 하에서의 최대 가능도\n\\[\\hat{\\sigma}_1^2 = \\frac{t_1}{m}, \\quad \\hat{\\sigma}_2^2 = \\frac{t_2}{n}\\]\n\\[L(\\hat{\\Omega}) = (2\\pi)^{-\\frac{m+n}{2}} \\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}} e^{-\\frac{m+n}{2}}\\]\n3 귀무가설 하에서의 최대 가능도\n\\[L(\\hat{\\Omega}_0) = (2\\pi)^{-\\frac{m+n}{2}} \\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}} e^{-\\frac{m+n}{2}}\\]\n위를 미분해서 최대가능도를 구하면\n\\[\\hat{\\sigma^2} = \\frac{t_1+t_2}{m+n}\\]\n4 LRT 통계량\n\\[\\lambda(x,y) = \\frac{L(\\hat{\\Omega}_0)}{L(\\hat{\\Omega})} = \\frac{\\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}}}{\\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}}} = \\frac{\\left(\\frac{t_1}{m}\\right)^{\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{\\frac{n}{2}}}{\\left(\\frac{t_1+t_2}{m+n}\\right)^{\\frac{m+n}{2}}}\\]\n5 가설검정\n\\[P\\left(\\lambda(x,y) = \\frac{L(\\hat{\\Omega}_0)}{L(\\hat{\\Omega})} = \\frac{\\left(\\frac{t_1+t_2}{m+n}\\right)^{-\\frac{m+n}{2}}}{\\left(\\frac{t_1}{m}\\right)^{-\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{-\\frac{n}{2}}} = \\frac{\\left(\\frac{t_1}{m}\\right)^{\\frac{m}{2}} \\left(\\frac{t_2}{n}\\right)^{\\frac{n}{2}}}{\\left(\\frac{t_1+t_2}{m+n}\\right)^{\\frac{m+n}{2}}} \\leq C \\,|\\,\\sigma_1^2 = \\sigma_2^2\\right) = \\alpha \\]\n위를 만족하는 기각역을 구하면 된다.",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#b-2",
+    "href": "posts/11wk/HW11.html#b-2",
+    "title": "HW 11",
+    "section": "(b)",
+    "text": "(b)\nShow how you could perform a size test in part (a) using the \\(F\\) distribution\n\nsol\n1 카이제곱 분포 변환\n\\[T_{1} = \\sum_{i=1}^{m} \\frac{X_i^2}{\\sigma_1^2} \\sim \\chi^2_{m}\\]\n\\[T_{2} = \\sum_{j=1}^{n} \\frac{Y_i^2}{\\sigma_1^2} \\sim \\chi^2_{n}\\]\n3 F분포 기각역 설정\n\nF분포 정의 복기…\n\n\\[R = \\frac{\\sum Y^2/\\sigma^2n}{\\sum X^2/\\sigma^2m} = F(n,m) \\leq C_1\\]\n4 결론: 아래를 만족하는 영역이 유의수준 \\(\\alpha\\)에서의 기각영역이다.\n\\[P\\left[\\frac{\\sum Y^2/n}{\\sum X^2/m} \\geq F_{1-\\frac{\\alpha}{2}}(n,m) \\text{ or } \\frac{\\sum Y^2/n}{\\sum X^2/m} \\leq F_{\\frac{\\alpha}{2}}(n,m)\\right] = \\alpha\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#a-3",
+    "href": "posts/11wk/HW11.html#a-3",
+    "title": "HW 11",
+    "section": "(a)",
+    "text": "(a)\nShow that the power functions of the two tests are \\(\\beta_{1}(\\theta) = 1- (0.9)^{\\theta}\\) and \\(\\beta_{2}(\\theta) = 1 + c^{\\theta}(\\theta \\log c -1)\\), respectively\n\nsol\n1 \\(\\beta_1\\): 귀무가설을 기각할 확률\n\\[\\beta_1(\\theta) = P_\\theta(X_1 &gt; 0.9) = \\int_{0.9}^{1} \\theta x^{\\theta-1} dx = \\left[ x^\\theta \\right]_{0.9}^{1} = \\mathbf{1 - (0.9)^\\theta}\\]\n1 \\(\\beta_2\\)\n\\[\\beta_2(\\theta) = P_\\theta(X_1 X_2 &gt; c) = \\int_{c}^{1} \\int_{c/x_1}^{1} \\theta^2 x_1^{\\theta-1} x_2^{\\theta-1} dx_2 dx_1\\]\n\\[= \\int_{c}^{1} \\theta x_1^{\\theta-1} \\left[ x_2^\\theta \\right]_{c/x_1}^{1} dx_1 = \\int_{c}^{1} \\theta x_1^{\\theta-1} \\left( 1 - \\frac{c^\\theta}{x_1^\\theta} \\right) dx_1\\]\\[= \\int_{c}^{1} \\left( \\theta x_1^{\\theta-1} - \\theta c^\\theta x_1^{-1} \\right) dx_1\\]\n\\[= \\left[ x_1^\\theta \\right]_c^1 - \\theta c^\\theta \\left[ \\log x_1 \\right]_c^1 = (1 - c^\\theta) - \\theta c^\\theta (0 - \\log c)\\]\\[= \\mathbf{1 + c^\\theta(\\theta\\log c - 1)}\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/11wk/HW11.html#b-3",
+    "href": "posts/11wk/HW11.html#b-3",
+    "title": "HW 11",
+    "section": "(b)",
+    "text": "(b)\nCalculate the size of the \\(\\phi_1\\) test. Then, find the value of \\(c\\) that gives the same size for the \\(\\phi_2\\) test\n\n귀무가설 하에서 검정력 함수의 최대값(size)를 구하라는 말임\n\n\nsol\n1 \\(\\beta_1(\\theta) = 1- (0.9)^{\\theta}\\) 는 \\(\\theta\\)에 대해서 단조 증가함수이므로,\n\\[\\text{max}_{H_{0}}(\\beta_1|\\theta) = \\beta_1(1) = 1 - 0.9 = \\mathbf{0.1}\\]\n2 \\(\\beta_2(\\theta)\\)도 마찬가지.\n\\[\\text{Size of } \\phi_2 = \\beta_2(1) = 1 + c(\\log c - 1) = 1 + c\\log c - c\\]\n3 방정식 세우기\n\\[1 + c\\log c - c = 0.1 \\implies c - c\\log c = 0.9\\]\n\\[\\divideontimes \\,\\, c \\approx 0.588\\]",
+    "crumbs": [
+      "Posts",
+      "11wk",
+      "HW 11"
+    ]
+  },
+  {
+    "objectID": "posts/14wk/HW 14.html",
+    "href": "posts/14wk/HW 14.html",
+    "title": "HW 14",
+    "section": "",
+    "text": "Suppose \\(X_{1},X_{2},...,X_{n}\\) are iid with continuous cdf F. Define\n\\[\\phi_{p}=F^{-1}(p)=\\inf\\{x\\in\\mathbb{R}:F(x)\\ge p\\}\\]\nWe call \\(\\phi_{p}\\) the pth quantile of the distribution of X. Note that if F is strictly increasing, then \\(F^{-1}(p)\\) is well defined by\n\\[F(F^{-1}(p)) = p\\]\nThe simplest definition of the sample pth quantile is \\(\\hat{F}_{n}^{-1}(p)\\) , where\nis the empirical distribution function (edf). \\[\\hat{F}_{n}(x)=\\frac{1}{n}\\sum_{i=1}^{n}I(X_{i}\\le x)\\]\nis the empirical distribution function (edf). The edf is a non-decreasing step function that takes steps of size \\(1/n\\) at each observed \\(X_i\\). Therefore,\n\\[\\hat{\\phi}_p \\equiv \\hat{F}_n^{-1}(p) = \\begin{cases} X_{(np)}, & np \\in \\mathbb{Z}^+ \\\\ X_{([np]+1)}, & \\text{otherwise} \\end{cases}\\]\n\nProve that as \\(n\\rightarrow\\infty\\),\n\n\\[\\sqrt{n}(\\hat{\\phi}_{p}-\\phi_{p})\\xrightarrow{d}\\mathcal{N}\\left(0,\\frac{p(1-p)}{f^{2}(\\phi_{p})}\\right)\\]\nwhere f is the population pdf of X.\n(b If \\(p=0.5\\), then \\(\\phi_{p}=\\phi_{0.5}\\) is the median of X. Suppose \\(X_{1},X_{2},...,X_{n}\\) are iid \\(\\mathcal{N}(\\mu,\\sigma^{2})\\), where both parameters are unknown. Consider the following two estimators \\(W_{n}=\\overline{X}_{n}\\) and \\(V_{n}=\\hat{\\phi}_{0.5}\\). Find the distribution of \\(W_{n}\\), the limiting distribution of \\(V_{n}\\) and the \\(ARE(V_{n}\\text{ to }W_{n})\\).\n\n\n\n\n1 임의의 실수 \\(x\\)에 대하여 \\(x_n = \\phi_p + \\frac{x}{\\sqrt{n}}\\)이라고 정의\n2 edf 변환\n\\[P\\left(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\le x\\right) = P(\\hat{\\phi}_p \\le x_n)\\]\n3 표본 분위수의 정의에 의해 \\(\\hat{\\phi}_p \\le x_n\\)은 \\(\\hat{F}_n(x_n) \\ge p\\)와 동치이며, 이는 다시 표본 내에서 \\(x_n\\)보다 작거나 같은 관측치의 개수가 \\(np\\) 이상임과 같음\n\\[P(\\hat{\\phi}_p \\le x_n) = P\\left(\\sum_{i=1}^n I(X_i \\le x_n) \\ge np\\right)\\]\n4 \\(Y_i = I(X_i \\le x_n)\\)라고 하면, \\(Y_i\\)는 성공 확률이 \\(p_n = F(x_n)\\)인 베르누이 분포를 따르고, 테일러 전개를 이용해, \\(p_n\\)을 근사하면\n\\[p_n = F\\left(\\phi_p + \\frac{x}{\\sqrt{n}}\\right) \\approx F(\\phi_p) + \\frac{x}{\\sqrt{n}}f(\\phi_p) = p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\]\n5 \\(\\sum_{i=1}^n Y_i\\)의 기댓값은 \\(np_n\\)이고, 분산은 \\(np_n(1-p_n) \\approx np(1-p)\\)입니다. 중심극한정리(CLT)에 의해 표준화된 합은 표준정규분포로 수렴\n\\[P\\left(\\sum_{i=1}^n Y_i \\ge np\\right) = P\\left(\\frac{\\sum Y_i - np_n}{\\sqrt{np_n(1-p_n)}} \\ge \\frac{np - np_n}{\\sqrt{np_n(1-p_n)}}\\right)\\]\n6 임계값에 극한을 취해 계산하면.\n\\[\\frac{np - n\\left(p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\right)}{\\sqrt{np(1-p)}} = \\frac{-x\\sqrt{n}f(\\phi_p)}{\\sqrt{np(1-p)}} = \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\]\n7 구하고자 하는 점근적 확률은\n\\[P\\left(Z \\ge \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = P\\left(Z \\le \\frac{xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = \\Phi\\left(x\\frac{f(\\phi_p)}{\\sqrt{p(1-p)}}\\right)\\]\n결론: \\(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{p(1-p)}{f^2(\\phi_p)}\\right)\\)\n\n\n\n\n1 \\(W_n\\)의 분포: \\(X_i \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)이고 \\(W_n = \\overline{X}_n\\)이므로, 표본평균의 정확한 분포는 \\(W_n \\sim \\mathcal{N}\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\)\n2 \\(V_n\\)의 점근분포: (a)의 결과에서 \\(p=0.5\\)를 대입합니다. 정규분포의 중앙값은 \\(\\phi_{0.5} = \\mu\\)이고, 해당 지점에서의 확률밀도함수 값은 \\(f(\\mu) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\)\n\n점근 분산: \\(\\frac{0.5(1-0.5)}{[f(\\mu)]^2} = \\frac{0.25}{1/(2\\pi\\sigma^2)} = \\frac{\\pi\\sigma^2}{2}\\)\n따라서 점근분포는 \\(\\sqrt{n}(V_n - \\mu) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{\\pi\\sigma^2}{2}\\right)\\)\n\nARE(\\(V_n\\) to \\(W_n\\)): 점근상대효율은 두 추정량의 점근분산의 비율로 계산됩니다 (\\(W_n\\)을 기준으로 할 때 \\(V_n\\)의 효율).\n\\[ARE(V_n, W_n) = \\frac{\\text{AsyVar}(W_n)}{\\text{AsyVar}(V_n)} = \\frac{\\sigma^2}{\\pi\\sigma^2 / 2} = \\frac{2}{\\pi} \\approx 0.6366\\]",
+    "crumbs": [
+      "Posts",
+      "14wk",
+      "HW 14"
+    ]
+  },
+  {
+    "objectID": "posts/14wk/HW 14.html#sol",
+    "href": "posts/14wk/HW 14.html#sol",
+    "title": "HW 14",
+    "section": "",
+    "text": "1 임의의 실수 \\(x\\)에 대하여 \\(x_n = \\phi_p + \\frac{x}{\\sqrt{n}}\\)이라고 정의\n2 edf 변환\n\\[P\\left(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\le x\\right) = P(\\hat{\\phi}_p \\le x_n)\\]\n3 표본 분위수의 정의에 의해 \\(\\hat{\\phi}_p \\le x_n\\)은 \\(\\hat{F}_n(x_n) \\ge p\\)와 동치이며, 이는 다시 표본 내에서 \\(x_n\\)보다 작거나 같은 관측치의 개수가 \\(np\\) 이상임과 같음\n\\[P(\\hat{\\phi}_p \\le x_n) = P\\left(\\sum_{i=1}^n I(X_i \\le x_n) \\ge np\\right)\\]\n4 \\(Y_i = I(X_i \\le x_n)\\)라고 하면, \\(Y_i\\)는 성공 확률이 \\(p_n = F(x_n)\\)인 베르누이 분포를 따르고, 테일러 전개를 이용해, \\(p_n\\)을 근사하면\n\\[p_n = F\\left(\\phi_p + \\frac{x}{\\sqrt{n}}\\right) \\approx F(\\phi_p) + \\frac{x}{\\sqrt{n}}f(\\phi_p) = p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\]\n5 \\(\\sum_{i=1}^n Y_i\\)의 기댓값은 \\(np_n\\)이고, 분산은 \\(np_n(1-p_n) \\approx np(1-p)\\)입니다. 중심극한정리(CLT)에 의해 표준화된 합은 표준정규분포로 수렴\n\\[P\\left(\\sum_{i=1}^n Y_i \\ge np\\right) = P\\left(\\frac{\\sum Y_i - np_n}{\\sqrt{np_n(1-p_n)}} \\ge \\frac{np - np_n}{\\sqrt{np_n(1-p_n)}}\\right)\\]\n6 임계값에 극한을 취해 계산하면.\n\\[\\frac{np - n\\left(p + \\frac{x}{\\sqrt{n}}f(\\phi_p)\\right)}{\\sqrt{np(1-p)}} = \\frac{-x\\sqrt{n}f(\\phi_p)}{\\sqrt{np(1-p)}} = \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\]\n7 구하고자 하는 점근적 확률은\n\\[P\\left(Z \\ge \\frac{-xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = P\\left(Z \\le \\frac{xf(\\phi_p)}{\\sqrt{p(1-p)}}\\right) = \\Phi\\left(x\\frac{f(\\phi_p)}{\\sqrt{p(1-p)}}\\right)\\]\n결론: \\(\\sqrt{n}(\\hat{\\phi}_p - \\phi_p) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{p(1-p)}{f^2(\\phi_p)}\\right)\\)\n\n\n\n\n1 \\(W_n\\)의 분포: \\(X_i \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)이고 \\(W_n = \\overline{X}_n\\)이므로, 표본평균의 정확한 분포는 \\(W_n \\sim \\mathcal{N}\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\)\n2 \\(V_n\\)의 점근분포: (a)의 결과에서 \\(p=0.5\\)를 대입합니다. 정규분포의 중앙값은 \\(\\phi_{0.5} = \\mu\\)이고, 해당 지점에서의 확률밀도함수 값은 \\(f(\\mu) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\)\n\n점근 분산: \\(\\frac{0.5(1-0.5)}{[f(\\mu)]^2} = \\frac{0.25}{1/(2\\pi\\sigma^2)} = \\frac{\\pi\\sigma^2}{2}\\)\n따라서 점근분포는 \\(\\sqrt{n}(V_n - \\mu) \\xrightarrow{d} \\mathcal{N}\\left(0, \\frac{\\pi\\sigma^2}{2}\\right)\\)\n\nARE(\\(V_n\\) to \\(W_n\\)): 점근상대효율은 두 추정량의 점근분산의 비율로 계산됩니다 (\\(W_n\\)을 기준으로 할 때 \\(V_n\\)의 효율).\n\\[ARE(V_n, W_n) = \\frac{\\text{AsyVar}(W_n)}{\\text{AsyVar}(V_n)} = \\frac{\\sigma^2}{\\pi\\sigma^2 / 2} = \\frac{2}{\\pi} \\approx 0.6366\\]",
+    "crumbs": [
+      "Posts",
+      "14wk",
+      "HW 14"
+    ]
+  },
+  {
+    "objectID": "posts/14wk/HW 14.html#sol-1",
+    "href": "posts/14wk/HW 14.html#sol-1",
+    "title": "HW 14",
     "section": "sol",
-    "text": "sol\n1 각 확률 계산\n\n\\(P(E_{7})\\)은 두 개의 주사위 합이 7인 경우 이므로 \\(\\to\\) (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\n\n\\[P(E_{7}) = \\frac{6}{36} = \\frac{1}{6}\\]\n\n\\(P(F)\\)은 첫번째 주사위가 4가 나올 확률이므로\n\n\\[P(F) = \\frac{6}{36} = \\frac{1}{6}\\]\n\n\\(P(T)\\)은 두번째 주사위가 3가 나올 확률이므로\n\n\\[P(T) = \\frac{6}{36} = \\frac{1}{6}\\]\n2 Pairwise indep check\n\n\\(E_{7}, F\\): 두 개의 주사위 합이 7이면서, 첫 번째 주사위가 4가 나올 확률\n\n이 경우는 (4,3) 밖에 없음.\n\n\n\\[\\therefore \\,\\,P(E_{7} \\cap F) = \\frac{1}{36} = P(E_{7}) \\times P(F)\\]\n\n이 이후에 pairwise도 1/36로 동일하며 pairwise indep를 보임.\n\n3 \\(P(E_{7}\\cap F \\cap T) = P(E_7)P(F)P(T)\\)?\n\n\\(P(E_{7}\\cap F \\cap T)\\): 두 주사위의 합이 7이면서, 첫번째 주사위의 눈이 4 두번째 주사위의 눈이 3일 확률.\n\n\\[\\therefore \\,\\, P(E_{7}\\cap F \\cap T) = \\frac{1}{36}\\]\n\nbut….. \\(P(E_7)P(F)P(T) = (\\frac{1}{6})^{3} = \\frac{1}{216}\\)\n\n\\[\\therefore \\,\\, P(E_{7}\\cap F \\cap T) \\neq P(E_7)P(F)P(T)\\]",
+    "text": "sol\n\n(a)\n1 베르누이 분포에서 \\(p\\)의 최대우도추정량(MLE)은 \\(\\hat{p} = \\overline{X}_n\\)\n2 중심극한정리에 의해 \\(\\sqrt{n}(\\hat{p} - p) \\xrightarrow{d} \\mathcal{N}(0, p(1-p))\\)를 따른다.\n3 Wald 방법론에서는 미지의 모수 \\(p\\)의 분산을 MLE로 대체한 표준오차 \\(SE(\\hat{p}) = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\)를 사용\n결론: \\((1-\\alpha)\\) Wald 신뢰구간은 \\(\\hat{p} \\pm z_{\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\)\n\n\n(b)\n1 \\(g(p) = \\log\\left(\\frac{p}{1-p}\\right)\\)의 도함수를 구하면 \\(g'(p) = \\frac{1}{p} + \\frac{1}{1-p} = \\frac{1}{p(1-p)}\\)\n2 델타 방법(Delta Method)에 의해 \\(g(\\hat{p})\\)의 점근분포를 도출\n\\[\\sqrt{n}(g(\\hat{p}) - g(p)) \\xrightarrow{d} \\mathcal{N}\\left(0, [g'(p)]^2 \\cdot p(1-p)\\right) = \\mathcal{N}\\left(0, \\frac{1}{p(1-p)}\\right)\\]\n3 이에 대응하는 표준오차는 \\(SE(g(\\hat{p})) = \\frac{1}{\\sqrt{n\\hat{p}(1-\\hat{p})}}\\)\n결론 : \\((1-\\alpha)\\) Wald 신뢰구간은 \\(\\log\\left(\\frac{\\hat{p}}{1-\\hat{p}}\\right) \\pm z_{\\alpha/2} \\frac{1}{\\sqrt{n\\hat{p}(1-\\hat{p})}}\\)\n\n\n(c)\n1 Wald Test\n\n추정치 \\(\\hat{p}\\)의 분포를 기준으로 하며, 분산은 대립가설(MLE) 하의 값을 사용\n검정통계량: \\(Z_W = \\frac{\\hat{p} - p_0}{\\sqrt{\\hat{p}(1-\\hat{p})/n}}\\)\n기각역: \\(|Z_W| &gt; z_{\\alpha/2}\\) 일 때 \\(H_0\\) 기각. (또는 \\(Z_W^2 &gt; \\chi^2_{1, \\alpha}\\))\n\n2 Score Test\n\n귀무가설 \\(H_0\\) 하에서의 정보량(Information)과 스코어(Score) 함수를 이용\n로그 우도함수 \\(\\log L(p) = \\sum X_i \\log p + (n - \\sum X_i) \\log(1-p)\\)의 스코어 함수와 피셔 정보량\n\n\\[U(p) = \\frac{n(\\hat{p} - p)}{p(1-p)}, \\quad I(p) = \\frac{n}{p(1-p)}\\]\n\n검정통계량: \\(Z_S = \\frac{U(p_0)}{\\sqrt{I(p_0)}} = \\frac{\\frac{n(\\hat{p} - p_0)}{p_0(1-p_0)}}{\\sqrt{\\frac{n}{p_0(1-p_0)}}} = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1-p_0)/n}}\\)\n기각역: \\(|Z_S| &gt; z_{\\alpha/2}\\) 일 때 \\(H_0\\) 기각.\n\n3 Likelihood Ratio Test\n\n귀무가설 \\(H_0\\) 하에서의 최대 우도값과 전체 공간에서의 최대 우도값의 비를 사용\n우도비 \\(\\lambda = \\frac{L(p_0)}{L(\\hat{p})} = \\left(\\frac{p_0}{\\hat{p}}\\right)^{n\\hat{p}} \\left(\\frac{1-p_0}{1-\\hat{p}}\\right)^{n(1-\\hat{p})}\\)\n검정통계량: \\(-2\\log\\lambda = 2n \\left[ \\hat{p} \\log\\left(\\frac{\\hat{p}}{p_0}\\right) + (1-\\hat{p}) \\log\\left(\\frac{1-\\hat{p}}{1-p_0}\\right) \\right]\\)\n기각역: 점근적으로 카이제곱 분포를 따르므로, \\(-2\\log\\lambda &gt; \\chi^2_{1, \\alpha}\\) 일 때 \\(H_0\\) 기각.",
     "crumbs": [
       "Posts",
-      "01wk",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "posts/01wk/HW 1.html#sol-2",
-    "href": "posts/01wk/HW 1.html#sol-2",
-    "title": "HW 1",
-    "section": "sol",
-    "text": "sol\nprf)\n1 \\(P(a &lt; X \\leq b) = P(X \\leq b) - P(X \\leq a) = F(b) - F(a)\\)\n2 \\(P(X &gt; a) = 1 - P(X \\leq a) = 1 - F(a)\\)",
-    "crumbs": [
-      "Posts",
-      "01wk",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "posts/03wk/HW 4.html",
-    "href": "posts/03wk/HW 4.html",
-    "title": "HW 4",
-    "section": "",
-    "text": "Suppose that \\(X_{1} \\dots X_n\\) is an iid sample from \\(U(0, \\theta)\\)\n\nFind the limiting distribution of \\(X_{(n)}\\)\nFind the limiting distribution of \\(Y_{n} = n(\\theta - X_{(n)})\\)",
-    "crumbs": [
-      "Posts",
-      "03wk",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "posts/03wk/HW 4.html#ex1",
-    "href": "posts/03wk/HW 4.html#ex1",
-    "title": "HW 4",
-    "section": "",
-    "text": "Suppose that \\(X_{1} \\dots X_n\\) is an iid sample from \\(U(0, \\theta)\\)\n\nFind the limiting distribution of \\(X_{(n)}\\)\nFind the limiting distribution of \\(Y_{n} = n(\\theta - X_{(n)})\\)",
-    "crumbs": [
-      "Posts",
-      "03wk",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "posts/03wk/HW 4.html#sol",
-    "href": "posts/03wk/HW 4.html#sol",
-    "title": "HW 4",
-    "section": "sol",
-    "text": "sol\n\n(a)\n\\[P(|X_{(n)}-\\theta| &gt; \\epsilon) = P(X_{(n)} \\leq \\theta - \\epsilon) = \\left ( \\frac {\\theta - \\epsilon}{\\epsilon}\\right )^{n} \\to 0\\]\n\\[\\divideontimes\\,\\, X_{(n)} \\xrightarrow{d} \\theta\\]\n\n\n(b)\n\\[P(Y_n &gt; y) =  P(n(\\theta - X_{(n)}) &gt;y) =  P(X_{(n)} &gt; \\theta - \\frac yn) = \\left (1 - \\frac{y}{n\\theta}\\right )^{n} \\to e^{-y/\\theta}\\]\n\\[P(Y_{n}  \\geq y) \\to 1 - e^{-y/\\theta} \\quad (y \\geq 0)\\]\n\\[Y_{n}  \\sim \\text{exp}(\\lambda = 1/\\theta), \\quad \\theta \\to \\infty\\]",
-    "crumbs": [
-      "Posts",
-      "03wk",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "posts/03wk/HW 4.html#sol-1",
-    "href": "posts/03wk/HW 4.html#sol-1",
-    "title": "HW 4",
-    "section": "sol",
-    "text": "sol\n\n(a)\nstep1\n\\[F(x)  = \\int_{\\mu}^{x} f(t) \\,dt =   1-e^{-(x-\\mu)}\\]\n\\[P(X&gt;x) = 1- F(x) =e^{-(x-\\mu)}\\]\nstep2\n\\[P(X_{(1)}&gt;x) =  P(X_{1}&gt;x,\\dots X_{n}&gt;x)\\]\n\\[P(X_{(1)}&gt;x) =  \\{P(X&gt;x)\\}^{n} = e^{-n(x-\\mu)}\\]\n\\[F_{X_{(1)}}(x) = 1-P(X_{(1)}&gt;x) = 1-e^{-n(x-\\mu)}\\]\nstep3\n\\[\\divideontimes \\,\\,f_{x_{(1)}}(x) = \\frac{d}{dx} F_{x_{(1)}}(x) = ne^{-n(x-\\mu)}\\]\n\n\n(b)\n\\[P(|X_{(1)} - \\mu| &gt; \\epsilon) = P(X_{(1)}&gt; \\mu + \\epsilon) = e^{-nx}\\]\n\\[n\\to \\infty,\\,\\, e^{-nx} \\to 0\\]\n\\[\\divideontimes\\,\\, P(|X_{(1)} - \\mu| &gt; \\epsilon) = P(X_{(1)}&gt; \\mu + \\epsilon) = e^{-nx} \\to 0\\]\n\\[\\divideontimes\\,\\, X_{(1)} \\xrightarrow{P} \\mu\\]",
-    "crumbs": [
-      "Posts",
-      "03wk",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "posts/03wk/HW 4.html#sol-2",
-    "href": "posts/03wk/HW 4.html#sol-2",
-    "title": "HW 4",
-    "section": "sol",
-    "text": "sol\n\n(a)\nstep1\n\\[F(x) = 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta\\]\n\\[P(X_{(1)}&gt;x) = \\{ P(X&gt;x)\\}^n = (1-F(x))^{n} = \\left( \\frac{\\alpha}{x}\\right)^{n\\beta } \\]\nstep2\n\\[F_{X_{(1)}}(x) = P(X_{(1)} \\leq x) = 1- P(X_{(1)} &gt; x) \\begin{cases} 0, \\quad x\\leq \\alpha \\\\ \\\\\n                                                                        1- \\left( \\frac{\\alpha}{x}\\right)^{n\\beta }, \\quad x&gt;\\alpha. \\end{cases}\\]\nstep3\n\\(x&gt;\\alpha\\)에서\n\\[f_{X_{(1)}}(x) = \\frac{d}{dx}\\,\\,\\left [  1- \\left( \\frac{\\alpha}{x}\\right)^{n\\beta }\\right ] = n\\beta \\alpha^{n\\beta}x^{-(n\\beta + 1)} \\]\n\\[\\divideontimes \\,\\, f_{x_{(1)}} (x) = \\frac { n\\beta \\alpha^{n\\beta}}{x^{n\\beta + 1}}, \\quad X_{(1)} \\sim \\text{Pareto}(\\alpha, n\\beta)\\]\n\n\n(b)\n\\[F(x) = 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta\\]\n이므로\n\\[F_{X_{n}}(x) = P(X_1 \\leq x\\dots X_n \\leq x) = \\{ P(X\\leq x)\\}^{n} = [F(x)]^{n}\\]\n따라서\n\\[F_{X_{(n)}} (x) = \\left [ 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n\n\n\n(c)\n\\[F_{X_{(n)}} (x) = \\left [ 1-\\left( \\frac{\\alpha}{x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n이므로\n\\[F_{X_{(n)}} (b_{n}x) = \\left [ 1-\\left( \\frac{\\alpha}{b_{n}x}\\right)^\\beta \\right ]^{n}, \\quad x &gt; \\alpha\\]\n그런데\n\\[\\left( \\frac{\\alpha}{b_{n}x}\\right)^\\beta =  \\frac{1}{n^{x\\beta}}\\]\n따라서\n\\[F_{X_{(n)}} (b_{n}x) = \\left [ 1-\\frac{1}{n^{x\\beta}} \\right ]^{n}, \\quad x &gt; \\alpha\\]\n\\[\\lim_{n\\to\\infty} F_{X_{(n)}}(b_n x)=\\begin{cases}0, & x \\le 0,\\\\[4pt] \\exp\\!\\left(-x^{-\\beta}\\right), & x&gt;0. \\end{cases}\\]\nFrechet 분포를 따른다.",
-    "crumbs": [
-      "Posts",
-      "03wk",
-      "HW 4"
-    ]
-  },
-  {
-    "objectID": "posts/07wk/07wk.html",
-    "href": "posts/07wk/07wk.html",
-    "title": "5 Point Esimation",
-    "section": "",
-    "text": "1 \\(E(X^{j})= m_j^{\\prime} = \\frac{1}{n} \\sum_{i=1}^{n} X_i^{j}\\): jth sample moment\n2 즉, jth차 샘플 적률을 활용해서 \\(\\theta\\)를 추정하는 것\n\n\n\\(X \\sim \\text{Uniform}(0, \\theta)\\)\n\n\n\\(E(X) = \\theta/2\\)\n-&gt; \\(\\hat\\theta_{mom} =2 \\bar X\\)\n\n\n\n\n\\(X \\sim \\text{Uniform}(-\\theta, \\theta)\\)\n\\(E(X) = 0, \\,\\,E(X^2) = \\theta^{2} / 3\\)\n\\(\\divideontimes \\quad \\hat\\theta_{mom} = \\sqrt{3\\bar {X^{2}} }\\)\n\n\n\n\\(X \\sim N( \\mu, \\sigma^2)\\)\n\\(\\hat \\mu_{mom} = \\bar X\\)\n\\(\\sigma_{mom} = d\\)",
-    "crumbs": [
-      "Posts",
-      "07wk",
-      "5 Point Esimation"
-    ]
-  },
-  {
-    "objectID": "posts/07wk/07wk.html#ex1",
-    "href": "posts/07wk/07wk.html#ex1",
-    "title": "5 Point Esimation",
-    "section": "",
-    "text": "\\(X \\sim \\text{Uniform}(0, \\theta)\\)\n\n\n\\(E(X) = \\theta/2\\)\n-&gt; \\(\\hat\\theta_{mom} =2 \\bar X\\)",
-    "crumbs": [
-      "Posts",
-      "07wk",
-      "5 Point Esimation"
-    ]
-  },
-  {
-    "objectID": "posts/07wk/07wk.html#ex2",
-    "href": "posts/07wk/07wk.html#ex2",
-    "title": "5 Point Esimation",
-    "section": "",
-    "text": "\\(X \\sim \\text{Uniform}(-\\theta, \\theta)\\)\n\\(E(X) = 0, \\,\\,E(X^2) = \\theta^{2} / 3\\)\n\\(\\divideontimes \\quad \\hat\\theta_{mom} = \\sqrt{3\\bar {X^{2}} }\\)",
-    "crumbs": [
-      "Posts",
-      "07wk",
-      "5 Point Esimation"
-    ]
-  },
-  {
-    "objectID": "posts/07wk/07wk.html#ex3",
-    "href": "posts/07wk/07wk.html#ex3",
-    "title": "5 Point Esimation",
-    "section": "",
-    "text": "\\(X \\sim N( \\mu, \\sigma^2)\\)\n\\(\\hat \\mu_{mom} = \\bar X\\)\n\\(\\sigma_{mom} = d\\)",
-    "crumbs": [
-      "Posts",
-      "07wk",
-      "5 Point Esimation"
-    ]
-  },
-  {
-    "objectID": "posts/12wk/HW12.html",
-    "href": "posts/12wk/HW12.html",
-    "title": "HW 12",
-    "section": "",
-    "text": "Suppose that \\(X_1, X_2, . . . , X_n\\) is an iid sample from\n\\[f_{X}(x|\\theta) = 2\\theta x e^{-\\theta x^2}\\,\\, I(x&gt;0)\\]\n\nFind the uniformly minimum variance unbiased estimator (UMVUE) of \\(\\theta\\)\nFind the uniformaly most powerful(UMP) level \\(\\alpha\\) test of\n\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\nwhere \\(\\theta_0\\) is known\n\nDerive an expression for the power function of the test in part (b).\n\n\n즉, 검정법의 파워를 구하라\n\n\n\n\n\n1 지수족 인수분해를 통한 완비충분통계량 도출 \\(\\to \\,\\, T = \\sum X_{i}^{2}\\)\n2 변수변환을 통해 \\(X_{i}^{2} = \\text{Exp}(\\theta) = \\Gamma (1, 1/\\theta)\\) 이므로, \\(T \\sim \\Gamma(n, 1/\\theta)\\)\n3 불편성 조건 확인: \\(E[1/T] = \\frac{\\theta}{n-1} \\to E\\left [\\frac{n-1}{T}\\right] = \\theta\\)\n\\(\\divideontimes \\,\\,\\widehat{\\theta}_{\\text{UMVUE}} = \\frac{n-1}{\\sum_{i=1}^n X_i^2}\\)\n\n\n\n1 기각역 정의\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\\geq K \\right \\}\\]\n2 기각역 공식 대입\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\n                = \\frac{\\prod_{i=1}^n 2\\theta_1 x_i e^{-\\theta_1 x_i^2}}{\\prod_{i=1}^n 2\\theta_0 x_i e^{-\\theta_0 x_i^2}} =\n                 \\left (\\frac{\\theta_1}{\\theta_0}\\right)^n e^{-(\\theta_1-\\theta_0)\\sum x_i^2}\\geq K \\right \\}\\]\n3 단순화\n\\[R = \\left \\{ \\sum x_i^2 \\leq K \\right \\},\\quad (\\theta_1 &gt; \\theta_0)\\]\n4 \\(\\sum x^2 \\sim \\text{Gam}\\left(n, \\frac{1}{\\theta} \\right) \\to 2\\theta \\sum x^2 \\sim \\text{Gam}\\left (n,2\\right) = \\chi^2(2n)\\)\n\\[P\\left [2\\theta_0\\sum x_i^2 \\leq K\\,|\\, \\theta = \\theta_0 \\right] = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\]\n\n\n\n검정법의 power를 구하라\n1 \\(\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\)\n2 귀무가설 하에서 최대값 \\(\\to\\) 즉, 제 1종 오류의 최대값\n\\[\\begin{align*} \\text{Max}_{\\theta \\leq \\theta_0}\\beta(\\theta) &= \\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\\\ \\\\\n                &=\\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta\\sum x_i^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\\\ \\\\ &= \\text{Max}_{\\theta \\leq \\theta_0} P \\left [ \\chi^2(2n) \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\,\\theta_0 \\right] \\end{align*}\\]\n3 우변의 경우 \\(\\theta\\)에 대한 증가함수이므로, \\(\\theta = \\theta_0\\)일 때 최대가 된다.!\n4 따라서 기각역 R을 기각역으로 하는 test는\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\n\n위 가설을 만족하는 모든 \\(\\theta\\)에 대해서 전부 Most Powerful test이므로, Uniformly Most Powerful test이며, size \\(\\alpha\\)가 된다.",
-    "crumbs": [
-      "Posts",
-      "12wk",
-      "HW 12"
-    ]
-  },
-  {
-    "objectID": "posts/12wk/HW12.html#sol",
-    "href": "posts/12wk/HW12.html#sol",
-    "title": "HW 12",
-    "section": "",
-    "text": "1 지수족 인수분해를 통한 완비충분통계량 도출 \\(\\to \\,\\, T = \\sum X_{i}^{2}\\)\n2 변수변환을 통해 \\(X_{i}^{2} = \\text{Exp}(\\theta) = \\Gamma (1, 1/\\theta)\\) 이므로, \\(T \\sim \\Gamma(n, 1/\\theta)\\)\n3 불편성 조건 확인: \\(E[1/T] = \\frac{\\theta}{n-1} \\to E\\left [\\frac{n-1}{T}\\right] = \\theta\\)\n\\(\\divideontimes \\,\\,\\widehat{\\theta}_{\\text{UMVUE}} = \\frac{n-1}{\\sum_{i=1}^n X_i^2}\\)\n\n\n\n1 기각역 정의\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\\geq K \\right \\}\\]\n2 기각역 공식 대입\n\\[R = \\left \\{ (x_1 \\dots x_n) : \\frac{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_1)}}{f_{\\boldsymbol{X}(\\boldsymbol{x}|\\theta_0)}}\n                = \\frac{\\prod_{i=1}^n 2\\theta_1 x_i e^{-\\theta_1 x_i^2}}{\\prod_{i=1}^n 2\\theta_0 x_i e^{-\\theta_0 x_i^2}} =\n                 \\left (\\frac{\\theta_1}{\\theta_0}\\right)^n e^{-(\\theta_1-\\theta_0)\\sum x_i^2}\\geq K \\right \\}\\]\n3 단순화\n\\[R = \\left \\{ \\sum x_i^2 \\leq K \\right \\},\\quad (\\theta_1 &gt; \\theta_0)\\]\n4 \\(\\sum x^2 \\sim \\text{Gam}\\left(n, \\frac{1}{\\theta} \\right) \\to 2\\theta \\sum x^2 \\sim \\text{Gam}\\left (n,2\\right) = \\chi^2(2n)\\)\n\\[P\\left [2\\theta_0\\sum x_i^2 \\leq K\\,|\\, \\theta = \\theta_0 \\right] = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\]\n\n\n\n검정법의 power를 구하라\n1 \\(\\beta(\\theta) = P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\)\n2 귀무가설 하에서 최대값 \\(\\to\\) 즉, 제 1종 오류의 최대값\n\\[\\begin{align*} \\text{Max}_{\\theta \\leq \\theta_0}\\beta(\\theta) &= \\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta_0\\sum x_i^2 \\leq \\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right]\\\\ \\\\\n                &=\\text{Max}_{\\theta \\leq \\theta_0}P\\left [2\\theta\\sum x_i^2 \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\, \\theta = \\theta_0 \\right] \\\\ \\\\ &= \\text{Max}_{\\theta \\leq \\theta_0} P \\left [ \\chi^2(2n) \\leq \\frac{\\theta}{\\theta_0}\\chi^2_{1-\\alpha}(2n)\\,|\\,\\theta_0 \\right] \\end{align*}\\]\n3 우변의 경우 \\(\\theta\\)에 대한 증가함수이므로, \\(\\theta = \\theta_0\\)일 때 최대가 된다.!\n4 따라서 기각역 R을 기각역으로 하는 test는\n\\[H_0: \\theta \\leq \\theta_0 \\quad \\text{vs} \\quad H_1: \\theta &gt; \\theta_0\\]\n\n위 가설을 만족하는 모든 \\(\\theta\\)에 대해서 전부 Most Powerful test이므로, Uniformly Most Powerful test이며, size \\(\\alpha\\)가 된다.",
-    "crumbs": [
-      "Posts",
-      "12wk",
-      "HW 12"
-    ]
-  },
-  {
-    "objectID": "posts/12wk/HW12.html#sol-1",
-    "href": "posts/12wk/HW12.html#sol-1",
-    "title": "HW 12",
-    "section": "sol",
-    "text": "sol\n\n(a)\n사전지식: pivotal quantity \\(\\to\\) 랜덤샘플의 함수이면서, 분포는 \\(\\theta\\)에 의존하지 않은 성질을 가짐\n1 \\(Q\\)의 cdf: \\(F_Q(q) = P\\left(\\frac{X_{(n)}}{\\theta} \\le q\\right) = q^{n a_0}\\) (\\(0&lt;q&lt;1\\)). 모수 \\(\\theta\\)가 없으므로 축량(Pivot)임.\n\\[\\begin{align*} F_{Q}(q) &= P\\left (\\frac{X_{(n)}}{\\theta} \\leq q\\right) \\\\ \\\\\n                          &= \\left [ P(X_{1} \\leq \\theta q\\right ]^n\\end{align*}\\]\n\\[\\begin{align*}P(X_{1} \\leq \\theta q) &= \\int_{0}^{\\theta q} \\frac{a_0}{\\theta^{a_0}} x_{1}^{a_0 -1}\\, dx_1\\\\ \\\\\n                                       &= q^{a_0}\\end{align*}\\]\n\\[\\divideontimes \\,\\, F_{Q}(q) =q^{a_0n}\\to f_{Q}(q) = na_0q^{na_0-1}\\]\n\n\\(\\theta\\)와 무관함\n\n2 확률식 세우기\n\\[P(c_1 \\le Q = \\frac{X_{(n)}}{\\theta} \\le c_2) = 1 - \\alpha\\]\n3 확률식 변형\n\\[P\\left(\\frac{X_{(n)}}{c_2}\\leq \\theta \\leq \\frac{X_{(n)}}{c_1}\\right) = 1-\\alpha\\]\n4 따리사, confidence interval set은?&gt;\n\\[\\left[\\frac{X_{(n)}}{c_2},\\,\\,\\frac{X_{(n)}}{c_1}\\right]\\]\n\n\n\n(b)\n(a)번과 같은 이야기\n\n\n(c)\n1 가능도함수 \\(L(\\theta|\\mathbf{x}) \\propto \\theta^{-n a_0} I(\\theta &gt; X_{(n)})\\)와 사전분포 \\(\\pi(\\theta) \\propto \\theta^{-(c+1)} e^{-d/\\theta}\\) 곱함.\n2 사후분포: \\(\\pi(\\theta|\\mathbf{x}) \\propto \\theta^{-(c + n a_0 + 1)} e^{-d/\\theta} I(\\theta &gt; X_{(n)})\\) (즉, 좌측 절단된 역감마 분포).\n3 균등 꼬리(Equal-tail) 신용구간 \\([k_1, k_2]\\)는 사후 pdf의 적분 조건식으로 정의됨.\n4 아래 조건을 만족하는 구간 \\([k_1, k_2]\\)\n\\[\\frac{\\Gamma\\left(c+n a_0, \\frac{d}{k_2}\\right) - \\Gamma\\left(c+n a_0, \\frac{d}{k_1}\\right)}{\\gamma\\left(c+n a_0, \\frac{d}{X_{(n)}}\\right)} = 1 - \\alpha \\quad (\\text{단, } X_{(n)} \\le k_1 &lt; k_2)\\]\n(여기서 \\(\\gamma\\)는 Lower, \\(\\Gamma\\)는 Upper 불완전 감마 함수)",
-    "crumbs": [
-      "Posts",
-      "12wk",
-      "HW 12"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html",
-    "href": "posts/extra/00. Distribution summary.html",
-    "title": "00. Distribution Summary",
-    "section": "",
-    "text": "- 알아두면 유용한 것들\n\nDiscrete r.v \\(\\to\\) pmf, Continuous r.v \\(\\to\\) pdf\nGamma function quick facts (\\(\\Gamma\\))\n\n\\[\\Gamma(\\alpha) = \\int_{0}^{\\infty} x^{\\alpha-1}e^{-x}\\,dx \\]\n\\[\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha),\\quad \\Gamma(n) = (n-1)!, \\quad \\Gamma(1/2) = \\pi \\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#bernoulli",
-    "href": "posts/extra/00. Distribution summary.html#bernoulli",
-    "title": "00. Distribution Summary",
-    "section": "Bernoulli",
-    "text": "Bernoulli\n- \\(X=\\) 성공확률이 \\(p\\)인 베르누이 시행에서 결과가 성공이면 1, 실패면 0\n\nBernoulli experexperiment(trial) - the experiment whose outcome can be classified as either success or failure\n\n\\[X \\sim Ber(p), \\quad X = \\begin{cases} 1 \\quad \\text{'Success'} \\\\ \\\\ 0 \\quad \\text{'Failiure'} \\end{cases} \\]\n\\[f(x) = p^{x}(1-p)^{1-x},\\quad F(x) = \\begin{cases} 0 \\quad (x&lt;0) \\\\ \\\\\n                       1-p \\quad  (0\\leq x&lt;1) \\\\ \\\\\n                       1 \\quad (x\\geq 1)\\end{cases}, \\quad M(t) = 1-p+pe^{t}\\]\n\\[E(X) = p, \\quad Var(x) = p(1-p), \\quad \\hat{p}_{mle} = \\bar X, \\quad \\hat{p}_{mvue} = \\bar X\\]\n\\[\\divideontimes  \\,\\, \\sum X_i \\sim Bin(n,p)\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#binomial",
-    "href": "posts/extra/00. Distribution summary.html#binomial",
-    "title": "00. Distribution Summary",
-    "section": "Binomial",
-    "text": "Binomial\n- \\(X =\\) 베르누이 시행을 독립적으로 \\(n\\)번 반복할 때 나오는 성공의 수\n\nBinomial experiment(trail) - \\(n\\) independent Bernoulli experiments with the success probability \\(p\\)\n\n\\[X \\sim Bin(n,p), \\quad X = 0,1,2, \\dots n\\]\n\\[f(x) = \\binom{n}{x} p^{x}(1-p)^{n-x}, \\quad F(x) = \\sum_{k=0}^{x} \\binom{n}{k}p^{k}(1-p)^{n-k},\\quad M(t) = (1-p + pe^{t})^{n} \\]\n\\[E(X) = np, \\quad Var(X) = np(1-p), \\quad \\hat{p}_{mle} = X/n, \\quad \\hat{p}_{mvue} = \\bar X/n \\]\n\\[\\divideontimes\\,\\, Bin(1,p) = Ber(p)\\]\n- 이항분포 mle 증명 필요….",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#gemmetric",
-    "href": "posts/extra/00. Distribution summary.html#gemmetric",
-    "title": "00. Distribution Summary",
-    "section": "Gemmetric",
-    "text": "Gemmetric\n- \\(X=\\) 서로 독립인 베르누이 시행을 반복할 때 첫번째 성공이 나올 때까지 시행 횟수\n\nthe number of trials until the first success\n\n\\[X \\sim Geo(p),\\quad X = 1,2,\\dots\\]\n\\[f(x) = p(1-p)^{x-1}, \\quad F(x) = \\begin {cases}0 \\quad (x&lt;1)\\\\ \\\\ 1-(1-p)^{x} \\quad (x \\geq 1) \\end{cases}, \\quad M(t) = \\frac{pe^{t}}{1-qe^{t}}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = 1/p, \\quad Var(X) = q/p^{2}, \\quad \\hat{p}_{mle} = 1/\\bar X, \\quad \\hat{p}_{mvue} = \\frac{n-1}{\\sum X_i -1} \\]\n\\[\\divideontimes \\,\\, NB(1,p) = Geo(p)\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#negative-binomial",
-    "href": "posts/extra/00. Distribution summary.html#negative-binomial",
-    "title": "00. Distribution Summary",
-    "section": "Negative Binomial",
-    "text": "Negative Binomial\n- \\(X=\\) 서로 독립인 베르누이 시행을 \\(r\\)번째 성공이 나올 때까지의 시행 횟수\n\\[X \\sim NB(r,p), \\quad X = r, r+1,r+2 \\dots\\]\n\\[f(x) = \\binom{x-1}{r-1}p^{r} (1-p)^{x-r}, \\quad F(x) = \\sum_{k=r}^{x}\\binom{x-1}{k-1}p^{r} (1-p)^{k-r}, \\quad M(t) = \\left(\\frac{pe^{t}}{1-qe^{t}}\\right)^{r}\\,\\,(t&lt;-\\ln q)\\]\n\\[E(X) = r/p, \\quad Var(X) = rq/p^{2}, \\quad \\hat{p}_{mle} = r/\\bar X, \\quad \\hat{p}_{mvue} = \\dots \\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#hypergeometric",
-    "href": "posts/extra/00. Distribution summary.html#hypergeometric",
-    "title": "00. Distribution Summary",
-    "section": "Hypergeometric",
-    "text": "Hypergeometric\n- 전체 원소 개수가 \\(n\\)개이고, \\(A\\)그룹의 원소 개수가 \\(r\\)개 \\(B\\)그룹의 원소 개수가 \\(n-r\\)개일 때, 이 중에서 \\(m\\)개를 임의로 선택할 경우, \\(A\\)그룹에서 선택된 원소의 수\n\\[X \\sim \\text{Hyper}(n,m,r),\\quad X = 0,1,2\\dots \\text{min}(r,m)\\]\n\\[f(x) = \\frac{\\binom{r}{x}\\binom{n-r}{m-x}}{\\binom{n}{m}}, \\quad \\sum_{k=0}^{\\text{min}(r,m)} \\binom{r}{k}\\binom{n-r}{m-k} = \\binom{n}{m}\\]\n\\[E(X) = m\\frac{r}{n}, \\quad Var(X) = m\\frac{r}{n}\\left(1- \\frac rn\\right) \\frac{n-m}{n-1}\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#poisson",
-    "href": "posts/extra/00. Distribution summary.html#poisson",
-    "title": "00. Distribution Summary",
-    "section": "Poisson",
-    "text": "Poisson\n- 시간 또는 공간에 따른 특정 사건의 발생 건수에 대한 확률분포로 이용됨.\n\\[X \\sim \\text{POI}(\\lambda), \\quad X =0,1\\dots\\]\n\\[f(x) = \\frac{\\lambda^{x}e^{-\\lambda}}{x!}, \\quad F(x) = \\sum_{k=0}^{x} \\frac{\\lambda^{k}e^{-\\lambda}}{k!},\\quad M(t) = \\exp \\{\\lambda(e^{t}-1)\\}\\]\n\\[E(x) = \\lambda, \\quad Var(X) = \\lambda\\]\n- 참고 1. 포아송 이항분포 근사\n\n\n‘ref1’\n\n\n\n\n\n- 참고 2. 서로 독립인 포아송분포의 결합 분포\n\n\n‘ref2’\n\n\n\n\n\n\n\n‘ref3’",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#uniform",
-    "href": "posts/extra/00. Distribution summary.html#uniform",
-    "title": "00. Distribution Summary",
-    "section": "Uniform",
-    "text": "Uniform\n일정한 구간에서 임의로 선택된 수에 대한 확률분포로 이용\n\\[X \\sim U(\\alpha,\\beta),\\quad f(x) = \\frac{1}{\\beta-\\alpha}I(\\alpha &lt; x &lt; \\beta)\\]\n\\[F(x) = \\begin{cases} 0 \\quad (x\\leq \\alpha) \\\\ \\\\ \\\n                       (x-\\alpha)/(\\beta-\\alpha) \\quad (\\alpha  &lt; x &lt; \\beta) \\\\ \\\\\n                       1 \\quad (x\\geq \\beta)\\end{cases}, \\quad M(t) = \\frac{e^{\\beta t}-e^{\\alpha t}}{t(\\beta - \\alpha)}\\]\n\\[E(X) = (\\alpha + \\beta)/2, \\quad Var(X) = (\\beta-\\alpha)^{2}/12\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#exponential",
-    "href": "posts/extra/00. Distribution summary.html#exponential",
-    "title": "00. Distribution Summary",
-    "section": "Exponential",
-    "text": "Exponential\n포아송분포를 따르며 발생하는 사건에 대하여 첫번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포\n\nthe amount of time unitil some specific event occurs\n\n\\[X \\sim \\text{Exp}(1/\\lambda)\\]\n\\[f(x) = \\lambda e^{-\\lambda x}, \\quad F(x) = 1-e^{-\\lambda x}, \\quad M(t) = \\frac {\\lambda}{\\lambda - t} \\,(t &lt; \\lambda)\\]\n\\[E(X) = 1/\\lambda, \\quad Var(X) = 1/\\lambda^2,\\quad \\hat{\\lambda}_{mle} = 1/\\bar X, \\quad \\hat{\\lambda}_{mvue} = \\frac{n-1}{\\sum X}\\]\n\n\n‘ref1’\n\n\n\n\n\n\n\n‘ref2’\n\n\n\n\n\n\n\n‘ref3’",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#gamma",
-    "href": "posts/extra/00. Distribution summary.html#gamma",
-    "title": "00. Distribution Summary",
-    "section": "Gamma",
-    "text": "Gamma\n평균이 \\(\\lambda\\)인 포아송분포를 따르며 발생하는 사건에 대하여 \\(\\alpha\\)번째 사건이 발생할 때까지 대기 시간(waiting time)의 분포\n\\[X \\sim \\text{Gamma}(\\alpha, \\beta = \\frac {1}{\\lambda})\\]\n\\[f(x) = \\frac{1}{\\Gamma(\\alpha)\\beta^{\\alpha}}x^{\\alpha-1}e^{-x/\\beta}I(x&gt;0), \\quad M(t) = \\left(\\frac {\\lambda}{\\lambda - t}\\right )^{\\alpha} =  (1-\\beta t)^{-\\alpha} \\,(t &lt; \\lambda)\\]\n\\[E(X) = \\alpha\\beta, \\quad Var(X) = \\alpha\\beta^{2}\\]\n\\[\\divideontimes \\,\\, \\text{Gamma}(1,\\beta) = \\text{Exp}(\\beta = 1/\\lambda)\\]\n\\[\\divideontimes \\,\\, X_i \\sim_{iid}\\text{Exp}(\\lambda) \\to \\sum X_i \\sim \\text{Gamma}(n, \\beta = 1 /\\lambda)\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#chi-square",
-    "href": "posts/extra/00. Distribution summary.html#chi-square",
-    "title": "00. Distribution Summary",
-    "section": "Chi-square",
-    "text": "Chi-square\nLet \\(Z_1,\\dots Z_n\\) be independent standard normal r.v’s\n- 자유도가 \\(n\\)인 카이제곱분포\n\\[X \\sim \\chi^2_{n} \\sim \\text{Gamma}(\\alpha = n/2, \\beta = 2)\\]\n\\[X_1, X_2=\\sum Z_{i}^2 \\sim \\chi^2_{n}\\quad \\to \\quad X_{1} + X_{2} \\sim \\chi^{2}_{n_1+n_2}\\]\n\\[f(x) = \\frac{1}{\\Gamma(n/2)\\,\\,{2^{n/2}}} x^{n/2-1}\\,\\,e^{-x/2},\\quad M(t) =  (1-2t)^{-n/2}\\]\n\\[E(X) = n, \\quad Var(X) = 2n\\]\n\\[\\divideontimes \\,\\, \\chi_{\\alpha,n}^{2}:100(1-\\alpha)\\text{  percentile of }\\chi^2_{n} \\text{ i.e. } \\to P(\\chi_{n}^2&gt;\\chi_{\\alpha,n}^2) = \\alpha\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#beta",
-    "href": "posts/extra/00. Distribution summary.html#beta",
-    "title": "00. Distribution Summary",
-    "section": "Beta",
-    "text": "Beta\n유한 구간에서 값을 가지는 변수의 분포로 이용\n\\[X \\sim \\text{Beta}(\\alpha, \\beta)\\]\n\\[f(x) = \\frac{1}{B(\\alpha,\\beta)} x^{\\alpha-1}\\,\\,(1-x)^{\\beta-1}, \\quad B(\\alpha, \\beta) - \\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}\\]\n\\[\\text{Beta}(1,1) = U(0,1)\\]\n\\[E(X) = \\frac{\\alpha}{\\alpha + \\beta}, \\quad Var(X) = \\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha + \\beta + 1)}\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
-    ]
-  },
-  {
-    "objectID": "posts/extra/00. Distribution summary.html#normal",
-    "href": "posts/extra/00. Distribution summary.html#normal",
-    "title": "00. Distribution Summary",
-    "section": "Normal",
-    "text": "Normal\n- 평균을 중심으로 좌우 대칭인 분포\n\\[X \\sim N(\\mu, \\sigma), \\quad f(x) = \\frac{1}{\\sqrt{2\\pi}\\sigma}\\exp{\\left ( -\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)}\\]\n\\[F(x) = \\Phi\\left(\\frac{x-\\mu}{\\sigma}\\right), \\quad M(t) = \\exp(\\mu t + \\sigma^2 t^2/2)\\]\n\\[\\hat{\\mu}_{mle} = \\bar X, \\quad \\hat{\\sigma}^2_{mle} = \\frac{1}{n} \\sum (X-\\bar X_i)^2\\]\n\\[\\hat{\\mu}_{mvue} = \\bar X, \\quad \\hat{\\sigma}^2_{mvue} = \\frac{1}{n-1} \\sum (X-\\bar X_i)^2\\]\n\\[E(X) = M^{\\prime}(0) = \\mu, \\quad E(X^2) = M^{\\prime\\prime}(0) = \\mu^2 + \\sigma^2\\]",
-    "crumbs": [
-      "Posts",
-      "Extra",
-      "00. Distribution Summary"
+      "14wk",
+      "HW 14"
     ]
   }
 ]

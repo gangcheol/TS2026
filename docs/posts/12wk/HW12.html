@@ -341,6 +341,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">final term</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/final term/FT 2021.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FT 2021</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -435,6 +452,8 @@ window.Quarto = {
 </section>
 <section id="b" class="level3">
 <h3 class="anchored" data-anchor-id="b">(b)</h3>
+<p><code>0</code> most powerful test 찾기</p>
+<p><span class="math display">\[H_0: \theta = \theta_0 \quad \text{vs} \quad H_1: \theta = \theta_1\,\,(\theta_1 &gt; \theta_0)\]</span></p>
 <p><code>1</code> 기각역 정의</p>
 <p><span class="math display">\[R = \left \{ (x_1 \dots x_n) : \frac{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_1)}}{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_0)}}\geq K \right \}\]</span></p>
 <p><code>2</code> 기각역 공식 대입</p>
@@ -445,6 +464,14 @@ window.Quarto = {
 <p><span class="math display">\[R = \left \{ \sum x_i^2 \leq K \right \},\quad (\theta_1 &gt; \theta_0)\]</span></p>
 <p><code>4</code> <span class="math inline">\(\sum x^2 \sim \text{Gam}\left(n, \frac{1}{\theta} \right) \to 2\theta \sum x^2 \sim \text{Gam}\left (n,2\right) = \chi^2(2n)\)</span></p>
 <p><span class="math display">\[P\left [2\theta_0\sum x_i^2 \leq K\,|\, \theta = \theta_0 \right] = P\left [2\theta_0\sum x_i^2 \leq \chi^2_{1-\alpha}(2n)\,|\, \theta = \theta_0 \right] \]</span></p>
+<ul>
+<li>size(level-<span class="math inline">\(\alpha\)</span>)에서 검정력 power는 다음과 같음</li>
+</ul>
+<p><span class="math display">\[\beta(\theta) = P\left [2\theta_0\sum x_i^2 \leq \chi^2_{1-\alpha}(2n) \right]\]</span></p>
+<p><code>5</code> 균일최강력검정 구하기</p>
+<p><span class="math display">\[\begin{align*}\max_{\theta \leq \theta_0}&amp;=\max_{\theta \leq \theta_0}P\left[2\theta_0 \sum_{i=1}^{n} x_{i}^2 \leq \chi^2_{1-\alpha}(2n)|\theta\right] \\ \\
+                                           &amp;= \max_{\theta \leq \theta_0}P\left[2\theta \sum_{i=1}^{n} x_{i}^2 \leq \frac{\theta}{\theta_0}\chi^2_{1-\alpha}(2n)|\theta\right]\\ \\
+                                           &amp;=  \max_{\theta \leq \theta_0}P\left[\chi^2_{2n}\leq \frac{\theta}{\theta_0}\chi^2_{1-\alpha}(2n)\right]\end{align*}\]</span></p>
 </section>
 <section id="c" class="level3">
 <h3 class="anchored" data-anchor-id="c">(c)</h3>
