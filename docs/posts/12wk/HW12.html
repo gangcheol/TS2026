@@ -417,10 +417,13 @@ window.Quarto = {
 <li><p>Find the uniformaly most powerful(UMP) level <span class="math inline">\(\alpha\)</span> test of</p></li>
 </ol>
 <p><span class="math display">\[H_0: \theta \leq \theta_0 \quad \text{vs} \quad H_1: \theta &gt; \theta_0\]</span></p>
-<p>where <span class="math inline">\(\theta_0\)</span> is known$</p>
+<p>where <span class="math inline">\(\theta_0\)</span> is known</p>
 <ol start="3" type="a">
 <li>Derive an expression for the power function of the test in part (b).</li>
 </ol>
+<ul>
+<li>즉, 검정법의 파워를 구하라</li>
+</ul>
 <section id="sol" class="level2">
 <h2 class="anchored" data-anchor-id="sol">sol</h2>
 <section id="a" class="level3">
@@ -432,15 +435,30 @@ window.Quarto = {
 </section>
 <section id="b" class="level3">
 <h3 class="anchored" data-anchor-id="b">(b)</h3>
-<p><code>1</code> 가능도비 <span class="math inline">\(\frac{L(\theta_2)}{L(\theta_1)}\)</span>가 <span class="math inline">\(T = \sum_{i=1}^n X_i^2\)</span>에 대해 감소하므로, 단조가능도비(MLR) 성질에 의해 기각역은 <span class="math inline">\(Sub(T) &lt; c\)</span> 형태.</p>
-<p><code>2</code> <span class="math inline">\(\theta = \theta_0\)</span>일 때 <span class="math inline">\(2\theta_0 T \sim \chi^2_{2n}\)</span>임을 이용하여 크기 <span class="math inline">\(\alpha\)</span> 맞춤.</p>
-<p><span class="math inline">\(\divideontimes \,\, \sum_{i=1}^n X_i^2 &lt; \frac{\chi^2_{2n, 1-\alpha}}{2\theta_0}\)</span> 이면 <span class="math inline">\(H_0\)</span> 기각 (<span class="math inline">\(\chi^2_{2n, 1-\alpha}\)</span>는 카이제곱분포의 하위 <span class="math inline">\(\alpha\)</span> 백분위수)</p>
+<p><code>1</code> 기각역 정의</p>
+<p><span class="math display">\[R = \left \{ (x_1 \dots x_n) : \frac{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_1)}}{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_0)}}\geq K \right \}\]</span></p>
+<p><code>2</code> 기각역 공식 대입</p>
+<p><span class="math display">\[R = \left \{ (x_1 \dots x_n) : \frac{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_1)}}{f_{\boldsymbol{X}(\boldsymbol{x}|\theta_0)}}
+                = \frac{\prod_{i=1}^n 2\theta_1 x_i e^{-\theta_1 x_i^2}}{\prod_{i=1}^n 2\theta_0 x_i e^{-\theta_0 x_i^2}} =
+                 \left (\frac{\theta_1}{\theta_0}\right)^n e^{-(\theta_1-\theta_0)\sum x_i^2}\geq K \right \}\]</span></p>
+<p><code>3</code> 단순화</p>
+<p><span class="math display">\[R = \left \{ \sum x_i^2 \leq K \right \},\quad (\theta_1 &gt; \theta_0)\]</span></p>
+<p><code>4</code> <span class="math inline">\(\sum x^2 \sim \text{Gam}\left(n, \frac{1}{\theta} \right) \to 2\theta \sum x^2 \sim \text{Gam}\left (n,2\right) = \chi^2(2n)\)</span></p>
+<p><span class="math display">\[P\left [2\theta_0\sum x_i^2 \leq K\,|\, \theta = \theta_0 \right] = P\left [2\theta_0\sum x_i^2 \leq \chi^2_{1-\alpha}(2n)\,|\, \theta = \theta_0 \right] \]</span></p>
 </section>
 <section id="c" class="level3">
 <h3 class="anchored" data-anchor-id="c">(c)</h3>
-<p><code>1</code> 임의의 <span class="math inline">\(\theta\)</span>에서 기각 확률 계산: <span class="math inline">\(\beta(\theta) = P_\theta\left(\sum_{i=1}^n X_i^2 &lt; \frac{\chi^2_{2n, 1-\alpha}}{2\theta_0}\right)\)</span></p>
-<p><code>2</code> 양변에 <span class="math inline">\(2\theta\)</span>를 곱해 카이제곱 통계량 <span class="math inline">\(2\theta T \sim \chi^2_{2n}\)</span> 도입.</p>
-<p><code>3</code> <span class="math inline">\(\divideontimes \,\,\beta(\theta) = F_{\chi^2_{2n}}\left(\frac{\theta}{\theta_0} \chi^2_{2n, 1-\alpha}\right)\)</span> (<span class="math inline">\(F_{\chi^2_{2n}}\)</span>은 자유도 <span class="math inline">\(2n\)</span>인 카이제곱 cdf)</p>
+<p>검정법의 power를 구하라</p>
+<p><code>1</code> <span class="math inline">\(\beta(\theta) = P\left [2\theta_0\sum x_i^2 \leq \chi^2_{1-\alpha}(2n)\,|\, \theta = \theta_0 \right]\)</span></p>
+<p><code>2</code> 귀무가설 하에서 최대값 <span class="math inline">\(\to\)</span> 즉, 제 1종 오류의 최대값</p>
+<p><span class="math display">\[\begin{align*} \text{Max}_{\theta \leq \theta_0}\beta(\theta) &amp;= \text{Max}_{\theta \leq \theta_0}P\left [2\theta_0\sum x_i^2 \leq \chi^2_{1-\alpha}(2n)\,|\, \theta = \theta_0 \right]\\ \\
+                &amp;=\text{Max}_{\theta \leq \theta_0}P\left [2\theta\sum x_i^2 \leq \frac{\theta}{\theta_0}\chi^2_{1-\alpha}(2n)\,|\, \theta = \theta_0 \right] \\ \\ &amp;= \text{Max}_{\theta \leq \theta_0} P \left [ \chi^2(2n) \leq \frac{\theta}{\theta_0}\chi^2_{1-\alpha}(2n)\,|\,\theta_0 \right] \end{align*}\]</span></p>
+<p><code>3</code> 우변의 경우 <span class="math inline">\(\theta\)</span>에 대한 증가함수이므로, <span class="math inline">\(\theta = \theta_0\)</span>일 때 최대가 된다.!</p>
+<p><code>4</code> 따라서 기각역 <code>R</code>을 기각역으로 하는 test는</p>
+<p><span class="math display">\[H_0: \theta \leq \theta_0 \quad \text{vs} \quad H_1: \theta &gt; \theta_0\]</span></p>
+<ul>
+<li>위 가설을 만족하는 모든 <span class="math inline">\(\theta\)</span>에 대해서 전부 <code>Most Powerful test</code>이므로, <code>Uniformly Most Powerful test</code>이며, size <span class="math inline">\(\alpha\)</span>가 된다.</li>
+</ul>
 <hr>
 </section>
 </section>
@@ -451,7 +469,7 @@ window.Quarto = {
 <p><span class="math display">\[f_{X}(x|\theta) = \frac{a_0}{\theta^{a_0}} x^{a_0 -1} \,\,I(0&lt;x&lt;\theta)\]</span></p>
 <p>where <span class="math inline">\(a_0 \geq 1\)</span> is a known constant and <span class="math inline">\(\theta &gt; 0\)</span> is an unknown parameter.</p>
 <ol type="a">
-<li><p>Show that <span class="math inline">\(Q = X_{(n)}/\theta\)</span> is a pivotal quantity, where <span class="math inline">\(X_{(n)}\)</span> is the maximum order statistic. Use <span class="math inline">\(Q\)</span>to construct a <span class="math inline">\(1 − \alpha\)</span> confidence set for <span class="math inline">\(\theta\)</span></p></li>
+<li><p>Show that <span class="math inline">\(Q = X_{(n)}/\theta\)</span> is a pivotal quantity, where <span class="math inline">\(X_{(n)}\)</span> is the maximum order statistic. Use <span class="math inline">\(Q\)</span> to construct a <span class="math inline">\(1 − \alpha\)</span> confidence set for <span class="math inline">\(\theta\)</span></p></li>
 <li><p>Derive a <span class="math inline">\(1 − \alpha\)</span> confidence set for <span class="math inline">\(\theta\)</span> by using the cumulative distribution function of <span class="math inline">\(T = T(X) = X_{(n)}\)</span> as a pivot.</p></li>
 <li><p>Assume that has an inverse gamma prior distribution with parameters <span class="math inline">\(c &gt; 0\)</span> and <span class="math inline">\(d &gt; 0\)</span> (both known). Write a <span class="math inline">\(1 − \alpha\)</span> credible set for <span class="math inline">\(\theta\)</span>.</p></li>
 </ol>
@@ -459,15 +477,27 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="sol-1">sol</h2>
 <section id="a-1" class="level3">
 <h3 class="anchored" data-anchor-id="a-1">(a)</h3>
+<p><code>사전지식</code>: pivotal quantity <span class="math inline">\(\to\)</span> 랜덤샘플의 함수이면서, 분포는 <span class="math inline">\(\theta\)</span>에 의존하지 않은 성질을 가짐</p>
 <p><code>1</code> <span class="math inline">\(Q\)</span>의 cdf: <span class="math inline">\(F_Q(q) = P\left(\frac{X_{(n)}}{\theta} \le q\right) = q^{n a_0}\)</span> (<span class="math inline">\(0&lt;q&lt;1\)</span>). 모수 <span class="math inline">\(\theta\)</span>가 없으므로 축량(Pivot)임.</p>
-<p><code>2</code> 가장 짧은 구간을 위해 <span class="math inline">\(P(\alpha^{1/n a_0} \le Q \le 1) = 1-\alpha\)</span>로 설정 후 <span class="math inline">\(\theta\)</span>에 대해 정리.</p>
-<p><span class="math inline">\(\divideontimes\,\,\left[ X_{(n)}, \;\frac{X_{(n)}}{\alpha^{\frac{1}{n a_0}}} \right]\)</span></p>
+<p><span class="math display">\[\begin{align*} F_{Q}(q) &amp;= P\left (\frac{X_{(n)}}{\theta} \leq q\right) \\ \\
+                          &amp;= \left [ P(X_{1} \leq \theta q\right ]^n\end{align*}\]</span></p>
+<p><span class="math display">\[\begin{align*}P(X_{1} \leq \theta q) &amp;= \int_{0}^{\theta q} \frac{a_0}{\theta^{a_0}} x_{1}^{a_0 -1}\, dx_1\\ \\
+                                       &amp;= q^{a_0}\end{align*}\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, F_{Q}(q) =q^{a_0n}\to f_{Q}(q) = na_0q^{na_0-1}\]</span></p>
+<ul>
+<li><span class="math inline">\(\theta\)</span>와 무관함</li>
+</ul>
+<p><code>2</code> 확률식 세우기</p>
+<p><span class="math display">\[P(c_1 \le Q = \frac{X_{(n)}}{\theta} \le c_2) = 1 - \alpha\]</span></p>
+<p><code>3</code> 확률식 변형</p>
+<p><span class="math display">\[P\left(\frac{X_{(n)}}{c_2}\leq \theta \leq \frac{X_{(n)}}{c_1}\right) = 1-\alpha\]</span></p>
+<p><code>4</code> 따리사, confidence interval set은?&gt;</p>
+<p><span class="math display">\[\left[\frac{X_{(n)}}{c_2},\,\,\frac{X_{(n)}}{c_1}\right]\]</span></p>
+<hr>
 </section>
 <section id="b-1" class="level3">
 <h3 class="anchored" data-anchor-id="b-1">(b)</h3>
-<p><code>1</code> 확률적분변환(PIT)에 의해 <span class="math inline">\(U = F_T(X_{(n)}|\theta) = \left(\frac{X_{(n)}}{\theta}\right)^{n a_0} \sim \text{Uniform}(0,1)\)</span>은 축량임.</p>
-<p><code>2</code> <span class="math inline">\(P(\alpha \le U \le 1) = 1-\alpha\)</span> 대입 후 식을 정리하면 (a)와 동일한 식에 도달.</p>
-<p><code>3</code> <span class="math inline">\(\divideontimes \,\,\left[ X_{(n)}, \;\frac{X_{(n)}}{\alpha^{\frac{1}{n a_0}}} \right]\)</span></p>
+<p>(a)번과 같은 이야기</p>
 </section>
 <section id="c-1" class="level3">
 <h3 class="anchored" data-anchor-id="c-1">(c)</h3>

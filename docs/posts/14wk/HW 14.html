@@ -360,7 +360,9 @@ window.Quarto = {
   <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">(a)</a></li>
   <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">(b)</a></li>
   </ul></li>
-  <li><a href="#ex-2" id="toc-ex-2" class="nav-link" data-scroll-target="#ex-2">EX 2</a></li>
+  </ul></li>
+  <li><a href="#ex-2" id="toc-ex-2" class="nav-link" data-scroll-target="#ex-2">EX 2</a>
+  <ul class="collapse">
   <li><a href="#sol-1" id="toc-sol-1" class="nav-link" data-scroll-target="#sol-1">sol</a>
   <ul class="collapse">
   <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">(a)</a></li>
@@ -454,15 +456,15 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="ex-2" class="level2">
-<h2 class="anchored" data-anchor-id="ex-2">EX 2</h2>
+</section>
+<section id="ex-2" class="level1">
+<h1>EX 2</h1>
 <p>Suppose <span class="math inline">\(X_{1},X_{2},...,X_{n}\)</span> are Bernoulli(p), where <span class="math inline">\(0&lt;p&lt;1\)</span>.</p>
 <ol type="a">
 <li><p>Derive a <span class="math inline">\((1-\alpha)\)</span> Wald confidence interval for p.</p></li>
 <li><p>Derive a <span class="math inline">\((1-\alpha)\)</span> Wald confidence interval for <span class="math inline">\(g(p)=\log\frac{p}{1-p}\)</span> the log odds of p.</p></li>
 <li><p>Consider testing <span class="math inline">\(H_{0}:p=p_{0}\)</span> vs <span class="math inline">\(H_{1}:p\ne p_{0}\)</span>. Derive the Wald test, the score test, and the LRT.</p></li>
 </ol>
-</section>
 <section id="sol-1" class="level2">
 <h2 class="anchored" data-anchor-id="sol-1">sol</h2>
 <section id="a-1" class="level3">
@@ -493,7 +495,7 @@ window.Quarto = {
 <li><p>귀무가설 <span class="math inline">\(H_0\)</span> 하에서의 정보량(Information)과 스코어(Score) 함수를 이용</p></li>
 <li><p>로그 우도함수 <span class="math inline">\(\log L(p) = \sum X_i \log p + (n - \sum X_i) \log(1-p)\)</span>의 스코어 함수와 피셔 정보량</p></li>
 </ul>
-<p><span class="math display">\[U(p) = \frac{n(\hat{p} - p)}{p(1-p)}$, $\quad I(p) = \frac{n}{p(1-p)}\]</span></p>
+<p><span class="math display">\[U(p) = \frac{n(\hat{p} - p)}{p(1-p)}, \quad I(p) = \frac{n}{p(1-p)}\]</span></p>
 <ul>
 <li><p>검정통계량: <span class="math inline">\(Z_S = \frac{U(p_0)}{\sqrt{I(p_0)}} = \frac{\frac{n(\hat{p} - p_0)}{p_0(1-p_0)}}{\sqrt{\frac{n}{p_0(1-p_0)}}} = \frac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}}\)</span></p></li>
 <li><p>기각역: <span class="math inline">\(|Z_S| &gt; z_{\alpha/2}\)</span> 일 때 <span class="math inline">\(H_0\)</span> 기각.</p></li>

@@ -363,13 +363,17 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sol-1" id="toc-sol-1" class="nav-link" data-scroll-target="#sol-1">sol</a></li>
   </ul></li>
-  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">(c)</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">(c)</a>
+  <ul class="collapse">
+  <li><a href="#sol-2" id="toc-sol-2" class="nav-link" data-scroll-target="#sol-2">sol</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#ex-2" id="toc-ex-2" class="nav-link" data-scroll-target="#ex-2">EX 2</a>
   <ul class="collapse">
   <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">(a)</a>
   <ul class="collapse">
-  <li><a href="#sol-2" id="toc-sol-2" class="nav-link" data-scroll-target="#sol-2">sol</a></li>
+  <li><a href="#sol-1.-cramer-rao-lower-bound" id="toc-sol-1.-cramer-rao-lower-bound" class="nav-link" data-scroll-target="#sol-1.-cramer-rao-lower-bound">sol 1. Cramer-Rao Lower Bound</a></li>
+  <li><a href="#sol2.-sufficiency-and-completeness." id="toc-sol2.-sufficiency-and-completeness." class="nav-link" data-scroll-target="#sol2.-sufficiency-and-completeness.">sol2. sufficiency and completeness.</a></li>
   </ul></li>
   <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">(b)</a>
   <ul class="collapse">
@@ -442,17 +446,21 @@ window.Quarto = {
 <section id="ex-1" class="level1">
 <h1>EX 1</h1>
 <p>Suppose <span class="math inline">\(X_1, X_2, \dots X_n\)</span> are iid sample from <span class="math inline">\(f_{X}(x|\theta)\)</span> where <span class="math inline">\(\theta \in \Theta \subset \mathbb{R}\)</span>. Recall the score function is given by</p>
-<p><span class="math display">\[S(\theta|x) = \frac{\partial}{\partial} \log{f_{X}(\boldsymbol{x}|\theta)}\]</span></p>
+<p><span class="math display">\[S(\theta|\boldsymbol{x}) = \frac{\partial}{\partial\,\theta} \log{f_{\boldsymbol{X}}(\boldsymbol{x}|\theta)}\]</span></p>
 <p>where <span class="math inline">\(f_{X}(\boldsymbol{x}|\theta)\)</span> is the joint distribution of <span class="math inline">\(X = (X_{1},X_{2}, \dots X_{n})\)</span></p>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">(a)</h2>
 <p>Show that <span class="math inline">\(E_{\theta}[S(\theta|X)] = 0\)</span></p>
 <section id="sol" class="level3">
 <h3 class="anchored" data-anchor-id="sol">sol</h3>
-<p><span class="math display">\[\begin {align*}E_{\theta}[S(\theta|X)]  &amp;= \int S(\theta|x) f_{X}(x|\theta) \,dx \\ \\
-                                          &amp;= \int \left ( \frac{\partial}{\partial} \log{f_{X}(x|\theta)} \right ) f_{X}(x|\theta)\,dx \\ \\
-                                          &amp;= \int \left ( \frac{\frac{\partial}{\partial}f_{X}(x|\theta) }{f_{X}(x|\theta)} \right ) f_{X}(x|\theta)\,dx \\ \\
-                                          &amp;= \frac{\partial}{\partial \theta}1 = 0\end{align*}\]</span></p>
+<p><code>step1</code> score function 전개</p>
+<p><span class="math display">\[S(\theta|\boldsymbol{x}) = \sum_{i=1}^{n}\frac{\partial}{\partial\,\theta} \log f_{x_i}(x_i|\theta)\]</span></p>
+<p><code>step2</code> 기대값 공식에 대입</p>
+<p><span class="math display">\[\begin{align*}E_{\theta}[ S(\theta|X)] &amp;= \int \sum_{i=1}^{n}\frac{\partial}{\partial\,\theta} \log f_{x_i}(x_i|\theta) \times f_{x_i}(x_{i}|\theta) \,dx\\ \\
+                                         &amp;= n \times \int  \frac{f^{\prime}(x|\theta)}{f(x|\theta)} \times f(x|\theta) \,dx \\ \\
+                                         &amp;= n \times \int f^{\prime}(x|\theta) \, dx \\ \\
+                                         &amp; = n\times  \frac{\partial}{\partial\, \theta}\int f(x|\theta) \,dx= n \times 0 = 0 \end{align*}\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, E_{\theta}[S(\theta|\boldsymbol{X}) ] =0\text{ 이다}\]</span></p>
 <hr>
 </section>
 </section>
@@ -462,16 +470,24 @@ window.Quarto = {
 <p><span class="math display">\[f(x|\theta) = \frac{1}{\pi} \frac{1}{1+(x-\theta)^2}\]</span></p>
 <section id="sol-1" class="level3">
 <h3 class="anchored" data-anchor-id="sol-1">sol</h3>
-<p><code>1</code> 로그-결합확률밀도함수</p>
-<p><span class="math display">\[\log {f_{X}(x|\theta)} = -n\log{\pi} - \sum_{i=1}^{n} \log {(1+(x_i -\theta)^2)}\]</span></p>
-<p><code>2</code> <span class="math inline">\(\theta\)</span>에 대한 편미분하기 <span class="math inline">\(\to S(\theta|x)\)</span></p>
-<p><span class="math display">\[S(\theta|x) = \sum_{i=1}^n  \frac{2(x_i-\theta)}{1 + (x_i - \theta)^2}\]</span></p>
+<p><code>1</code> joint pdf 구하기</p>
+<p><span class="math display">\[L(\theta) = f_{\boldsymbol {X}} (\boldsymbol{x}|\theta) = \prod_{i=1}^{n} \frac{1}{\pi} \frac{1}{1+(x_i-\theta)^2}\]</span></p>
+<p><code>2</code> 로그 변환</p>
+<p><span class="math display">\[\begin{align*} l(\theta) &amp;= \log L(\theta)  \\ \\
+                           &amp;= -n\log \pi -\sum \log (1+(x_i-\theta)^2)\end{align*}\]</span></p>
+<p><code>3</code> score function에 대입, 즉 위 식을 <span class="math inline">\(\theta\)</span>에 대하여 미분</p>
+<p><span class="math display">\[\begin{align*} S(\theta|\boldsymbol{x}) &amp;= \frac{\partial}{\partial\,\theta} \log{f_{\boldsymbol{X}}(\boldsymbol{x}|\theta)} \\ \\
+                                          &amp;= \sum_{i=1}^{n}\frac{2(x_i-\theta^2)}{1+(x_i-\theta)^2}\end{align*}\]</span></p>
 </section>
 </section>
 <section id="c" class="level2">
 <h2 class="anchored" data-anchor-id="c">(c)</h2>
 <p>How would you find the maximum likelihood estimate <span class="math inline">\(\theta\)</span>?</p>
+<section id="sol-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-2">sol</h3>
+<p>score function이 0이 되는 <span class="math inline">\(\theta\)</span>값을 구해야하나, 손으로 계산이 안됨(<code>analytical solution</code>이 없는 경우임)</p>
 <hr>
+</section>
 </section>
 </section>
 <section id="ex-2" class="level1">
@@ -480,16 +496,45 @@ window.Quarto = {
 <section id="a-1" class="level2">
 <h2 class="anchored" data-anchor-id="a-1">(a)</h2>
 <p>Show that <span class="math inline">\(W(X) = \bar X\)</span> is the uniformly minimum variance unbiased estimator (UMVUE) for <span class="math inline">\(\theta\)</span> in two ways: one way that uses a Cram´er-Rao Lower Bound argument and one way that uses sufficiency and completeness.</p>
-<section id="sol-2" class="level3">
-<h3 class="anchored" data-anchor-id="sol-2">sol</h3>
-<p><code>1</code> 로그-확률밀도함수 편미분</p>
-<p><span class="math display">\[\frac{\partial}{\partial \theta} \log{f(x_i|\theta)} = x_i - \theta \quad \to \quad \frac{\partial^{2}}{\partial \theta^2} \log {f(x_i|\theta)} = - 1\]</span></p>
-<p><code>2</code> 피셔 정보량 계산</p>
-<p><span class="math display">\[I_1(\theta) = -E\left [\frac{\partial^{2}}{\partial \theta^2} \log {f(x_i|\theta)}\right] = -E[-1] = 1\]</span></p>
-<p><span class="math display">\[\divideontimes \quad I_{n}(\theta) = n\]</span></p>
-<p><code>3</code> <span class="math inline">\(\frac{1}{I_{n}(\theta)}= \frac{1}{n}\)</span></p>
-<p><code>4</code> <span class="math inline">\(\overline {X}\)</span>의 분산 <span class="math inline">\(\to\)</span> <span class="math inline">\(Var{(\overline{X})} = \frac{1}{n}\)</span></p>
-<p>따라서 불편추정량 <span class="math inline">\(\bar X\)</span>의 분산이 크레모-라오 하한값(<span class="math inline">\(1/n\)</span>)에 수렴하므로, <span class="math inline">\(\overline X\)</span>는 <code>UMVUE</code>이다.</p>
+<section id="sol-1.-cramer-rao-lower-bound" class="level3">
+<h3 class="anchored" data-anchor-id="sol-1.-cramer-rao-lower-bound">sol 1. Cramer-Rao Lower Bound</h3>
+<p><code>tip</code> 어떤 추정량 <span class="math inline">\(T\)</span>가 비편향 추정량이고, <span class="math inline">\(Var(T) \geq \frac{1}{nI(\theta)}\)</span>, 이면 크레모-라온 부등식에 의해 <span class="math inline">\(T\)</span>는 UMVUE임이 자명함.</p>
+<p><code>step1</code> 비편향 추정량 확인</p>
+<p><span class="math inline">\(E\,[W(\boldsymbol{X})] = E[\bar{X}]= \theta\)</span> 이므로 비편향 추정량임</p>
+<p><code>step2</code> <span class="math inline">\(Var(\bar{X})= \frac{1}{n}\)</span></p>
+<p><code>step3</code> log pdf를 두번 미분한 값 구하기</p>
+<ol type="1">
+<li><p><span class="math inline">\(f(x) = (2\pi)^{-1/2}\exp(-(x-\theta)^2/2)\)</span></p></li>
+<li><p><span class="math inline">\(\log f(x|\theta) = -\frac 12 \log 2\pi - \frac 12 (x-\theta)^2\)</span></p></li>
+<li><p>로그 pdf 두번 미분</p></li>
+</ol>
+<p><span class="math display">\[\frac{\partial^2}{\partial \theta^2} = 1\]</span></p>
+<p><code>step4</code> 피셔의 정보량 <span class="math inline">\(I(\theta)\)</span> 구하기</p>
+<ul>
+<li>위에서 구한 식을 아래 공식에 대입</li>
+</ul>
+<p><span class="math display">\[\begin{align*} I(\theta) &amp;= E\left [ \frac{\partial^2}{\partial \theta^2} \log f_{X} (X|\theta)\right ] \\ \\
+                           &amp;= 1\end{align*}\]</span></p>
+<p><code>step5</code> 비교</p>
+<p><span class="math inline">\(Var(\bar{X})= \frac{1}{n}\)</span>, <span class="math inline">\(nI(\theta)= n\)</span></p>
+<p>이므로, <span class="math inline">\(Var(T) \geq \frac{1}{nI(\theta)}\)</span>을 만족함.</p>
+<p><span class="math display">\[\divideontimes \,\, W(\boldsymbol{X}) = \bar X = \hat{\theta}_{UMVUE}\]</span></p>
+<hr>
+</section>
+<section id="sol2.-sufficiency-and-completeness." class="level3">
+<h3 class="anchored" data-anchor-id="sol2.-sufficiency-and-completeness.">sol2. sufficiency and completeness.</h3>
+<p><code>tip</code></p>
+<p>만약 어떠한 추정량 <span class="math inline">\(W(X)\)</span>가 비편향추정량이고, <span class="math inline">\(T\)</span>가 완비충분통계량이면,</p>
+<p><span class="math display">\[E[W(X)|T] = \hat{\theta}_{UMVUE}\]</span></p>
+<p><code>1</code> pdf 재확인</p>
+<p><span class="math display">\[\begin{align*} \\ f(x) &amp;= (2\pi)^{-1/2}\exp(-(x-\theta)^2/2) \\ \\
+                         &amp;= (2\pi)^{-1/2}\exp\left [-\frac{1}{2} (x^{2}-2x\theta+\theta^2)\right]\end{align*}\]</span></p>
+<p><code>2</code> 따라서 지수족 정의에 의해</p>
+<ul>
+<li><span class="math inline">\(T(X)=\sum {X_i} = \text{C.S.S}\)</span> 이다.</li>
+</ul>
+<p><code>3</code> 그렇담 <span class="math inline">\(\frac{1}{n} \sum_{X_i}\)</span>도 <code>C.S.S</code>이고, 비편향추정량이므로</p>
+<p><span class="math display">\[\divideontimes \,\, W(\boldsymbol{X}) = \bar X = \hat{\theta}_{UMVUE}\]</span></p>
 <hr>
 </section>
 </section>
@@ -499,8 +544,10 @@ window.Quarto = {
 <section id="sol-3" class="level3">
 <h3 class="anchored" data-anchor-id="sol-3">sol</h3>
 <p><code>1</code> <span class="math inline">\(\bar x \sim N(\theta, \frac 1n)\)</span></p>
-<p><code>2</code> <span class="math inline">\(e^{\theta}\)</span>의 기댓값 계산</p>
-<p><span class="math display">\[E[e^{\overline{X}}] = \exp\left( \theta \cdot 1 + \frac{1}{2} \cdot \frac{1}{n} \cdot 1^2 \right) = e^\theta \cdot e^{\frac{1}{2n}}\]</span></p>
+<p><code>2</code> <span class="math inline">\(e^{\theta}\)</span>의 기댓값 계산(적률생성함수 이용)</p>
+<p><span class="math display">\[\begin{align*}E[e^{\bar X}] &amp;= M_{\bar X}(1) \\ \\
+                              &amp;= \exp (\mu t + \sigma^2t^2/2) \\ \\
+                              &amp;= \exp (\theta + 1/2n)\end{align*}\]</span></p>
 <p><code>3</code> 불편성 확인</p>
 <p><span class="math display">\[E\left[ \frac{e^{\overline{X}}}{e^{\frac{1}{2n}}} \right] = e^\theta \implies E\left[ e^{\overline{X} - \frac{1}{2n}} \right] = e^\theta\]</span></p>
 <p><code>4</code> 결론</p>
@@ -510,20 +557,31 @@ window.Quarto = {
 </section>
 <section id="c-1" class="level2">
 <h2 class="anchored" data-anchor-id="c-1">(c)</h2>
-<p>Calculate <span class="math inline">\(E(X1|X), E(X1 − X|X)\)</span>, and <span class="math inline">\(Cov(X1, X1 − X|X)\)</span>.</p>
+<p>Calculate <span class="math inline">\(E(X_1|\overline X), E(X_1 − \overline X|\overline X)\)</span>, and <span class="math inline">\(Cov(X_1, X_1 − \overline X|\overline X)\)</span>.</p>
 <section id="sol-4" class="level3">
 <h3 class="anchored" data-anchor-id="sol-4">sol</h3>
 <p><code>1</code> <span class="math inline">\(E(X_1|\overline X)\)</span> 계산</p>
 <p><span class="math display">\[\sum_{i=1}^{n} E(X_i|\overline{X}) = E\left(\sum_{i=1}^{n} X_i \;\middle|\; \overline{X}\right) = E(n\overline{X}|\overline{X}) = n\overline{X}\]</span></p>
-<p><span class="math display">\[n \cdot E(X_1|\overline{X}) = n\overline{X} \implies \mathbf{E(X_{1}|\overline{X}) = \overline{X}}\]</span></p>
+<p><span class="math display">\[n \cdot E(X_1|\overline{X}) = n\overline{X} \implies {E(X_{1}|\overline{X}) = \overline{X}}\]</span></p>
 <p><code>2</code> <span class="math inline">\(E(X_{1}-\overline{X}|\overline{X})\)</span> 계산</p>
 <p><span class="math display">\[E(X_{1}-\overline{X}|\overline{X}) = E(X_1|\overline{X}) - E(\overline{X}|\overline{X})\]</span></p>
 <p><span class="math inline">\(E(X_1|\overline{X}) = \overline{X}\)</span>이므로</p>
 <p><span class="math display">\[= \overline{X} - \overline{X} = \mathbf{0}\]</span></p>
 <p><code>3</code> <span class="math inline">\(\text{Cov}(X_{1}, X_{1}-\overline{X}|\overline{X})\)</span> 계산</p>
-<p><span class="math display">\[\text{Cov}(X_1 - \overline{X}, \overline{X}) = \text{Cov}(X_1, \overline{X}) - \text{Var}(\overline{X}) = \frac{1}{n} - \frac{1}{n} = 0\]</span></p>
-<p><span class="math inline">\(X_1 - \overline{X}\)</span>와 <span class="math inline">\(\overline{X}\)</span>는 서로 독립(Independent), 따라서…</p>
-<p><span class="math display">\[\text{Cov}(X_{1}, X_{1}-\overline{X}|\overline{X}) = \text{Cov}(X_1, X_1 - \overline{X}) = \text{Var}(X_1) - \text{Cov}(X_1, \overline{X}) = \mathbf{1 - \frac{1}{n}}\]</span></p>
+<ul>
+<li>들어가기전…</li>
+</ul>
+<p><span class="math display">\[Cov(X, Y|Z) = E[(X-E[X|Z]) \,\times\,(Y-E[Y|Z])]\]</span></p>
+<ul>
+<li>위를 대입</li>
+</ul>
+<p><span class="math display">\[\begin{align*} Cov(X_1, X_1 - \overline X|\overline X) &amp;= E\left[(X_1 - E[X_1|\overline X]) \times ([X_1-\overline{X}]  - E[X_1-\overline{X}|\overline X]) \right] \\ \\
+                    &amp;= E\left [ (X_1-\overline X)^2|\overline X\right]\end{align*}\]</span></p>
+<ul>
+<li><span class="math inline">\(X_1 - \overline X \sim N(0, 1-\frac 1n)\)</span></li>
+</ul>
+<p><span class="math display">\[ E\left [ (X_1-\overline X)^2|\overline X\right] = Var(X_1 - \overline {X}) = 1-\frac{1}{n}\]</span></p>
+<p><span class="math display">\[\divideontimes \,\, \text{Cov}(X_1, X_1-\overline {X}|\overline{X}) = 1- \frac 1n\]</span></p>
 <hr>
 </section>
 </section>
@@ -545,10 +603,13 @@ window.Quarto = {
 <p><span class="math display">\[L(\hat{\Omega}) = (2\pi)^{-\frac{m+n}{2}} \left(\frac{t_1}{m}\right)^{-\frac{m}{2}} \left(\frac{t_2}{n}\right)^{-\frac{n}{2}} e^{-\frac{m+n}{2}}\]</span></p>
 <p><code>3</code> 귀무가설 하에서의 최대 가능도</p>
 <p><span class="math display">\[L(\hat{\Omega}_0) = (2\pi)^{-\frac{m+n}{2}} \left(\frac{t_1+t_2}{m+n}\right)^{-\frac{m+n}{2}} e^{-\frac{m+n}{2}}\]</span></p>
+<p>위를 미분해서 최대가능도를 구하면</p>
+<p><span class="math display">\[\hat{\sigma^2} = \frac{t_1+t_2}{m+n}\]</span></p>
 <p><code>4</code> LRT 통계량</p>
 <p><span class="math display">\[\lambda(x,y) = \frac{L(\hat{\Omega}_0)}{L(\hat{\Omega})} = \frac{\left(\frac{t_1+t_2}{m+n}\right)^{-\frac{m+n}{2}}}{\left(\frac{t_1}{m}\right)^{-\frac{m}{2}} \left(\frac{t_2}{n}\right)^{-\frac{n}{2}}} = \frac{\left(\frac{t_1}{m}\right)^{\frac{m}{2}} \left(\frac{t_2}{n}\right)^{\frac{n}{2}}}{\left(\frac{t_1+t_2}{m+n}\right)^{\frac{m+n}{2}}}\]</span></p>
-<p><code>5</code> 결론</p>
-<p><span class="math inline">\(\lambda (x,y)\)</span>는 오직 <span class="math inline">\(t_1, t_2\)</span>만의 함수로 표현됨.</p>
+<p><code>5</code> 가설검정</p>
+<p><span class="math display">\[P\left(\lambda(x,y) = \frac{L(\hat{\Omega}_0)}{L(\hat{\Omega})} = \frac{\left(\frac{t_1+t_2}{m+n}\right)^{-\frac{m+n}{2}}}{\left(\frac{t_1}{m}\right)^{-\frac{m}{2}} \left(\frac{t_2}{n}\right)^{-\frac{n}{2}}} = \frac{\left(\frac{t_1}{m}\right)^{\frac{m}{2}} \left(\frac{t_2}{n}\right)^{\frac{n}{2}}}{\left(\frac{t_1+t_2}{m+n}\right)^{\frac{m+n}{2}}} \leq C \,|\,\sigma_1^2 = \sigma_2^2\right) = \alpha \]</span></p>
+<p>위를 만족하는 기각역을 구하면 된다.</p>
 <hr>
 </section>
 </section>
@@ -557,15 +618,16 @@ window.Quarto = {
 <p>Show how you could perform a size test in part (a) using the <span class="math inline">\(F\)</span> distribution</p>
 <section id="sol-6" class="level3">
 <h3 class="anchored" data-anchor-id="sol-6">sol</h3>
-<p><code>1</code> F분포 정의</p>
-<p><span class="math display">\[F = \frac{t_1 / m}{t_2 / n} \sim F_{m, n}\]</span></p>
-<p><code>2</code> F에 관한 식으로 정리</p>
-<p><span class="math display">\[\lambda = \text{상수} \times \frac{F^{m/2}}{\left(\frac{m}{n}F + 1\right)^{(m+n)/2}}\]</span></p>
-<p><code>3</code> 유의수준 <span class="math inline">\(\alpha = 0.05\)</span> 검정 수행</p>
-<p><span class="math display">\[\text{Rejection Region: } F &lt; F_{0.975, m, n} \quad \text{또는} \quad F &gt; F_{0.025, m, n}\]</span></p>
-<p><span class="math display">\[F_{0.975, m, n} = \frac{1}{F_{0.025, n, m}}\]</span></p>
-<p><code>4</code> 결론</p>
-<p>검정통계량 <span class="math inline">\(F\)</span>의 값이 기각역에 속하면, 즉 <span class="math inline">\(F &lt; F_{0.975, m, n}\)</span> 이거나 <span class="math inline">\(F &gt; F_{0.025, m, n}\)</span> 이면 유의수준 0.05에서 귀무가설 <span class="math inline">\(H_0\)</span>를 기각하고 두 집단의 분산이 통계적으로 유의미하게 다르다고 결론을 내릴 수 있다.</p>
+<p><code>1</code> 카이제곱 분포 변환</p>
+<p><span class="math display">\[T_{1} = \sum_{i=1}^{m} \frac{X_i^2}{\sigma_1^2} \sim \chi^2_{m}\]</span></p>
+<p><span class="math display">\[T_{2} = \sum_{j=1}^{n} \frac{Y_i^2}{\sigma_1^2} \sim \chi^2_{n}\]</span></p>
+<p><code>3</code> F분포 기각역 설정</p>
+<ul>
+<li>F분포 정의 복기…</li>
+</ul>
+<p><span class="math display">\[R = \frac{\sum Y^2/\sigma^2n}{\sum X^2/\sigma^2m} = F(n,m) \leq C_1\]</span></p>
+<p><code>4</code> 결론: 아래를 만족하는 영역이 유의수준 <span class="math inline">\(\alpha\)</span>에서의 기각영역이다.</p>
+<p><span class="math display">\[P\left[\frac{\sum Y^2/n}{\sum X^2/m} \leq F_{1-\frac{\alpha}{2}}(n,m) \text{ or } \frac{\sum Y^2/n}{\sum X^2/m} \geq F_{1-\frac{\alpha}{2}}(n,m)\right] = \alpha\]</span></p>
 <hr>
 </section>
 </section>
@@ -575,15 +637,15 @@ window.Quarto = {
 <p>Suppose <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are iid from</p>
 <p><span class="math display">\[f_{X}(x|\theta) = \theta x^{\theta - 1} I(0&lt;x&lt;1)\]</span></p>
 <p>where <span class="math inline">\(\theta &gt;0\)</span>, and consider testing <span class="math inline">\(H_0 : \theta \leq 1\)</span> versus <span class="math inline">\(H_1: \theta &gt; 1\)</span>. We have two tests:</p>
-<p><span class="math display">\[\phi_1 = \phi_2(x_1, x_2) = I(x_1 &gt; 0.9)\]</span></p>
-<p><span class="math display">\[\phi_2 = \phi_2(x_1, x_2) = I(x_1x_2 &gt; c)\]</span></p>
+<p><span class="math display">\[\phi_1 = \phi_2(x_1, x_2) = I(x_1 &gt; 0.9), \quad \text{기각역 } R_1 \]</span></p>
+<p><span class="math display">\[\phi_2 = \phi_2(x_1, x_2) = I(x_1x_2 &gt; c), \quad \text{기각역 } R_2\]</span></p>
 <p>where <span class="math inline">\(0&lt;c&lt;1\)</span>.</p>
 <section id="a-3" class="level2">
 <h2 class="anchored" data-anchor-id="a-3">(a)</h2>
 <p>Show that the power functions of the two tests are <span class="math inline">\(\beta_{1}(\theta) = 1- (0.9)^{\theta}\)</span> and <span class="math inline">\(\beta_{2}(\theta) = 1 + c^{\theta}(\theta \log c -1)\)</span>, respectively</p>
 <section id="sol-7" class="level3">
 <h3 class="anchored" data-anchor-id="sol-7">sol</h3>
-<p><code>1</code> <span class="math inline">\(\beta_1\)</span></p>
+<p><code>1</code> <span class="math inline">\(\beta_1\)</span>: 귀무가설을 기각할 확률</p>
 <p><span class="math display">\[\beta_1(\theta) = P_\theta(X_1 &gt; 0.9) = \int_{0.9}^{1} \theta x^{\theta-1} dx = \left[ x^\theta \right]_{0.9}^{1} = \mathbf{1 - (0.9)^\theta}\]</span></p>
 <p><code>1</code> <span class="math inline">\(\beta_2\)</span></p>
 <p><span class="math display">\[\beta_2(\theta) = P_\theta(X_1 X_2 &gt; c) = \int_{c}^{1} \int_{c/x_1}^{1} \theta^2 x_1^{\theta-1} x_2^{\theta-1} dx_2 dx_1\]</span></p>
@@ -595,10 +657,13 @@ window.Quarto = {
 <section id="b-3" class="level2">
 <h2 class="anchored" data-anchor-id="b-3">(b)</h2>
 <p>Calculate the size of the <span class="math inline">\(\phi_1\)</span> test. Then, find the value of <span class="math inline">\(c\)</span> that gives the same size for the <span class="math inline">\(\phi_2\)</span> test</p>
+<ul>
+<li>귀무가설 하에서 검정력 함수의 최대값(size)를 구하라는 말임</li>
+</ul>
 <section id="sol-8" class="level3">
 <h3 class="anchored" data-anchor-id="sol-8">sol</h3>
 <p><code>1</code> <span class="math inline">\(\beta_1(\theta) = 1- (0.9)^{\theta}\)</span> 는 <span class="math inline">\(\theta\)</span>에 대해서 단조 증가함수이므로,</p>
-<p><span class="math display">\[\text{Size of } \phi_1 = \beta_1(1) = 1 - 0.9 = \mathbf{0.1}\]</span></p>
+<p><span class="math display">\[\text{max}_{H_{0}}(\beta_1|\theta) = \beta_1(1) = 1 - 0.9 = \mathbf{0.1}\]</span></p>
 <p><code>2</code> <span class="math inline">\(\beta_2(\theta)\)</span>도 마찬가지.</p>
 <p><span class="math display">\[\text{Size of } \phi_2 = \beta_2(1) = 1 + c(\log c - 1) = 1 + c\log c - c\]</span></p>
 <p><code>3</code> 방정식 세우기</p>
